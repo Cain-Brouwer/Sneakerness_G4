@@ -18,3 +18,6 @@ Op de website vind je onder andere:
 
 ## Doel
 Het doel van deze website is om alle informatie rond het sneakerevent overzichtelijk en toegankelijk op één plek te tonen.
+
+Handig:
+https://nextjs.org/docs/app/getting-started/project-structure
