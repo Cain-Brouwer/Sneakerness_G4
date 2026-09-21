@@ -21,5 +21,5 @@ Het doel van deze website is om alle informatie rond het sneakerevent overzichte
 
 Handig:
 
-https://nextjs.org/docs/app/getting-started/project-structure
-https://tailwindcss.com/docs/styling-with-utility-classes
+- https://nextjs.org/docs/app/getting-started/project-structure
+- https://tailwindcss.com/docs/styling-with-utility-classes
