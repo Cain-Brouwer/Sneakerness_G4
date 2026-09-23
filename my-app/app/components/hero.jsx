@@ -1,5 +1,5 @@
 export default function Hero() {
     return (
-        <p>test</p>
+        <p className="text-white">test</p>
     )
 };
