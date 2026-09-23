@@ -10,7 +10,7 @@ import {
   initialiseerDatabase,
   sluitDatabase,
   voerQueryUit,
-} from "../app/lib/database.js";
+} from "../lib/database/db.js";
 
 let tijdelijkeMap;
 
@@ -173,7 +173,12 @@ test("Logo mag null zijn en Isactief krijgt standaard waarde 1", async () => {
 });
 
 test("tests gebruiken een aparte tijdelijke database", () => {
-  const normaleDatabasePad = path.join(process.cwd(), "data", "sneakerness.sqlite");
+  const normaleDatabasePad = path.join(
+    process.cwd(),
+    "lib",
+    "database",
+    "sneakerness.sqlite3",
+  );
 
   assert.notEqual(process.env.SQLITE_DATABASE_PATH, normaleDatabasePad);
   assert.ok(process.env.SQLITE_DATABASE_PATH.startsWith(tijdelijkeMap));

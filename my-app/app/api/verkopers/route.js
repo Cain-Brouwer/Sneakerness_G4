@@ -2,7 +2,7 @@ import {
   haalRijenOp,
   initialiseerDatabase,
   sluitDatabase,
-} from "../../lib/database.js";
+} from "../../../lib/database/db.js";
 
 const toegestaneParameters = new Set(["zoek", "dagen", "specialeStatus"]);
 
