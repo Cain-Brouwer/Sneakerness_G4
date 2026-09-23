@@ -1,3 +1,5 @@
+// Root layout: defines the global HTML structure and shared metadata for the app.
+// It also loads the custom fonts and applies the base body styling for every page.
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 

@@ -1,3 +1,5 @@
+# Docker Compose setup for the project.
+# It defines both the local development environment and the production-style app container.
 services:
   # Development service (standaard - start met: docker compose up --build)
   dev:

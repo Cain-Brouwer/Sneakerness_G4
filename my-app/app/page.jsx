@@ -1,3 +1,5 @@
+// Homepage component: build the main landing page for the Sneakerness event.
+// It combines the header, hero section, ticket overview, stand cards, and footer.
 import Header from "./components/header";
 import Hero from "./components/hero";
 import Footer from "./components/footer";

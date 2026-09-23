@@ -1,3 +1,5 @@
+/* Global design tokens: this file sets the page-wide color variables and Tailwind theme mapping.
+   It makes the app styling consistent across the entire Next.js project. */
 @import "tailwindcss";
 
 :root {

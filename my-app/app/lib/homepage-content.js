@@ -1,3 +1,5 @@
+// Content source for the homepage: centralizes all static text used across the landing page.
+// This keeps the page content easy to edit and ensures consistent event information everywhere.
 export function getHomepageContent() {
   const content = {
     title: "Homepagina",

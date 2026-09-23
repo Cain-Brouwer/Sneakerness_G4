@@ -1,3 +1,5 @@
+// Hero component: renders the main event banner with title, venue, and tagline.
+// It gives the homepage a strong visual introduction before the ticket and stand content.
 export default function Hero({ eventName, venue, tagline }) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-neutral-900 to-neutral-950 border border-neutral-800 rounded-2xl px-6 py-12 text-center md:py-16 shadow-xl">

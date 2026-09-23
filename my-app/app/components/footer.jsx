@@ -1,3 +1,5 @@
+// Footer component: shows the final event info blocks at the bottom of the page.
+// It keeps the contact/location details and copyright text in a consistent layout.
 export default function Footer({ info, copyright }) {
   return (
     <footer

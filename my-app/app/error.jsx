@@ -1,5 +1,7 @@
 "use client";
 
+// Error boundary fallback page: shown when a page fails during runtime.
+// It logs the issue and gives the user a way to retry or reload the app.
 import { useEffect } from "react";
 
 export default function Error({ error, reset }) {

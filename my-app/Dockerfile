@@ -1,3 +1,5 @@
+# Docker image definition for the Next.js app.
+# It builds the project in stages so dependencies, the production build, and runtime assets are separated cleanly.
 # Multi-stage build for Next.js
 FROM node:20-alpine AS dependencies
 WORKDIR /app

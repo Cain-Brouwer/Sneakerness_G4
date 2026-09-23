@@ -1,5 +1,7 @@
 "use client";
 
+// Critical app-wide error page: acts as the last fallback when the whole app crashes.
+// It renders a simple, branded offline message with no layout dependency.
 export default function GlobalError() {
   return (
     <html lang="nl">

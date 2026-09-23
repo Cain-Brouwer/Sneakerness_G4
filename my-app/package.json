@@ -1,5 +1,6 @@
 {
   "name": "my-app",
+  "description": "Next.js landing page for the Sneakerness Rotterdam event.",
   "version": "0.1.0",
   "private": true,
   "scripts": {
