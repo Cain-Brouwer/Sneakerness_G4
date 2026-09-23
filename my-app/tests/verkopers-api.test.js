@@ -6,6 +6,7 @@ import { after, before, test } from "node:test";
 
 import { GET } from "../app/api/verkopers/route.js";
 import {
+  haalRijenOp,
   initialiseerDatabase,
   sluitDatabase,
   voerQueryUit,
@@ -29,8 +30,8 @@ before(async () => {
     for (const verkoper of testVerkopers) {
       await voerQueryUit(
         database,
-        `INSERT INTO verkopers
-          (bedrijfsnaam, contactpersoon, email, telefoon, type_verkoper)
+        `INSERT INTO Verkoper
+          (Bedrijfsnaam, Contactpersoon, Email, Telefoon, Verkopertype)
          VALUES (?, ?, ?, ?, ?)`,
         verkoper,
       );
@@ -104,6 +105,48 @@ test("unhappy: weigert een ongeldig type verkoper", async () => {
 
   assert.equal(response.status, 400);
   assert.deepEqual(inhoud, { error: "Ongeldig type verkoper." });
+});
+
+test("database weigert een ongeldig verkopertype", async () => {
+  const database = await initialiseerDatabase();
+
+  try {
+    await assert.rejects(
+      voerQueryUit(
+        database,
+        `INSERT INTO Verkoper
+          (Bedrijfsnaam, Contactpersoon, Email, Telefoon, Verkopertype)
+         VALUES (?, ?, ?, ?, ?)`,
+        ["Testzaak", "Test Persoon", "test@example.nl", "0612345678", "restaurant"],
+      ),
+      /CHECK constraint failed/,
+    );
+  } finally {
+    await sluitDatabase(database);
+  }
+});
+
+test("Isactief krijgt standaard waarde 1", async () => {
+  const database = await initialiseerDatabase();
+
+  try {
+    const [verkoper] = await haalRijenOp(
+      database,
+      "SELECT Isactief FROM Verkoper WHERE Bedrijfsnaam = ?",
+      ["Nike Store"],
+    );
+
+    assert.equal(verkoper.Isactief, 1);
+  } finally {
+    await sluitDatabase(database);
+  }
+});
+
+test("tests gebruiken een aparte tijdelijke database", () => {
+  const normaleDatabasePad = path.join(process.cwd(), "data", "sneakerness.sqlite");
+
+  assert.notEqual(process.env.SQLITE_DATABASE_PATH, normaleDatabasePad);
+  assert.ok(process.env.SQLITE_DATABASE_PATH.startsWith(tijdelijkeMap));
 });
 
 test("stuurt alleen de afgesproken responsevelden terug", async () => {

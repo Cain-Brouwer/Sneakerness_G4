@@ -4,10 +4,14 @@ import {
   sluitDatabase,
 } from "../../lib/database.js";
 
-const toegestaneTypes = new Set(["sneakersverkoper", "side-stand"]);
+const geldigeVerkopertypes = new Set(["sneakersverkoper", "side-stand"]);
 const toegestaneParameters = new Set(["zoek", "type"]);
 
-function leesZoekparameters(request) {
+function valideerVerkopertype(verkopertype) {
+  return verkopertype === "" || geldigeVerkopertypes.has(verkopertype);
+}
+
+function leesVerkoperFilters(request) {
   const zoekparameters = new URL(request.url).searchParams;
 
   for (const parameter of zoekparameters.keys()) {
@@ -27,7 +31,7 @@ function leesZoekparameters(request) {
     return { fout: "Queryparameter 'zoek' mag maximaal 100 tekens bevatten." };
   }
 
-  if (typeVerkoper && !toegestaneTypes.has(typeVerkoper)) {
+  if (!valideerVerkopertype(typeVerkoper)) {
     return { fout: "Ongeldig type verkoper." };
   }
 
@@ -35,7 +39,10 @@ function leesZoekparameters(request) {
 }
 
 function ontsnapZoekterm(zoekterm) {
-  return zoekterm.replaceAll("\\", "\\\\").replaceAll("%", "\\%").replaceAll("_", "\\_");
+  return zoekterm
+    .replaceAll("\\", "\\\\")
+    .replaceAll("%", "\\%")
+    .replaceAll("_", "\\_");
 }
 
 async function haalVerkopersOp(zoekterm, typeVerkoper) {
@@ -48,17 +55,17 @@ async function haalVerkopersOp(zoekterm, typeVerkoper) {
     if (zoekterm) {
       const zoekwaarde = `%${ontsnapZoekterm(zoekterm)}%`;
 
-      // Zoekt zonder hoofdlettergevoeligheid in de drie afgesproken velden.
+      // Zoekt op bedrijfsnaam, contactpersoon en e-mail.
       voorwaarden.push(`(
-        bedrijfsnaam LIKE ? ESCAPE '\\' COLLATE NOCASE OR
-        contactpersoon LIKE ? ESCAPE '\\' COLLATE NOCASE OR
-        email LIKE ? ESCAPE '\\' COLLATE NOCASE
+        Bedrijfsnaam LIKE ? ESCAPE '\\' COLLATE NOCASE OR
+        Contactpersoon LIKE ? ESCAPE '\\' COLLATE NOCASE OR
+        Email LIKE ? ESCAPE '\\' COLLATE NOCASE
       )`);
       parameters.push(zoekwaarde, zoekwaarde, zoekwaarde);
     }
 
     if (typeVerkoper) {
-      voorwaarden.push("type_verkoper = ?");
+      voorwaarden.push("Verkopertype = ?");
       parameters.push(typeVerkoper);
     }
 
@@ -68,10 +75,16 @@ async function haalVerkopersOp(zoekterm, typeVerkoper) {
 
     return await haalRijenOp(
       database,
-      `SELECT id, bedrijfsnaam, contactpersoon, email, telefoon, type_verkoper
-       FROM verkopers
+      `SELECT
+         Id AS id,
+         Bedrijfsnaam AS bedrijfsnaam,
+         Contactpersoon AS contactpersoon,
+         Email AS email,
+         Telefoon AS telefoon,
+         Verkopertype AS type_verkoper
+       FROM Verkoper
        ${where}
-       ORDER BY bedrijfsnaam COLLATE NOCASE, id`,
+       ORDER BY Bedrijfsnaam COLLATE NOCASE, Id`,
       parameters,
     );
   } finally {
@@ -80,7 +93,7 @@ async function haalVerkopersOp(zoekterm, typeVerkoper) {
 }
 
 export async function GET(request) {
-  const zoekopdracht = leesZoekparameters(request);
+  const zoekopdracht = leesVerkoperFilters(request);
 
   if (zoekopdracht.fout) {
     return Response.json({ error: zoekopdracht.fout }, { status: 400 });
