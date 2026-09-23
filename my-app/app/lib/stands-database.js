@@ -8,6 +8,7 @@ const standaardStandsDatabasePad = path.join(
   "sneakerness.sqlite",
 );
 const databaseSchemaPad = path.join(process.cwd(), "database.sql");
+const databaseSeedPad = path.join(process.cwd(), "seed.sql");
 
 function openDatabaseVoorStands(databasePad) {
   return new Promise((resolve, reject) => {
@@ -146,6 +147,11 @@ async function migreerLegacyStands(database) {
   }
 }
 
+function moetVoorbeelddataToevoegen() {
+  return process.env.NODE_ENV !== "production"
+    && !process.env.STANDS_DATABASE_PATH;
+}
+
 export function sluitStandsDatabase(database) {
   return new Promise((resolve, reject) => {
     database.close((fout) => {
@@ -176,6 +182,11 @@ export async function initialiseerStandsDatabase() {
 
     if (heeftLegacyStandtabel) {
       await migreerLegacyStands(database);
+    }
+
+    if (moetVoorbeelddataToevoegen()) {
+      const databaseSeed = await readFile(databaseSeedPad, "utf8");
+      await voerDatabaseSchemaUit(database, databaseSeed);
     }
 
     return database;
