@@ -75,10 +75,14 @@ export default function StandsOverzicht() {
     setOpnieuwPoging((poging) => poging + 1);
   }
 
+  function zoekStands(event) {
+    event.preventDefault();
+  }
+
   return (
     <section className="overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/60 shadow-lg">
-      <div className="grid grid-cols-1 gap-4 border-b border-neutral-800 p-4 md:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] md:p-6">
-        <label className="flex flex-col gap-2 text-sm font-semibold text-neutral-300">
+      <div className="grid grid-cols-1 gap-4 border-b border-neutral-800 p-4 md:p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)]">
+        <label className="flex min-w-0 flex-col gap-2 text-sm font-semibold text-neutral-300">
           Filter resultaten
           <select
             value={standtype}
@@ -94,16 +98,26 @@ export default function StandsOverzicht() {
           </select>
         </label>
 
-        <label className="flex flex-col gap-2 text-sm font-semibold text-neutral-300">
-          Zoekveld
-          <input
-            type="search"
-            value={zoekterm}
-            onChange={pasZoektermAan}
-            placeholder="Zoek op standnummer"
-            className="min-h-12 w-full rounded-xl border border-neutral-700 bg-neutral-950 px-4 text-neutral-100 placeholder:text-neutral-600 outline-none transition-colors focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20"
-          />
-        </label>
+        <form onSubmit={zoekStands} className="min-w-0">
+          <label className="flex min-w-0 flex-col gap-2 text-sm font-semibold text-neutral-300">
+            Zoekveld
+            <span className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_auto]">
+              <input
+                type="search"
+                value={zoekterm}
+                onChange={pasZoektermAan}
+                placeholder="Zoek op standnummer"
+                className="min-h-12 min-w-0 w-full rounded-xl border border-neutral-700 bg-neutral-950 px-4 text-neutral-100 placeholder:text-neutral-600 outline-none transition-colors focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20"
+              />
+              <button
+                type="submit"
+                className="min-h-12 rounded-xl bg-orange-600 px-6 font-bold text-white shadow-lg transition-all hover:bg-orange-500 hover:shadow-orange-500/20 active:scale-[0.99]"
+              >
+                Zoek
+              </button>
+            </span>
+          </label>
+        </form>
       </div>
 
       <div
@@ -150,11 +164,11 @@ function LegeStatus() {
 function FoutStatus({ probeerOpnieuw }) {
   return (
     <div className="flex min-h-72 flex-col items-center justify-center text-center" role="alert">
-      <div className="rounded-xl border border-red-900/70 bg-red-950/30 px-6 py-7 shadow-lg">
-        <p className="mb-6 text-xl font-black tracking-[0.2em] text-orange-500">
+      <div className="w-full max-w-xl rounded-xl border border-red-900/70 bg-red-950/30 px-4 py-6 shadow-lg sm:px-6 sm:py-7">
+        <p className="mb-5 break-words text-lg font-black tracking-[0.15em] text-orange-500 sm:mb-6 sm:text-xl sm:tracking-[0.2em]">
           SNEAKERNESS
         </p>
-        <h2 className="text-xl font-bold text-neutral-100">Er is iets misgegaan.</h2>
+        <h2 className="text-lg font-bold text-neutral-100 sm:text-xl">Er is iets misgegaan.</h2>
         <p className="mt-2 text-sm text-neutral-300">
           <span className="font-mono font-bold text-orange-400">error:</span>{" "}
           De stands konden niet worden geladen.

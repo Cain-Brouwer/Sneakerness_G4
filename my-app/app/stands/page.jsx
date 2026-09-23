@@ -14,7 +14,7 @@ export default function StandsPagina() {
         <Header />
 
         <main className="flex flex-1 flex-col gap-6">
-          <h1 className="text-center text-3xl font-extrabold uppercase tracking-widest text-neutral-300 sm:text-4xl">
+          <h1 className="break-words text-center text-2xl font-extrabold uppercase tracking-wider text-neutral-300 sm:text-3xl sm:tracking-widest lg:text-4xl">
             Stands Overzicht
           </h1>
 
