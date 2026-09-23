@@ -151,8 +151,12 @@ function FoutStatus({ probeerOpnieuw }) {
   return (
     <div className="flex min-h-72 flex-col items-center justify-center text-center" role="alert">
       <div className="rounded-xl border border-red-900/70 bg-red-950/30 px-6 py-7 shadow-lg">
+        <p className="mb-6 text-xl font-black tracking-[0.2em] text-orange-500">
+          SNEAKERNESS
+        </p>
         <h2 className="text-xl font-bold text-neutral-100">Er is iets misgegaan.</h2>
         <p className="mt-2 text-sm text-neutral-300">
+          <span className="font-mono font-bold text-orange-400">error:</span>{" "}
           De stands konden niet worden geladen.
         </p>
         <button

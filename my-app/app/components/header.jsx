@@ -5,8 +5,9 @@ import { useState } from "react";
 
 const navigatieItems = [
   { href: "/", label: "Home" },
-  { href: "/#tickets", label: "Tickets" },
   { href: "/stands", label: "Stands" },
+  { href: "/verkopers", label: "Verkopers" },
+  { href: "/tickets", label: "Tickets" },
   { href: "/#info", label: "Info" },
 ];
 
