@@ -54,12 +54,12 @@ async function haalStandsOp(zoekterm, standtype) {
 
     if (zoekterm) {
       // Zoekt zonder hoofdlettergevoeligheid op standnummer.
-      voorwaarden.push("standnummer LIKE ? ESCAPE '\\' COLLATE NOCASE");
+      voorwaarden.push("Standnummer LIKE ? ESCAPE '\\' COLLATE NOCASE");
       parameters.push(`%${ontsnapZoekterm(zoekterm)}%`);
     }
 
     if (standtype) {
-      voorwaarden.push("standtype = ?");
+      voorwaarden.push("Standtype = ?");
       parameters.push(standtype);
     }
 
@@ -69,10 +69,10 @@ async function haalStandsOp(zoekterm, standtype) {
 
     return await haalStandRijenOp(
       database,
-      `SELECT id, standnummer, standtype
-       FROM stands
+      `SELECT Id AS id, Standnummer AS standnummer, Standtype AS standtype
+       FROM Stand
        ${where}
-       ORDER BY standnummer COLLATE NOCASE, id`,
+       ORDER BY Standnummer COLLATE NOCASE, Id`,
       parameters,
     );
   } finally {

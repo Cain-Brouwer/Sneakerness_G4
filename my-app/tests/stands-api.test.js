@@ -6,6 +6,7 @@ import { after, before, test } from "node:test";
 
 import { GET } from "../app/api/stands/route.js";
 import {
+  haalStandRijenOp,
   initialiseerStandsDatabase,
   sluitStandsDatabase,
   voerStandQueryUit,
@@ -31,7 +32,7 @@ before(async () => {
     for (const stand of testStands) {
       await voerStandQueryUit(
         database,
-        "INSERT INTO stands (standnummer, standtype) VALUES (?, ?)",
+        "INSERT INTO Stand (Standnummer, Standtype) VALUES (?, ?)",
         stand,
       );
     }
@@ -101,6 +102,63 @@ test("unhappy: weigert een ongeldig standtype", async () => {
 
   assert.equal(response.status, 400);
   assert.deepEqual(inhoud, { error: "Ongeldig type stand." });
+});
+
+test("database weigert dubbele standnummers", async () => {
+  const database = await initialiseerStandsDatabase();
+
+  try {
+    await assert.rejects(
+      voerStandQueryUit(
+        database,
+        "INSERT INTO Stand (Standnummer, Standtype) VALUES (?, ?)",
+        ["A12", "aa"],
+      ),
+      /UNIQUE constraint failed/,
+    );
+  } finally {
+    await sluitStandsDatabase(database);
+  }
+});
+
+test("database weigert een ongeldig standtype", async () => {
+  const database = await initialiseerStandsDatabase();
+
+  try {
+    await assert.rejects(
+      voerStandQueryUit(
+        database,
+        "INSERT INTO Stand (Standnummer, Standtype) VALUES (?, ?)",
+        ["X01", "restaurant"],
+      ),
+      /CHECK constraint failed/,
+    );
+  } finally {
+    await sluitStandsDatabase(database);
+  }
+});
+
+test("Isactief krijgt standaard waarde 1", async () => {
+  const database = await initialiseerStandsDatabase();
+
+  try {
+    const [stand] = await haalStandRijenOp(
+      database,
+      "SELECT Isactief FROM Stand WHERE Standnummer = ?",
+      ["A12"],
+    );
+
+    assert.equal(stand.Isactief, 1);
+  } finally {
+    await sluitStandsDatabase(database);
+  }
+});
+
+test("tests gebruiken een aparte tijdelijke database", () => {
+  const normaleDatabasePad = path.join(process.cwd(), "data", "sneakerness.sqlite");
+
+  assert.notEqual(process.env.STANDS_DATABASE_PATH, normaleDatabasePad);
+  assert.ok(process.env.STANDS_DATABASE_PATH.startsWith(tijdelijkeMap));
 });
 
 test("stuurt alleen de afgesproken responsevelden terug", async () => {
