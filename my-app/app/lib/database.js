@@ -8,6 +8,7 @@ const standaardDatabasePad = path.join(
   "sneakerness.sqlite",
 );
 const databaseSchemaPad = path.join(process.cwd(), "database.sql");
+const databaseSeedPad = path.join(process.cwd(), "seed.sql");
 
 function openDatabase(databasePad) {
   return new Promise((resolve, reject) => {
@@ -127,6 +128,11 @@ async function bereidVerkoperSchemaVoor(database) {
   }
 }
 
+function moetVoorbeelddataToevoegen() {
+  return process.env.NODE_ENV !== "production"
+    && !process.env.SQLITE_DATABASE_PATH;
+}
+
 export function sluitDatabase(database) {
   return new Promise((resolve, reject) => {
     database.close((fout) => {
@@ -154,6 +160,12 @@ export async function initialiseerDatabase() {
 
     // Voert het centrale databaseschema uit.
     await voerDatabaseSchemaUit(database, databaseSchema);
+
+    if (moetVoorbeelddataToevoegen()) {
+      const databaseSeed = await readFile(databaseSeedPad, "utf8");
+      await voerDatabaseSchemaUit(database, databaseSeed);
+    }
+
     await voerQueryUit(database, "COMMIT");
 
     return database;
