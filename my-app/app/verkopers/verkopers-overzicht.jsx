@@ -155,8 +155,14 @@ function LegeStatus() {
 function FoutStatus({ probeerOpnieuw }) {
   return (
     <div className="flex min-h-72 flex-col items-center justify-center text-center" role="alert">
+      <p className="mb-6 text-xl font-black tracking-[0.2em] text-orange-500">
+        SNEAKERNESS
+      </p>
       <h2 className="text-xl font-bold text-neutral-100">Er is iets misgegaan.</h2>
-      <p className="mt-2 text-sm text-neutral-400">De verkopers konden niet worden geladen.</p>
+      <p className="mt-2 text-sm text-neutral-400">
+        <span className="font-mono font-bold text-orange-400">error:</span>{" "}
+        De verkopers konden niet worden geladen.
+      </p>
       <button
         type="button"
         onClick={probeerOpnieuw}
