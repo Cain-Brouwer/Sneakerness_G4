@@ -1,0 +1,21 @@
+####################################################################################################################
+# WARNING: Do not store sensitive information in this file, as its contents will be included in the Qodana report. #
+####################################################################################################################
+version: "1.0"
+
+linter: qodana-javascript
+
+profile:
+  name: qodana.recommended
+
+exclude:
+  - name: All
+    paths:
+      - my-app/.next
+      - my-app/node_modules
+      - my-app/public
+      - my-app/.dockerignore
+      - my-app/.gitignore
+
+bootstrap: |
+  cd my-app && npm install
