@@ -1,4 +1,19 @@
 services:
+  # Development service (standaard - start met: docker compose up --build)
+  dev:
+    image: node:20-alpine
+    working_dir: /app
+    command: sh -c "npm ci && npm run dev"
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      HOSTNAME: "0.0.0.0"
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+  # Production service (alleen starten met: docker compose --profile prod up --build)
   app:
     build:
       context: .
@@ -15,17 +30,3 @@ services:
       timeout: 5s
       retries: 3
       start_period: 30s
-
-  dev:
-    image: node:20-alpine
-    profiles: ["dev"]
-    working_dir: /app
-    command: sh -c "npm ci && npm run dev"
-    ports:
-      - "3000:3000"
-    environment:
-      NODE_ENV: development
-      HOSTNAME: "0.0.0.0"
-    volumes:
-      - .:/app
-    restart: unless-stopped
