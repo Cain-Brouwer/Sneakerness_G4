@@ -61,96 +61,69 @@ export function haalRijenOp(database, sql, parameters = []) {
   });
 }
 
-async function bestaatLegacyVerkopertabel(database) {
+async function bestaatTabel(database, tabelnaam) {
   const tabellen = await haalRijenOp(
     database,
     `SELECT name
      FROM sqlite_master
-     WHERE type = 'table' AND name = 'verkopers'`,
+     WHERE type = 'table' AND name = ?`,
+    [tabelnaam],
   );
 
   return tabellen.length > 0;
 }
 
-async function controleerLegacyVerkoperdata(database) {
-  if (!await bestaatLegacyVerkopertabel(database)) {
+async function telRijen(database, tabelnaam) {
+  const [resultaat] = await haalRijenOp(
+    database,
+    `SELECT COUNT(*) AS aantal FROM "${tabelnaam}"`,
+  );
+
+  return resultaat.aantal;
+}
+
+async function gebruiktDefinitiefVerkoperSchema(database) {
+  if (!await bestaatTabel(database, "Verkoper")) {
     return false;
   }
 
-  const ongeldigeVerkopertypes = await haalRijenOp(
-    database,
-    `SELECT id
-     FROM verkopers
-     WHERE type_verkoper NOT IN ('sneakersverkoper', 'side-stand')`,
-  );
+  const kolommen = await haalRijenOp(database, "PRAGMA table_info('Verkoper')");
+  const kolomnamen = new Set(kolommen.map((kolom) => kolom.name));
 
-  if (ongeldigeVerkopertypes.length > 0) {
-    throw new Error("Legacy verkopers bevatten ongeldige verkopertypes.");
-  }
-
-  return true;
+  return ["Naam", "SpecialeStatus", "VerkooptSoort", "Dagen", "Logo"]
+    .every((kolomnaam) => kolomnamen.has(kolomnaam));
 }
 
-async function migreerLegacyVerkopers(database) {
-  await voerQueryUit(database, "BEGIN IMMEDIATE TRANSACTION");
+async function bereidVerkoperSchemaVoor(database) {
+  if (await gebruiktDefinitiefVerkoperSchema(database)) {
+    return;
+  }
 
-  try {
-    const conflicten = await haalRijenOp(
-      database,
-      `SELECT legacy.id
-       FROM verkopers AS legacy
-       INNER JOIN Verkoper AS nieuw ON nieuw.Id = legacy.id
-       WHERE nieuw.Bedrijfsnaam != legacy.bedrijfsnaam
-          OR nieuw.Contactpersoon != legacy.contactpersoon
-          OR nieuw.Email != legacy.email
-          OR nieuw.Telefoon != legacy.telefoon
-          OR nieuw.Verkopertype != legacy.type_verkoper`,
-    );
+  if (await bestaatTabel(database, "Verkoper")) {
+    const aantalVerkopers = await telRijen(database, "Verkoper");
 
-    if (conflicten.length > 0) {
-      throw new Error("Legacy verkopers conflicteren met bestaande Verkoper-data.");
+    if (aantalVerkopers > 0) {
+      throw new Error(
+        "Bestaande Verkoper-data kan niet automatisch naar het nieuwe model worden vertaald.",
+      );
     }
 
-    await voerQueryUit(
-      database,
-      `INSERT INTO Verkoper (
-         Id, Bedrijfsnaam, Contactpersoon, Email, Telefoon, Verkopertype
-       )
-       SELECT
-         legacy.id,
-         legacy.bedrijfsnaam,
-         legacy.contactpersoon,
-         legacy.email,
-         legacy.telefoon,
-         legacy.type_verkoper
-       FROM verkopers AS legacy
-       WHERE NOT EXISTS (
-         SELECT 1 FROM Verkoper AS nieuw WHERE nieuw.Id = legacy.id
-       )`,
-    );
-
-    const ontbrekendeVerkopers = await haalRijenOp(
-      database,
-      `SELECT legacy.id
-       FROM verkopers AS legacy
-       LEFT JOIN Verkoper AS nieuw
-         ON nieuw.Id = legacy.id
-        AND nieuw.Bedrijfsnaam = legacy.bedrijfsnaam
-        AND nieuw.Contactpersoon = legacy.contactpersoon
-        AND nieuw.Email = legacy.email
-        AND nieuw.Telefoon = legacy.telefoon
-        AND nieuw.Verkopertype = legacy.type_verkoper
-       WHERE nieuw.Id IS NULL`,
-    );
-
-    if (ontbrekendeVerkopers.length > 0) {
-      throw new Error("Niet alle legacy verkopers konden veilig worden gemigreerd.");
+    if (await bestaatTabel(database, "VerkoperLegacy")) {
+      throw new Error("VerkoperLegacy bestaat al; automatische schemawijziging gestopt.");
     }
 
-    await voerQueryUit(database, "COMMIT");
-  } catch (fout) {
-    await voerQueryUit(database, "ROLLBACK");
-    throw fout;
+    // Bewaart het lege oude schema zonder gegevens te verwijderen.
+    await voerQueryUit(database, "ALTER TABLE Verkoper RENAME TO VerkoperLegacy");
+  }
+
+  if (await bestaatTabel(database, "verkopers")) {
+    const aantalLegacyVerkopers = await telRijen(database, "verkopers");
+
+    if (aantalLegacyVerkopers > 0) {
+      throw new Error(
+        "Legacy verkopers kunnen niet automatisch naar het nieuwe model worden vertaald.",
+      );
+    }
   }
 }
 
@@ -174,18 +147,23 @@ export async function initialiseerDatabase() {
   const database = await openDatabase(databasePad);
 
   try {
-    const heeftLegacyVerkopertabel = await controleerLegacyVerkoperdata(database);
+    await voerQueryUit(database, "BEGIN IMMEDIATE TRANSACTION");
+    await bereidVerkoperSchemaVoor(database);
+
     const databaseSchema = await readFile(databaseSchemaPad, "utf8");
 
     // Voert het centrale databaseschema uit.
     await voerDatabaseSchemaUit(database, databaseSchema);
-
-    if (heeftLegacyVerkopertabel) {
-      await migreerLegacyVerkopers(database);
-    }
+    await voerQueryUit(database, "COMMIT");
 
     return database;
   } catch (fout) {
+    try {
+      await voerQueryUit(database, "ROLLBACK");
+    } catch {
+      // Er is niets terug te draaien als de transactie niet gestart kon worden.
+    }
+
     await sluitDatabase(database);
     throw fout;
   }

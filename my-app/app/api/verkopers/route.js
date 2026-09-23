@@ -4,11 +4,16 @@ import {
   sluitDatabase,
 } from "../../lib/database.js";
 
-const geldigeVerkopertypes = new Set(["sneakersverkoper", "side-stand"]);
-const toegestaneParameters = new Set(["zoek", "type"]);
+const toegestaneParameters = new Set(["zoek", "dagen", "specialeStatus"]);
 
-function valideerVerkopertype(verkopertype) {
-  return verkopertype === "" || geldigeVerkopertypes.has(verkopertype);
+function valideerDagen(dagen) {
+  return dagen === "" || dagen === "1" || dagen === "2";
+}
+
+function valideerSpecialeStatus(specialeStatus) {
+  return specialeStatus === ""
+    || specialeStatus === "true"
+    || specialeStatus === "false";
 }
 
 function leesVerkoperFilters(request) {
@@ -25,17 +30,22 @@ function leesVerkoperFilters(request) {
   }
 
   const zoekterm = zoekparameters.get("zoek")?.trim() ?? "";
-  const typeVerkoper = zoekparameters.get("type")?.trim() ?? "";
+  const dagen = zoekparameters.get("dagen")?.trim() ?? "";
+  const specialeStatus = zoekparameters.get("specialeStatus")?.trim() ?? "";
 
   if (zoekterm.length > 100) {
     return { fout: "Queryparameter 'zoek' mag maximaal 100 tekens bevatten." };
   }
 
-  if (!valideerVerkopertype(typeVerkoper)) {
-    return { fout: "Ongeldig type verkoper." };
+  if (!valideerDagen(dagen)) {
+    return { fout: "Ongeldig aantal dagen." };
   }
 
-  return { zoekterm, typeVerkoper };
+  if (!valideerSpecialeStatus(specialeStatus)) {
+    return { fout: "Ongeldige speciale status." };
+  }
+
+  return { zoekterm, dagen, specialeStatus };
 }
 
 function ontsnapZoekterm(zoekterm) {
@@ -45,66 +55,71 @@ function ontsnapZoekterm(zoekterm) {
     .replaceAll("_", "\\_");
 }
 
-async function haalVerkopersOp(zoekterm, typeVerkoper) {
+async function haalVerkopersOp(filters) {
   const database = await initialiseerDatabase();
 
   try {
     const voorwaarden = [];
     const parameters = [];
 
-    if (zoekterm) {
-      const zoekwaarde = `%${ontsnapZoekterm(zoekterm)}%`;
+    if (filters.zoekterm) {
+      const zoekwaarde = `%${ontsnapZoekterm(filters.zoekterm)}%`;
 
-      // Zoekt op bedrijfsnaam, contactpersoon en e-mail.
+      // Zoekt op naam en verkoopsoort.
       voorwaarden.push(`(
-        Bedrijfsnaam LIKE ? ESCAPE '\\' COLLATE NOCASE OR
-        Contactpersoon LIKE ? ESCAPE '\\' COLLATE NOCASE OR
-        Email LIKE ? ESCAPE '\\' COLLATE NOCASE
+        Naam LIKE ? ESCAPE '\\' COLLATE NOCASE OR
+        VerkooptSoort LIKE ? ESCAPE '\\' COLLATE NOCASE
       )`);
-      parameters.push(zoekwaarde, zoekwaarde, zoekwaarde);
+      parameters.push(zoekwaarde, zoekwaarde);
     }
 
-    if (typeVerkoper) {
-      voorwaarden.push("Verkopertype = ?");
-      parameters.push(typeVerkoper);
+    if (filters.dagen) {
+      voorwaarden.push("Dagen = ?");
+      parameters.push(Number(filters.dagen));
+    }
+
+    if (filters.specialeStatus) {
+      voorwaarden.push("SpecialeStatus = ?");
+      parameters.push(filters.specialeStatus === "true" ? 1 : 0);
     }
 
     const where = voorwaarden.length > 0
       ? `WHERE ${voorwaarden.join(" AND ")}`
       : "";
 
-    return await haalRijenOp(
+    const rijen = await haalRijenOp(
       database,
       `SELECT
          Id AS id,
-         Bedrijfsnaam AS bedrijfsnaam,
-         Contactpersoon AS contactpersoon,
-         Email AS email,
-         Telefoon AS telefoon,
-         Verkopertype AS type_verkoper
+         Naam AS naam,
+         SpecialeStatus AS specialeStatus,
+         VerkooptSoort AS verkooptSoort,
+         Dagen AS dagen,
+         Logo AS logo
        FROM Verkoper
        ${where}
-       ORDER BY Bedrijfsnaam COLLATE NOCASE, Id`,
+       ORDER BY Naam COLLATE NOCASE, Id`,
       parameters,
     );
+
+    return rijen.map((verkoper) => ({
+      ...verkoper,
+      specialeStatus: Boolean(verkoper.specialeStatus),
+    }));
   } finally {
     await sluitDatabase(database);
   }
 }
 
 export async function GET(request) {
-  const zoekopdracht = leesVerkoperFilters(request);
+  const filters = leesVerkoperFilters(request);
 
-  if (zoekopdracht.fout) {
-    return Response.json({ error: zoekopdracht.fout }, { status: 400 });
+  if (filters.fout) {
+    return Response.json({ error: filters.fout }, { status: 400 });
   }
 
   try {
-    const verkopers = await haalVerkopersOp(
-      zoekopdracht.zoekterm,
-      zoekopdracht.typeVerkoper,
-    );
-
+    const verkopers = await haalVerkopersOp(filters);
     return Response.json(verkopers);
   } catch (fout) {
     console.error("Verkopers ophalen mislukt:", fout);

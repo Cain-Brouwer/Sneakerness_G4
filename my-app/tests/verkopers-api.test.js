@@ -15,9 +15,9 @@ import {
 let tijdelijkeMap;
 
 const testVerkopers = [
-  ["Nike Store", "Jan Jansen", "sales@nike.nl", "020-1234567", "sneakersverkoper"],
-  ["Side Kicks", "Fatima El Amrani", "info@sidekicks.nl", "010-7654321", "side-stand"],
-  ["Vintage Vault", "Lisa de Boer", "vault@example.com", "030-1112233", "sneakersverkoper"],
+  ["Nike Store", 1, "Sneakers", 2, "/logos/nike.svg"],
+  ["Side Kicks", 0, "Kids Corner", 1, null],
+  ["Food District", 0, "Eten en Drinken", 2, null],
 ];
 
 before(async () => {
@@ -31,7 +31,7 @@ before(async () => {
       await voerQueryUit(
         database,
         `INSERT INTO Verkoper
-          (Bedrijfsnaam, Contactpersoon, Email, Telefoon, Verkopertype)
+          (Naam, SpecialeStatus, VerkooptSoort, Dagen, Logo)
          VALUES (?, ?, ?, ?, ?)`,
         verkoper,
       );
@@ -55,42 +55,45 @@ test("happy: haalt alle verkopers op", async () => {
   const { response, inhoud } = await verstuurGetRequest();
 
   assert.equal(response.status, 200);
-  assert.equal(inhoud.length, 3);
+  assert.equal(inhoud.length, testVerkopers.length);
 });
 
-test("zoekt op bedrijfsnaam zonder hoofdlettergevoeligheid", async () => {
-  const { inhoud } = await verstuurGetRequest("?zoek=NIKE");
+test("zoekt op naam zonder hoofdlettergevoeligheid", async () => {
+  const { response, inhoud } = await verstuurGetRequest("?zoek=NIKE");
 
-  assert.deepEqual(inhoud.map((verkoper) => verkoper.bedrijfsnaam), ["Nike Store"]);
+  assert.equal(response.status, 200);
+  assert.deepEqual(inhoud.map((verkoper) => verkoper.naam), ["Nike Store"]);
 });
 
-test("zoekt op contactpersoon", async () => {
-  const { inhoud } = await verstuurGetRequest("?zoek=fatima");
+test("zoekt op verkoopsoort", async () => {
+  const { response, inhoud } = await verstuurGetRequest("?zoek=eten");
 
-  assert.deepEqual(inhoud.map((verkoper) => verkoper.bedrijfsnaam), ["Side Kicks"]);
+  assert.equal(response.status, 200);
+  assert.deepEqual(inhoud.map((verkoper) => verkoper.naam), ["Food District"]);
 });
 
-test("zoekt op email", async () => {
-  const { inhoud } = await verstuurGetRequest("?zoek=vault%40example.com");
+test("filtert op aantal dagen", async () => {
+  const { response, inhoud } = await verstuurGetRequest("?dagen=1");
 
-  assert.deepEqual(inhoud.map((verkoper) => verkoper.bedrijfsnaam), ["Vintage Vault"]);
+  assert.equal(response.status, 200);
+  assert.deepEqual(inhoud.map((verkoper) => verkoper.naam), ["Side Kicks"]);
 });
 
-test("filtert op type verkoper", async () => {
-  const { inhoud } = await verstuurGetRequest("?type=sneakersverkoper");
+test("filtert op speciale status", async () => {
+  const { response, inhoud } = await verstuurGetRequest("?specialeStatus=true");
 
-  assert.deepEqual(
-    inhoud.map((verkoper) => verkoper.bedrijfsnaam),
-    ["Nike Store", "Vintage Vault"],
+  assert.equal(response.status, 200);
+  assert.deepEqual(inhoud.map((verkoper) => verkoper.naam), ["Nike Store"]);
+  assert.equal(inhoud[0].specialeStatus, true);
+});
+
+test("combineert zoeken en filters", async () => {
+  const { response, inhoud } = await verstuurGetRequest(
+    "?zoek=sneakers&dagen=2&specialeStatus=true",
   );
-});
 
-test("combineert zoeken en filteren", async () => {
-  const { inhoud } = await verstuurGetRequest(
-    "?zoek=nike&type=sneakersverkoper",
-  );
-
-  assert.deepEqual(inhoud.map((verkoper) => verkoper.bedrijfsnaam), ["Nike Store"]);
+  assert.equal(response.status, 200);
+  assert.deepEqual(inhoud.map((verkoper) => verkoper.naam), ["Nike Store"]);
 });
 
 test("empty: geeft een lege lijst zonder resultaten", async () => {
@@ -100,14 +103,21 @@ test("empty: geeft een lege lijst zonder resultaten", async () => {
   assert.deepEqual(inhoud, []);
 });
 
-test("unhappy: weigert een ongeldig type verkoper", async () => {
-  const { response, inhoud } = await verstuurGetRequest("?type=restaurant");
+test("unhappy: weigert een ongeldig aantal dagen", async () => {
+  const { response, inhoud } = await verstuurGetRequest("?dagen=3");
 
   assert.equal(response.status, 400);
-  assert.deepEqual(inhoud, { error: "Ongeldig type verkoper." });
+  assert.deepEqual(inhoud, { error: "Ongeldig aantal dagen." });
 });
 
-test("database weigert een ongeldig verkopertype", async () => {
+test("unhappy: weigert een ongeldige speciale status", async () => {
+  const { response, inhoud } = await verstuurGetRequest("?specialeStatus=partner");
+
+  assert.equal(response.status, 400);
+  assert.deepEqual(inhoud, { error: "Ongeldige speciale status." });
+});
+
+test("database accepteert alleen SpecialeStatus 0 of 1", async () => {
   const database = await initialiseerDatabase();
 
   try {
@@ -115,9 +125,9 @@ test("database weigert een ongeldig verkopertype", async () => {
       voerQueryUit(
         database,
         `INSERT INTO Verkoper
-          (Bedrijfsnaam, Contactpersoon, Email, Telefoon, Verkopertype)
-         VALUES (?, ?, ?, ?, ?)`,
-        ["Testzaak", "Test Persoon", "test@example.nl", "0612345678", "restaurant"],
+          (Naam, SpecialeStatus, VerkooptSoort, Dagen)
+         VALUES (?, ?, ?, ?)`,
+        ["Testzaak", 2, "Sneakers", 1],
       ),
       /CHECK constraint failed/,
     );
@@ -126,16 +136,36 @@ test("database weigert een ongeldig verkopertype", async () => {
   }
 });
 
-test("Isactief krijgt standaard waarde 1", async () => {
+test("database accepteert alleen 1 of 2 dagen", async () => {
+  const database = await initialiseerDatabase();
+
+  try {
+    await assert.rejects(
+      voerQueryUit(
+        database,
+        `INSERT INTO Verkoper
+          (Naam, VerkooptSoort, Dagen)
+         VALUES (?, ?, ?)`,
+        ["Testzaak", "Sneakers", 3],
+      ),
+      /CHECK constraint failed/,
+    );
+  } finally {
+    await sluitDatabase(database);
+  }
+});
+
+test("Logo mag null zijn en Isactief krijgt standaard waarde 1", async () => {
   const database = await initialiseerDatabase();
 
   try {
     const [verkoper] = await haalRijenOp(
       database,
-      "SELECT Isactief FROM Verkoper WHERE Bedrijfsnaam = ?",
-      ["Nike Store"],
+      "SELECT Logo, Isactief FROM Verkoper WHERE Naam = ?",
+      ["Side Kicks"],
     );
 
+    assert.equal(verkoper.Logo, null);
     assert.equal(verkoper.Isactief, 1);
   } finally {
     await sluitDatabase(database);
@@ -153,11 +183,11 @@ test("stuurt alleen de afgesproken responsevelden terug", async () => {
   const { inhoud } = await verstuurGetRequest("?zoek=nike");
 
   assert.deepEqual(Object.keys(inhoud[0]).sort(), [
-    "bedrijfsnaam",
-    "contactpersoon",
-    "email",
+    "dagen",
     "id",
-    "telefoon",
-    "type_verkoper",
+    "logo",
+    "naam",
+    "specialeStatus",
+    "verkooptSoort",
   ]);
 });
