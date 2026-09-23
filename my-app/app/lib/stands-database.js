@@ -5,7 +5,7 @@ import sqlite3 from "sqlite3";
 const standaardStandsDatabasePad = path.join(
   process.cwd(),
   "data",
-  "stands.sqlite",
+  "sneakerness.sqlite",
 );
 
 function openDatabaseVoorStands(databasePad) {
