@@ -102,6 +102,27 @@ async function initialiseerStandTabel(database) {
   `);
 }
 
+async function initialiseerContactpersoonTabel(database) {
+  await voerDatabaseSqlUit(database, `
+    CREATE TABLE IF NOT EXISTS contactpersonen (
+        id INTEGER PRIMARY KEY
+        ,Naam TEXT
+        ,Telefoonnummer TEXT
+        ,Email TEXT
+        ,IsActief INTEGER
+        ,Opmerking TEXT
+        ,Datumaangemaakt TEXT
+        ,Datumgewijzigd TEXT
+    );
+
+    INSERT OR IGNORE INTO contactpersonen
+        (id, Naam, Telefoonnummer, Email, IsActief, Opmerking, Datumaangemaakt, Datumgewijzigd)
+    VALUES
+        (1, 'Daan de Vries', '06-12345678', 'daan.devries@example.com', 1, 'Vaste contactpersoon voor Sneakerness.', DATE('now'), DATE('now'))
+        ,(2, 'Lisa Jansen', '06-87654321', 'lisa.jansen@example.com', 1, 'Contactpersoon voor voorraad en bestellingen.', DATE('now'), DATE('now'));
+  `);
+}
+
 function moetVoorbeelddataToevoegen() {
   return process.env.NODE_ENV !== "production"
     && !process.env.SQLITE_DATABASE_PATH
@@ -134,6 +155,7 @@ export async function initialiseerDatabase() {
     await schakelForeignKeysIn(database);
     await initialiseerVerkoperTabel(database);
     await initialiseerStandTabel(database);
+    await initialiseerContactpersoonTabel(database);
 
     if (moetVoorbeelddataToevoegen()) {
       const databaseSeed = await readFile(databaseSeedPad, "utf8");
