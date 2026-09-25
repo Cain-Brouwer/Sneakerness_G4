@@ -1,4 +1,7 @@
-export default function Footer({ info, copyright }) {
+export default function Footer({
+  info = "Sneakerness Rotterdam",
+  copyright = "© Sneakerness Rotterdam",
+}) {
   return (
     <footer
       id="info"

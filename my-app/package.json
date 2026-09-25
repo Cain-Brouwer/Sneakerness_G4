@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test tests/stands-api.test.js"
+    "test": "node --test tests/stands-api.test.js tests/verkopers-api.test.js"
   },
   "dependencies": {
     "next": "16.3.5",

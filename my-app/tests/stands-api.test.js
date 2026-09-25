@@ -155,7 +155,12 @@ test("Isactief krijgt standaard waarde 1", async () => {
 });
 
 test("tests gebruiken een aparte tijdelijke database", () => {
-  const normaleDatabasePad = path.join(process.cwd(), "data", "sneakerness.sqlite");
+  const normaleDatabasePad = path.join(
+    process.cwd(),
+    "lib",
+    "database",
+    "sneakerness.sqlite3",
+  );
 
   assert.notEqual(process.env.STANDS_DATABASE_PATH, normaleDatabasePad);
   assert.ok(process.env.STANDS_DATABASE_PATH.startsWith(tijdelijkeMap));
