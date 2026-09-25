@@ -143,6 +143,10 @@ export function sluitDatabase(database) {
 }
 
 export async function initialiseerDatabase() {
+  if (process.env.FORCE_DB_ERROR === "1") {
+    throw new Error("Geen verbinding met de database");
+  }
+
   const databasePad = process.env.SQLITE_DATABASE_PATH
     ?? process.env.STANDS_DATABASE_PATH
     ?? standaardDatabasePad;
