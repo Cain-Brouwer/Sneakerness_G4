@@ -1,5 +1,7 @@
 "use client";
 
+// Header component: displays the main navigation and mobile menu for the website.
+// It keeps the brand visible and links users to the important sections of the homepage.
 import Link from "next/link";
 import { useState } from "react";
 
