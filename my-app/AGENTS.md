@@ -1,3 +1,7 @@
+<!--
+This file contains project-specific guidance for AI agents working on this repository.
+It signals that this Next.js version may differ from the default framework behavior.
+-->
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know
