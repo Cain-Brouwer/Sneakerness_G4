@@ -1,0 +1,16 @@
+Index: my-app/docker-compose.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>services:\n  app:\n    build:\n      context: .\n      dockerfile: Dockerfile\n    profiles: [\"prod\"]\n    ports:\n      - \"3000:3000\"\n    environment:\n      NODE_ENV: production\n    restart: unless-stopped\n    healthcheck:\n      test: [\"CMD\", \"wget\", \"--quiet\", \"--tries=1\", \"--spider\", \"http://localhost:3000\"]\n      interval: 10s\n      timeout: 5s\n      retries: 3\n      start_period: 30s\n\n  dev:\n    image: node:20-alpine\n    profiles: [\"dev\"]\n    working_dir: /app\n    command: sh -c \"npm ci && npm run dev\"\n    ports:\n      - \"3000:3000\"\n    environment:\n      NODE_ENV: development\n      HOSTNAME: \"0.0.0.0\"\n    volumes:\n      - .:/app\n    restart: unless-stopped\n
+===================================================================
+diff --git a/my-app/docker-compose.yml b/my-app/docker-compose.yml
+--- a/my-app/docker-compose.yml	(revision a7f4e08c0175f5e3033b8e9b103f2fd3610c824a)
++++ b/my-app/docker-compose.yml	(date 1790067532543)
+@@ -20,6 +20,7 @@
+     image: node:20-alpine
+     profiles: ["dev"]
+     working_dir: /app
++    user: "node"
+     command: sh -c "npm ci && npm run dev"
+     ports:
+       - "3000:3000"

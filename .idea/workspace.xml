@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackgroundAgentGlobalSettings">
+    <option name="selectedModelId" value="auto" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dd7ba79e-f8d3-4216-bd61-ba5e7f8de27a" name="Changes" comment="ContactPersonen Overzicht gemaakt" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/home/cainbrouwer/Projecten MBO Utrecht/Leerjaar 2/Periode 1/Project/Sneakerness_G4" value="3JdfprpzfLY30AGlqekmOw9D08Q" />
+    </persistenceIdMap>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="52" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="DEV" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Cain-Brouwer&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Cain-Brouwer/Sneakerness_G4.git&quot;,
+    &quot;accountId&quot;: &quot;844d06c1-e541-48e9-9a4c-4d6335f21312&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="2.1611702864771307" />
+      <entry key="MS500" value="4.035149380858111" />
+      <entry key="S2" value="9.532004445035474" />
+      <entry key="S5" value="20.929626071895708" />
+      <entry key="S10" value="34.12376944113731" />
+      <entry key="S30" value="63.63896813187513" />
+      <entry key="S60" value="84.85313585807374" />
+      <entry key="M2" value="105.42861849112806" />
+      <entry key="M5" value="133.60115804142796" />
+      <entry key="M10" value="170.34776403127447" />
+      <entry key="M15" value="231.56940847437667" />
+      <entry key="M30" value="490.7261138763347" />
+      <entry key="H1" value="978.5982711631253" />
+      <entry key="H2" value="1682.4916433146243" />
+      <entry key="H4" value="2587.3709698259972" />
+      <entry key="D1" value="4414.762805559199" />
+      <entry key="W1" value="4941.927512226433" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="2.9834022085846225E-237" />
+      <entry key="MS500" value="4.953844400948398E-48" />
+      <entry key="S2" value="1.4932718289373139E-12" />
+      <entry key="S5" value="1.9738673230813616E-5" />
+      <entry key="S10" value="0.005380140524090002" />
+      <entry key="S30" value="0.26497297101700723" />
+      <entry key="S60" value="0.7231386614856006" />
+      <entry key="M2" value="1.2005871828887473" />
+      <entry key="M5" value="1.6306834368810128" />
+      <entry key="M10" value="1.8578844042172873" />
+      <entry key="M15" value="2.170275661469617" />
+      <entry key="M30" value="4.4171232688831115" />
+      <entry key="H1" value="10.677707990349742" />
+      <entry key="H2" value="20.36495746927633" />
+      <entry key="H4" value="31.616559241581843" />
+      <entry key="D1" value="52.21827518895674" />
+      <entry key="W1" value="57.94996330685358" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="2.000124814775685" />
+      <entry key="MS500" value="3.9763774621135792" />
+      <entry key="S2" value="9.500104457245358" />
+      <entry key="S5" value="20.901547813260578" />
+      <entry key="S10" value="34.10583332794929" />
+      <entry key="S30" value="63.883425493976254" />
+      <entry key="S60" value="85.55731928625943" />
+      <entry key="M2" value="106.61504204832079" />
+      <entry key="M5" value="135.22421464435502" />
+      <entry key="M10" value="172.20106521707083" />
+      <entry key="M15" value="233.73571056757905" />
+      <entry key="M30" value="495.13773243947793" />
+      <entry key="H1" value="989.268008414662" />
+      <entry key="H2" value="1702.848408989871" />
+      <entry key="H4" value="2618.981061412112" />
+      <entry key="D1" value="4466.979343126776" />
+      <entry key="W1" value="4999.8772027616915" />
+    </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3JUuBC1ymFDMMYqE6SPvZHHF34B" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "feature/home-pagina-maken",
+    "javascript.preferred.runtime.type.id": "node",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/home/cainbrouwer/Projecten MBO Utrecht/Leerjaar 2/Periode 1/Project/Sneakerness_G4",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+    "settings.editor.selected.configurable": "ml.llm.LLMThirdPartyAiProvidersConfigurable",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/home/cainbrouwer/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
+  }
+}]]></component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="/tmp/qodana_output1/qodana.sarif.json" reportGuid="4ff5a1b6-4105-40a9-9279-37d219b93a57" reportId="Sneakerness_G4/qodana/2026-09-23" />
+      <ReportDescription localRun="true" path="/tmp/qodana_output4/qodana.sarif.json" reportGuid="fb34dd5e-ddb5-4f3e-a6dd-693bc57328e6" reportId="Sneakerness_G4/qodana/2026-09-23" />
+      <ReportDescription localRun="true" path="/tmp/qodana_output/qodana.sarif.json" reportGuid="fd2cd147-0792-4ca9-93a2-3cc8f21f6ff1" reportId="Sneakerness_G4/qodana/2026-09-23" />
+      <ReportDescription localRun="true" path="/tmp/qodana_output2/qodana.sarif.json" reportGuid="537fba5e-e4da-485d-a23f-0b97da9f95bf" reportId="Sneakerness_G4/qodana/2026-09-23" />
+      <ReportDescription localRun="true" path="/tmp/qodana_output3/qodana.sarif.json" reportGuid="87f325b3-ee9d-4bf3-ba35-8ce38f086298" reportId="Sneakerness_G4/qodana/2026-09-23" />
+      <ReportDescription localRun="true" path="/tmp/qodana_output5/qodana.sarif.json" reportGuid="5b968175-eb2f-429c-aa1d-d51444427e21" reportId="Sneakerness_G4/qodana/2026-09-23" />
+    </option>
+  </component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/my-app/app" />
+      <recent name="$PROJECT_DIR$/my-app/app/pages/contactpersonen" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.10968.77" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dd7ba79e-f8d3-4216-bd61-ba5e7f8de27a" name="Changes" comment="" />
+      <created>1789727829552</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1789727829552</updated>
+      <workItem from="1789727830625" duration="4802000" />
+      <workItem from="1789733865180" duration="660000" />
+      <workItem from="1789994584379" duration="1708000" />
+      <workItem from="1789996311757" duration="3604000" />
+      <workItem from="1790062729435" duration="90000" />
+      <workItem from="1790154890155" duration="33000" />
+      <workItem from="1790156981140" duration="1112000" />
+      <workItem from="1790161262339" duration="13130000" />
+      <workItem from="1790323308355" duration="4384000" />
+    </task>
+    <task id="LOCAL-00001" summary="hot reload functionaliteit toegevoegd aan docker container">
+      <option name="closed" value="true" />
+      <created>1789731814589</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1789731814589</updated>
+    </task>
+    <task id="LOCAL-00002" summary="main project structuur naar contactpersonen-overzicht branch gehaald">
+      <option name="closed" value="true" />
+      <created>1790159580530</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1790159580530</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Components aangemaakt en gekoppeld aan de pagina + database geinitialiseerd">
+      <option name="closed" value="true" />
+      <created>1790173785875</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1790173785875</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ContactPersonen Overzicht gemaakt">
+      <option name="closed" value="true" />
+      <created>1790173797888</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1790173797888</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="hot reload functionaliteit toegevoegd aan docker container" />
+    <MESSAGE value="main project structuur naar contactpersonen-overzicht branch gehaald" />
+    <MESSAGE value="Components aangemaakt en gekoppeld aan de pagina + database geinitialiseerd" />
+    <MESSAGE value="ContactPersonen Overzicht gemaakt" />
+    <option name="LAST_COMMIT_MESSAGE" value="ContactPersonen Overzicht gemaakt" />
+  </component>
+</project>
