@@ -25,6 +25,6 @@ services:
       - "3000:3000"
     environment:
       NODE_ENV: development
+      FORCE_DB_ERROR: ${FORCE_DB_ERROR:-0}
     volumes:
       - .:/app
-    restart: unless-stopped
