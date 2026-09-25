@@ -33,7 +33,7 @@ export default async function Page() {
         <>
             <Header/>
             <Hero eventName={content.eventName} venue={content.venue} tagline={content.tagline} />
-            <section className="bg-neutral-900/60 border border-neutral-800 rounded-xl p-4 sm:p-6 hover:border-neutral-700 transition-all">
+            <section className="flex flex-1 flex-col bg-neutral-900/60 border border-neutral-800 rounded-xl p-4 sm:p-6 hover:border-neutral-700 transition-all">
                 <h2 className="text-lg sm:text-xl font-bold mb-4 text-orange-500">Contactpersonen</h2>
                 <div className="overflow-x-auto">
                     <table className="w-full text-left text-sm">
