@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Header from "../components/header";
 
-export default function Error({ error, retry }) {
+export default function Error({ error, reset }) {
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -19,10 +19,6 @@ export default function Error({ error, retry }) {
 
         <section className="relative overflow-hidden bg-neutral-900/60 border border-red-900/60 rounded-2xl px-6 py-16 text-center shadow-xl">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-red-600/10 blur-3xl pointer-events-none" />
-
-          <p className="relative text-xs font-bold uppercase tracking-widest text-red-400">
-            Unhappy scenario
-          </p>
           <h1 className="relative mt-3 text-3xl font-extrabold tracking-tight text-white md:text-5xl">
             Geen verbinding met de database
           </h1>
@@ -39,7 +35,7 @@ export default function Error({ error, retry }) {
           <div className="relative mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               type="button"
-              onClick={() => retry()}
+              onClick={() => reset()}
               className="w-full sm:w-auto py-4 px-6 rounded-xl font-bold text-lg bg-orange-600 hover:bg-orange-500 text-white transition-all shadow-lg hover:shadow-orange-500/20 active:scale-[0.99]"
             >
               Opnieuw proberen

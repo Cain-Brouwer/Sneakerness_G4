@@ -10,6 +10,11 @@ db.on('error', (error) => {
 
 export function checkDatabaseConnection() {
     return new Promise((resolve, reject) => {
+        if (process.env.FORCE_DB_ERROR === '1') {
+            reject(new Error('Geen verbinding met de database'));
+            return;
+        }
+
         if (connectionError) {
             reject(new Error('Geen verbinding met de database'));
             return;
