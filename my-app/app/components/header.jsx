@@ -7,7 +7,7 @@ const navigatieItems = [
   { href: "/", label: "Home" },
   { href: "/stands", label: "Stands" },
   { href: "/verkopers", label: "Verkopers" },
-  { href: "/#tickets", label: "Tickets" },
+  { href: "/tickets", label: "Tickets" },
   { href: "/#info", label: "Info" },
 ];
 
@@ -15,7 +15,7 @@ export default function Header() {
   const [mobielMenuOpen, setMobielMenuOpen] = useState(false);
 
   function wisselMobielMenu() {
-    setMobielMenuOpen((menuIsOpen) => !menuIsOpen);
+    setMobielMenuOpen((menuOpen) => !menuOpen);
   }
 
   function sluitMobielMenu() {

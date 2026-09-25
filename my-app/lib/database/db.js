@@ -86,9 +86,26 @@ async function initialiseerVerkoperTabel(database) {
   `);
 }
 
+async function initialiseerStandTabel(database) {
+  await voerDatabaseSqlUit(database, `
+    CREATE TABLE IF NOT EXISTS Stand (
+        Id INTEGER PRIMARY KEY AUTOINCREMENT
+        ,Standnummer TEXT NOT NULL UNIQUE
+        ,Standtype TEXT NOT NULL
+            CHECK (Standtype IN ('aa-plus', 'aa', 'a', 'side-stand'))
+        ,Isactief INTEGER NOT NULL DEFAULT 1
+            CHECK (Isactief IN (0, 1))
+        ,Opmerking TEXT
+        ,Datumaangemaakt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ,Datumgewijzigd TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+}
+
 function moetVoorbeelddataToevoegen() {
   return process.env.NODE_ENV !== "production"
-    && !process.env.SQLITE_DATABASE_PATH;
+    && !process.env.SQLITE_DATABASE_PATH
+    && !process.env.STANDS_DATABASE_PATH;
 }
 
 export function sluitDatabase(database) {
@@ -105,7 +122,9 @@ export function sluitDatabase(database) {
 }
 
 export async function initialiseerDatabase() {
-  const databasePad = process.env.SQLITE_DATABASE_PATH ?? standaardDatabasePad;
+  const databasePad = process.env.SQLITE_DATABASE_PATH
+    ?? process.env.STANDS_DATABASE_PATH
+    ?? standaardDatabasePad;
   await mkdir(path.dirname(databasePad), { recursive: true });
 
   const database = await openDatabase(databasePad);
@@ -114,6 +133,7 @@ export async function initialiseerDatabase() {
     // Schakelt foreign keys in voor iedere verbinding.
     await schakelForeignKeysIn(database);
     await initialiseerVerkoperTabel(database);
+    await initialiseerStandTabel(database);
 
     if (moetVoorbeelddataToevoegen()) {
       const databaseSeed = await readFile(databaseSeedPad, "utf8");
