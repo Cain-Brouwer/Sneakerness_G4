@@ -7,7 +7,7 @@ export default function Footer({
   return (
     <footer
       id="info"
-      className="grid grid-cols-1 gap-4 pt-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]"
+      className="mt-auto grid grid-cols-1 gap-4 pt-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]"
     >
       <section className="rounded-xl border border-neutral-800 bg-neutral-900/60 px-5 py-4 text-center text-xs text-neutral-400">
         <h2 className="mb-1 font-bold uppercase tracking-wider text-neutral-200">

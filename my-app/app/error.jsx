@@ -10,7 +10,7 @@ export default function Error({ error, reset }) {
   }, [error]);
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_top,_#111827,_#000_45%)] px-6 py-16">
+    <main className="flex flex-1 items-center justify-center bg-[radial-gradient(circle_at_top,_#111827,_#000_45%)] px-6 py-16">
       <div className="max-w-xl rounded-3xl border border-red-500/40 bg-white/5 p-8 text-center shadow-2xl backdrop-blur-sm">
         <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-red-500/40 bg-red-500/10 text-3xl">
           ⚠️
