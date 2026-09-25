@@ -1,3 +1,7 @@
+<!--
+Project overview:
+This README explains the goal of the Sneakerness G4 website and the type of information it presents to visitors.
+-->
 # Sneakerness G4
 
 Welkom bij **Sneakerness G4** — een website met informatie over een sneakerevent.
