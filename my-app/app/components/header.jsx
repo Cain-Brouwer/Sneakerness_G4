@@ -11,6 +11,7 @@ const navigatieItems = [
   { href: "/verkopers", label: "Verkopers" },
   { href: "/tickets", label: "Tickets" },
   { href: "/#info", label: "Info" },
+  { href: "/contactpersonen", label: "Contact"}
 ];
 
 export default function Header() {
