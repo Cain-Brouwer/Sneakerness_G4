@@ -8,6 +8,7 @@ import {
     haalRijenOp,
     initialiseerDatabase,
     sluitDatabase,
+    voegContactpersoonToe
 } from '../../lib/database/db';
 
 export const metadata = {

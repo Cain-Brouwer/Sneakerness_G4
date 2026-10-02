@@ -49,6 +49,13 @@ export function haalRijenOp(database, sql, parameters = []) {
   });
 }
 
+export function voegContactpersoonToe(database, naam, telefoonnummer, email, isActief, opmerking) {
+    return voerQueryUit(database, `
+        INSERT INTO contactpersonen (Naam, Telefoonnummer, Email, IsActief, Opmerking, Datumaangemaakt, Datumgewijzigd)
+        VALUES (?, ?, ?, ?, ?, DATE('now'), DATE('now'))
+    `, [naam, telefoonnummer, email, isActief, opmerking]);
+}
+
 function voerDatabaseSqlUit(database, sql) {
   return new Promise((resolve, reject) => {
     database.exec(sql, (fout) => {
@@ -114,12 +121,6 @@ async function initialiseerContactpersoonTabel(database) {
         ,Datumaangemaakt TEXT
         ,Datumgewijzigd TEXT
     );
-
-    INSERT OR IGNORE INTO contactpersonen
-        (id, Naam, Telefoonnummer, Email, IsActief, Opmerking, Datumaangemaakt, Datumgewijzigd)
-    VALUES
-        (1, 'Daan de Vries', '06-12345678', 'daan.devries@example.com', 1, 'Vaste contactpersoon voor Sneakerness.', DATE('now'), DATE('now'))
-        ,(2, 'Lisa Jansen', '06-87654321', 'lisa.jansen@example.com', 1, 'Contactpersoon voor voorraad en bestellingen.', DATE('now'), DATE('now'));
   `);
 }
 
