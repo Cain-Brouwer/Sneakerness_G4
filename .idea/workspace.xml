@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AirChatToolWindow">
+    <tab path="4/opencode/fb1fb938/7eq944akptzt4zy5ro18ixcxb" version="19" tabKey="7eq944akptzt4zy5ro18ixcxb" projectHash="fb1fb938" projectPath="$PROJECT_DIR$" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="opencode:acp:3875ad6b" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" threadId="acp:3875ad6b" threadTitle="scheid de rest van de demo data" threadActivity="UNREAD">
+      <launchProfile name="OpenCode" agentId="opencode" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" interactionSurfaceId="native" modelId="opencode/space-bunny-free" modelDisplayName="OpenCode Zen/Space Bunny Free" reasoningEffort="MEDIUM" sessionModeId="build" />
+    </tab>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
@@ -7,7 +12,12 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="voeg knoppen en lijncomponenten toe voor contactpersonen sectie" />
+    <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="Add initial project structure with essential files and configurations">
+      <change beforePath="$PROJECT_DIR$/my-app/lib/database/DemoData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/lib/database/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/seed.sql" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,61 +64,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.1989104963465032" />
-      <entry key="MS500" value="2.443001869277216" />
-      <entry key="S2" value="4.451456743328826" />
-      <entry key="S5" value="6.7562856590509925" />
-      <entry key="S10" value="10.116497118814076" />
-      <entry key="S30" value="17.969753089800008" />
-      <entry key="S60" value="23.820606684692933" />
-      <entry key="M2" value="29.542511083376237" />
-      <entry key="M5" value="36.069263619687746" />
-      <entry key="M10" value="60.27849282275968" />
-      <entry key="M15" value="110.61412621195949" />
-      <entry key="M30" value="298.1974122312638" />
-      <entry key="H1" value="587.7331390508463" />
-      <entry key="H2" value="893.0866048023266" />
-      <entry key="H4" value="1134.2661119002871" />
-      <entry key="D1" value="1410.733535638964" />
-      <entry key="W1" value="1467.2748584448332" />
+      <entry key="MS100" value="1.793889228211285" />
+      <entry key="MS500" value="3.5468950679194595" />
+      <entry key="S2" value="5.615543115896491" />
+      <entry key="S5" value="8.13814560326078" />
+      <entry key="S10" value="11.242233280226" />
+      <entry key="S30" value="28.619453012916527" />
+      <entry key="S60" value="46.26803483862457" />
+      <entry key="M2" value="62.879576216829854" />
+      <entry key="M5" value="79.07373201130775" />
+      <entry key="M10" value="106.04270669020009" />
+      <entry key="M15" value="156.17320386751675" />
+      <entry key="M30" value="342.7212897452572" />
+      <entry key="H1" value="632.6984642018018" />
+      <entry key="H2" value="939.8271021498099" />
+      <entry key="H4" value="1182.9475715319982" />
+      <entry key="D1" value="1462.048753257092" />
+      <entry key="W1" value="1519.1731833263414" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="2.080632151261764E-159" />
-      <entry key="S10" value="4.7380910517242705E-80" />
-      <entry key="S30" value="4.789639131222735E-27" />
-      <entry key="S60" value="9.588502622283206E-14" />
-      <entry key="M2" value="5.000490421266867E-7" />
-      <entry key="M5" value="0.008116658810816333" />
-      <entry key="M10" value="0.27500717938916447" />
-      <entry key="M15" value="1.0057252102235" />
-      <entry key="M30" value="4.255825876540351" />
-      <entry key="H1" value="9.721342692024553" />
-      <entry key="H2" value="15.460823621529698" />
-      <entry key="H4" value="19.882054925664995" />
-      <entry key="D1" value="24.830733479227415" />
-      <entry key="W1" value="25.82877859888414" />
+      <entry key="S5" value="5.75866462189656E-163" />
+      <entry key="S10" value="7.882548342867032E-82" />
+      <entry key="S30" value="1.222711152657582E-27" />
+      <entry key="S60" value="4.844638001346523E-14" />
+      <entry key="M2" value="3.554412845428306E-7" />
+      <entry key="M5" value="0.0070807522416068535" />
+      <entry key="M10" value="0.2568591764444393" />
+      <entry key="M15" value="0.9609778390828543" />
+      <entry key="M30" value="4.160072207588141" />
+      <entry key="H1" value="9.611358176167885" />
+      <entry key="H2" value="15.37311515050402" />
+      <entry key="H4" value="19.825579770187897" />
+      <entry key="D1" value="24.818964221851143" />
+      <entry key="W1" value="25.827029342053866" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.119913740755754" />
-      <entry key="MS500" value="2.41014526678327" />
-      <entry key="S2" value="4.435047433030316" />
-      <entry key="S5" value="6.746250750045203" />
-      <entry key="S10" value="10.109111257998645" />
-      <entry key="S30" value="17.965429375871995" />
-      <entry key="S60" value="23.817677366538867" />
-      <entry key="M2" value="29.54063597724953" />
-      <entry key="M5" value="36.07636654389273" />
-      <entry key="M10" value="60.55136834645847" />
-      <entry key="M15" value="111.61520252867331" />
-      <entry key="M30" value="302.4427875397966" />
-      <entry key="H1" value="597.4420817180376" />
-      <entry key="H2" value="908.5375584989805" />
-      <entry key="H4" value="1154.1418770212065" />
-      <entry key="D1" value="1435.562978139084" />
-      <entry key="W1" value="1493.1034457989513" />
+      <entry key="MS100" value="1.6826965543045715" />
+      <entry key="MS500" value="3.4979515553452827" />
+      <entry key="S2" value="5.581449027048876" />
+      <entry key="S5" value="8.11223338482401" />
+      <entry key="S10" value="11.224899199253251" />
+      <entry key="S30" value="28.610010700161233" />
+      <entry key="S60" value="46.26158327626009" />
+      <entry key="M2" value="62.87547100110422" />
+      <entry key="M5" value="79.07873532375363" />
+      <entry key="M10" value="106.29696279978674" />
+      <entry key="M15" value="157.12932802552822" />
+      <entry key="M30" value="346.8709388832111" />
+      <entry key="H1" value="642.297458366037" />
+      <entry key="H2" value="955.1903511123505" />
+      <entry key="H4" value="1202.7668532072712" />
+      <entry key="D1" value="1486.8664227482832" />
+      <entry key="W1" value="1545.0000208131307" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -120,33 +130,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "feature/contactpersoon-toevoegen",
-    "javascript.preferred.runtime.type.id": "node",
-    "junie.onboarding.icon.badge.shown": "true",
-    "junie.plugin.stays.banner.dismissed": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
-    "settings.editor.selected.configurable": "ml.llm.LLMThirdPartyAiProvidersConfigurable",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "/home/cainbrouwer/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/contactpersoon-toevoegen&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;junie.plugin.stays.banner.dismissed&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMThirdPartyAiProvidersConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/cainbrouwer/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -180,6 +190,7 @@
       <workItem from="1790796588533" duration="623000" />
       <workItem from="1790937202428" duration="2991000" />
       <workItem from="1790944384094" duration="67000" />
+      <workItem from="1791382257402" duration="466000" />
     </task>
     <task id="LOCAL-00001" summary="voeg knoppen en lijncomponenten toe voor contactpersonen sectie">
       <option name="closed" value="true" />
@@ -197,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790940255970</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add initial project structure with essential files and configurations">
+      <option name="closed" value="true" />
+      <created>1791382304903</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1791382304903</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +224,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="voeg knoppen en lijncomponenten toe voor contactpersonen sectie" />
-    <option name="LAST_COMMIT_MESSAGE" value="voeg knoppen en lijncomponenten toe voor contactpersonen sectie" />
+    <MESSAGE value="Add initial project structure with essential files and configurations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add initial project structure with essential files and configurations" />
   </component>
 </project>
