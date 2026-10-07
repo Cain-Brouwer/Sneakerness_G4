@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackgroundAgentGlobalSettings">
+    <option name="selectedModelId" value="auto" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="voeg knoppen en lijncomponenten toe voor contactpersonen sectie" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/home/cainbrouwer/Projecten MBO Utrecht/Leerjaar 2/Periode 1/Project/Sneakerness_G4" value="3K8U2BfiuH7tFInIj3vp1j56uLN" />
+    </persistenceIdMap>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="9" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="DEV" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Cain-Brouwer&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Cain-Brouwer/Sneakerness_G4.git&quot;,
+    &quot;accountId&quot;: &quot;844d06c1-e541-48e9-9a4c-4d6335f21312&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.1989104963465032" />
+      <entry key="MS500" value="2.443001869277216" />
+      <entry key="S2" value="4.451456743328826" />
+      <entry key="S5" value="6.7562856590509925" />
+      <entry key="S10" value="10.116497118814076" />
+      <entry key="S30" value="17.969753089800008" />
+      <entry key="S60" value="23.820606684692933" />
+      <entry key="M2" value="29.542511083376237" />
+      <entry key="M5" value="36.069263619687746" />
+      <entry key="M10" value="60.27849282275968" />
+      <entry key="M15" value="110.61412621195949" />
+      <entry key="M30" value="298.1974122312638" />
+      <entry key="H1" value="587.7331390508463" />
+      <entry key="H2" value="893.0866048023266" />
+      <entry key="H4" value="1134.2661119002871" />
+      <entry key="D1" value="1410.733535638964" />
+      <entry key="W1" value="1467.2748584448332" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="2.080632151261764E-159" />
+      <entry key="S10" value="4.7380910517242705E-80" />
+      <entry key="S30" value="4.789639131222735E-27" />
+      <entry key="S60" value="9.588502622283206E-14" />
+      <entry key="M2" value="5.000490421266867E-7" />
+      <entry key="M5" value="0.008116658810816333" />
+      <entry key="M10" value="0.27500717938916447" />
+      <entry key="M15" value="1.0057252102235" />
+      <entry key="M30" value="4.255825876540351" />
+      <entry key="H1" value="9.721342692024553" />
+      <entry key="H2" value="15.460823621529698" />
+      <entry key="H4" value="19.882054925664995" />
+      <entry key="D1" value="24.830733479227415" />
+      <entry key="W1" value="25.82877859888414" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.119913740755754" />
+      <entry key="MS500" value="2.41014526678327" />
+      <entry key="S2" value="4.435047433030316" />
+      <entry key="S5" value="6.746250750045203" />
+      <entry key="S10" value="10.109111257998645" />
+      <entry key="S30" value="17.965429375871995" />
+      <entry key="S60" value="23.817677366538867" />
+      <entry key="M2" value="29.54063597724953" />
+      <entry key="M5" value="36.07636654389273" />
+      <entry key="M10" value="60.55136834645847" />
+      <entry key="M15" value="111.61520252867331" />
+      <entry key="M30" value="302.4427875397966" />
+      <entry key="H1" value="597.4420817180376" />
+      <entry key="H2" value="908.5375584989805" />
+      <entry key="H4" value="1154.1418770212065" />
+      <entry key="D1" value="1435.562978139084" />
+      <entry key="W1" value="1493.1034457989513" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="3JxN7BAxj29RyjO07Zr7wNR9hIE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "feature/contactpersoon-toevoegen",
+    "javascript.preferred.runtime.type.id": "node",
+    "junie.onboarding.icon.badge.shown": "true",
+    "junie.plugin.stays.banner.dismissed": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+    "settings.editor.selected.configurable": "ml.llm.LLMThirdPartyAiProvidersConfigurable",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/home/cainbrouwer/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external"
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.10968.77" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="" />
+      <created>1790598591388</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1790598591388</updated>
+      <workItem from="1790598594300" duration="337000" />
+      <workItem from="1790600694215" duration="91000" />
+      <workItem from="1790600801448" duration="75000" />
+      <workItem from="1790600892371" duration="93000" />
+      <workItem from="1790601002987" duration="3975000" />
+      <workItem from="1790666865404" duration="51000" />
+      <workItem from="1790776899432" duration="1980000" />
+      <workItem from="1790796588533" duration="623000" />
+      <workItem from="1790937202428" duration="2991000" />
+      <workItem from="1790944384094" duration="67000" />
+    </task>
+    <task id="LOCAL-00001" summary="voeg knoppen en lijncomponenten toe voor contactpersonen sectie">
+      <option name="closed" value="true" />
+      <created>1790604047974</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1790604047974</updated>
+    </task>
+    <task id="LOCAL-00002" summary="voeg knoppen en lijncomponenten toe voor contactpersonen sectie">
+      <option name="closed" value="true" />
+      <created>1790940255970</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1790940255970</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="voeg knoppen en lijncomponenten toe voor contactpersonen sectie" />
+    <option name="LAST_COMMIT_MESSAGE" value="voeg knoppen en lijncomponenten toe voor contactpersonen sectie" />
+  </component>
+</project>
