@@ -1,8 +1,10 @@
-export default function Footer({ info, copyright }) {
+export default function Footer({ info, copyright, sideBySide = false }) {
   return (
     <footer
       id="info"
-      className="grid grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] pt-4"
+      className={`grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] pt-4 ${
+        sideBySide ? "grid-cols-2" : "grid-cols-1"
+      }`}
     >
       <section className="bg-neutral-900/60 border border-neutral-800 rounded-xl px-5 py-4 text-center text-xs text-neutral-400">
         <h2 className="mb-1 font-bold text-neutral-200 uppercase tracking-wider">Info</h2>

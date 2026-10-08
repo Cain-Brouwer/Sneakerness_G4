@@ -26,6 +26,44 @@ export function checkDatabaseConnection() {
     });
 }
 
+// ===================== NIEUW (begin): tickets =====================
+// Maakt de tabellen voor tickets aan (als ze nog niet bestaan) en vult de tickettypes.
+// Pagina's en queries wachten op deze promise, zodat de tabellen zeker bestaan.
+export const databaseReady = new Promise((resolve, reject) => {
+    db.exec(`
+        CREATE TABLE IF NOT EXISTS tickettypes (
+            id INTEGER PRIMARY KEY,
+            Naam TEXT NOT NULL UNIQUE
+        );
+
+        CREATE TABLE IF NOT EXISTS tickets (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Ticketnaam TEXT NOT NULL,
+            TickettypeId INTEGER NOT NULL,
+            Prijs REAL NOT NULL,
+            AantalBeschikbaar INTEGER NOT NULL,
+            Evenementdatum DATE NOT NULL,
+            Beschrijving TEXT,
+            Datumaangemaakt DATE,
+            Datumgewijzigd DATE,
+            FOREIGN KEY (TickettypeId) REFERENCES tickettypes (id)
+        );
+
+        INSERT OR IGNORE INTO tickettypes (id, Naam) VALUES (1, 'Dagkaart');
+        INSERT OR IGNORE INTO tickettypes (id, Naam) VALUES (2, 'Weekendpas');
+        INSERT OR IGNORE INTO tickettypes (id, Naam) VALUES (3, 'Early Entry');
+    `, (error) => {
+        if (error) {
+            reject(error);
+        } else {
+            resolve();
+        }
+    });
+});
+// Voorkomt een "unhandled rejection" als niemand de promise (nog) afwacht.
+databaseReady.catch(() => {});
+// ===================== NIEUW (einde): tickets =====================
+
 db.serialize(() => {
     db.run("CREATE TABLE IF NOT EXISTS contactpersonen " +
         "(id INTEGER PRIMARY KEY, Naam TEXT, Telefoonnummer TEXT, Email TEXT, IsActief BIT, Opmerking TEXT, Datumaangemaakt DATE, Datumgewijzigd DATE)");
