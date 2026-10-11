@@ -195,6 +195,8 @@ export async function initialiseerDatabase() {
     await schakelForeignKeysIn(database);
     await initialiseerVerkoperTabel(database);
     await initialiseerStandTabel(database);
+    await initialiseerStandToevoegenSchema(database);
+    await initialiseerStandReserveringTabel(database);
     await initialiseerContactpersoonTabel(database);
     await initialiseerVerkoperToevoegenSchema(database);
     await initialiseerTicketTabellen(database); // tickets toegevoegd
@@ -211,88 +213,4 @@ export async function initialiseerDatabase() {
   }
 }
 
-export async function checkDatabaseConnection() {
-  // Gooit een Error als er geen databaseverbinding is (bijv. FORCE_DB_ERROR=1).
-  const database = await initialiseerDatabase();
-  await sluitDatabase(database);
-}
-
-async function initialiseerVerkoperToevoegenSchema(database) {
-  const kolommen = await haalRijenOp(database, "PRAGMA table_info(Verkoper)");
-
-  for (const naam of ["Adres", "Postcode", "Plaats"]) {
-    if (!kolommen.some((kolom) => kolom.name.toLowerCase() === naam.toLowerCase())) {
-      try {
-        await voerQueryUit(database, `ALTER TABLE Verkoper ADD COLUMN ${naam} TEXT`);
-      } catch (fout) {
-        if (!fout.message.includes("duplicate column name:")) throw fout;
-        const actueleKolommen = await haalRijenOp(database, "PRAGMA table_info(Verkoper)");
-        if (!actueleKolommen.some((kolom) => kolom.name.toLowerCase() === naam.toLowerCase())) {
-          throw fout;
-        }
-      }
-    }
-  }
-
-  await voerDatabaseSqlUit(
-    database,
-    `
-    CREATE TABLE IF NOT EXISTS Contactpersoonverkoper (
-        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-        VerkoperId INTEGER NOT NULL REFERENCES Verkoper(Id),
-        ContactpersoonId INTEGER NOT NULL REFERENCES contactpersonen(id),
-        UNIQUE (VerkoperId, ContactpersoonId)
-    );
-  `
-  );
-}
-
-export async function voegVerkoperToe(gegevens) {
-  const database = await initialiseerDatabase();
-  try {
-    await voerQueryUit(database, "BEGIN IMMEDIATE");
-    try {
-      const verkoper = await voerQueryUit(
-        database,
-        `
-        INSERT INTO Verkoper (Naam, VerkooptSoort, Dagen, Adres, Postcode, Plaats, Opmerking)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-      `,
-        [
-          gegevens.naam,
-          gegevens.verkooptSoort,
-          gegevens.dagen,
-          gegevens.adres,
-          gegevens.postcode,
-          gegevens.plaats,
-          gegevens.opmerking || null,
-        ]
-      );
-
-      const contactpersoon = await voegContactpersoonToe(
-        database,
-        gegevens.contactpersoon,
-        gegevens.telefoon || null,
-        gegevens.email,
-        1,
-        null
-      );
-
-      await voerQueryUit(
-        database,
-        `
-        INSERT INTO Contactpersoonverkoper (VerkoperId, ContactpersoonId) VALUES (?, ?)
-      `,
-        [verkoper.id, contactpersoon.id]
-      );
-
-      await voerQueryUit(database, "COMMIT");
-      return { id: verkoper.id };
-    } catch (fout) {
-      await voerQueryUit(database, "ROLLBACK");
-      throw fout;
-    }
-  } finally {
-    await sluitDatabase(database);
-  }
-}
+export async
