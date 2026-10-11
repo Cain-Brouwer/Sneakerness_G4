@@ -1,4 +1,4 @@
-export default function (Button) {
+export default function ContactpersoonToevoegenKnop() {
     return (
         <div className="pb-2 flex justify-end items-center">
             <button
