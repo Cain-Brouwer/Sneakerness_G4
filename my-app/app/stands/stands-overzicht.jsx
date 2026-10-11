@@ -164,7 +164,7 @@ function LegeStatus() {
 function FoutStatus({ probeerOpnieuw }) {
   return (
     <div className="flex min-h-72 flex-col items-center justify-center text-center" role="alert">
-      <div className="w-full max-w-xl rounded-xl border border-red-900/70 bg-red-950/30 px-4 py-6 shadow-lg sm:px-6 sm:py-7">
+      <div className="w-full max-w-xl px-4 py-6 sm:px-6 sm:py-7">
         <p className="mb-5 break-words text-lg font-black tracking-[0.15em] text-orange-500 sm:mb-6 sm:text-xl sm:tracking-[0.2em]">
           SNEAKERNESS
         </p>

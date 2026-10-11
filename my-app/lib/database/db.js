@@ -160,6 +160,7 @@ export async function initialiseerDatabase() {
     await schakelForeignKeysIn(database);
     await initialiseerVerkoperTabel(database);
     await initialiseerStandTabel(database);
+    await initialiseerStandToevoegenSchema(database);
     await initialiseerContactpersoonTabel(database);
     await initialiseerVerkoperToevoegenSchema(database);
 
@@ -172,6 +173,42 @@ export async function initialiseerDatabase() {
   } catch (fout) {
     await sluitDatabase(database);
     throw fout;
+  }
+}
+
+async function initialiseerStandToevoegenSchema(database) {
+  const kolommen = await haalRijenOp(database, "PRAGMA table_info(Stand)");
+  const nieuweKolommen = [
+    ["Locatie", "TEXT"],
+    ["Grootte", "REAL CHECK (Grootte > 0)"],
+    ["PrijsCenten", "INTEGER CHECK (PrijsCenten >= 0)"],
+    ["Status", "TEXT NOT NULL DEFAULT 'Beschikbaar'"],
+    ["VerkoperId", "INTEGER REFERENCES Verkoper(Id)"],
+  ];
+  for (const [naam, definitie] of nieuweKolommen) {
+    if (kolommen.some((kolom) => kolom.name.toLowerCase() === naam.toLowerCase())) continue;
+    try {
+      await voerQueryUit(database, `ALTER TABLE Stand ADD COLUMN ${naam} ${definitie}`);
+    } catch (fout) {
+      // Een andere aanvraag kan dezelfde kolom inmiddels hebben toegevoegd.
+      if (!fout.message.includes("duplicate column name:")) throw fout;
+      const actueleKolommen = await haalRijenOp(database, "PRAGMA table_info(Stand)");
+      if (!actueleKolommen.some((kolom) => kolom.name.toLowerCase() === naam.toLowerCase())) throw fout;
+    }
+  }
+}
+
+export async function voegStandToe(gegevens) {
+  const database = await initialiseerDatabase();
+  try {
+    // Bewaart geldbedragen in centen om afrondingsverschillen te voorkomen.
+    return await voerQueryUit(database, `
+      INSERT INTO Stand (Standnummer, Standtype, Locatie, Grootte, PrijsCenten, Status, Opmerking)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `, [gegevens.standnummer, gegevens.standtype, gegevens.locatie, gegevens.grootte,
+      gegevens.prijsCenten, gegevens.status, gegevens.opmerking || null]);
+  } finally {
+    await sluitDatabase(database);
   }
 }
 

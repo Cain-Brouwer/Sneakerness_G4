@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import ToevoegenFoutmelding from "../../components/toevoegen-foutmelding";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { valideerNieuweVerkoper } from "../../lib/verkoper-validatie";
@@ -20,6 +21,7 @@ export default function VerkoperToevoegenFormulier() {
   const router = useRouter();
   const [fouten, setFouten] = useState({});
   const [melding, setMelding] = useState("");
+  const [serverfout, setServerfout] = useState(false);
   const [bezig, setBezig] = useState(false);
   const aanvraagBezig = useRef(false);
 
@@ -32,6 +34,7 @@ export default function VerkoperToevoegenFormulier() {
     const validatie = valideerNieuweVerkoper(invoer);
     setFouten(validatie.fouten);
     setMelding("");
+    setServerfout(false);
     if (Object.keys(validatie.fouten).length) {
       setMelding("Vul de ontbrekende gegevens in en controleer de gemarkeerde velden.");
       formulier.elements[Object.keys(validatie.fouten)[0]]?.focus();
@@ -47,6 +50,7 @@ export default function VerkoperToevoegenFormulier() {
       });
       const resultaat = await antwoord.json();
       if (!antwoord.ok) {
+        setServerfout(antwoord.status >= 500);
         setFouten(resultaat.fouten ?? {});
         setMelding(resultaat.error ?? "De verkoper kon niet worden toegevoegd. Probeer opnieuw.");
         return;
@@ -55,6 +59,7 @@ export default function VerkoperToevoegenFormulier() {
       router.push("/verkopers");
       router.refresh();
     } catch {
+      setServerfout(true);
       setMelding("De verkoper kon niet worden toegevoegd. Probeer opnieuw.");
     } finally {
       aanvraagBezig.current = false;
@@ -69,7 +74,9 @@ export default function VerkoperToevoegenFormulier() {
   return (
     <form onSubmit={voegVerkoperToe} noValidate className="mx-auto max-w-2xl rounded-2xl border border-neutral-800 bg-neutral-900/60 p-5 shadow-lg sm:p-8" aria-busy={bezig}>
       <p className="mb-6 text-sm text-neutral-400">Velden met * zijn verplicht.</p>
-      {melding && <div role="alert" className="mb-6 rounded-xl border border-red-900 bg-red-950/30 p-4 text-red-300">{melding}</div>}
+      {melding && (serverfout
+        ? <ToevoegenFoutmelding melding={melding} bezig={bezig} />
+        : <p role="alert" className="mb-6 text-orange-400">{melding}</p>)}
       <fieldset disabled={bezig} className="min-w-0 space-y-5 disabled:opacity-70">
         {invoervelden.map(([veld, label, type, autoComplete]) => (
           <div key={veld}>
