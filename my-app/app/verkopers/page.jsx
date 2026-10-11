@@ -1,4 +1,5 @@
 import Footer from "../components/footer";
+import Link from "next/link";
 import Header from "../components/header";
 import VerkopersOverzicht from "./verkopers-overzicht";
 
@@ -17,6 +18,11 @@ export default function VerkopersPagina() {
           Verkopers Overzicht
         </h1>
         <VerkopersOverzicht />
+        <div className="mt-6 flex justify-end">
+          <Link href="/verkopers/toevoegen" className="rounded-xl bg-orange-600 px-5 py-3 font-bold text-white hover:bg-orange-500">
+            Verkoper Toevoegen
+          </Link>
+        </div>
       </main>
 
       <Footer />

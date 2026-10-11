@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import { after, before, test } from "node:test";
 
-import { GET } from "../app/api/verkopers/route.js";
+import { GET, POST } from "../app/api/verkopers/route.js";
 import {
   haalRijenOp,
   initialiseerDatabase,
@@ -13,6 +13,27 @@ import {
 } from "../lib/database/db.js";
 
 let tijdelijkeMap;
+
+const nieuweVerkoper = {
+  naam: "Nieuwe Sneakerzaak",
+  contactpersoon: "Sam de Vries",
+  email: "sam@example.nl",
+  telefoon: "0612345678",
+  adres: "Voorbeeldstraat 12",
+  postcode: "1234 AB",
+  plaats: "Rotterdam",
+  verkooptSoort: "Nieuwe categorie",
+  dagen: 2,
+  opmerking: "Voorbeeldopmerking",
+};
+
+function verstuurPostRequest(invoer) {
+  return POST(new Request("http://localhost/api/verkopers", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(invoer),
+  }));
+}
 
 const testVerkopers = [
   ["Nike Store", 1, "Sneakers", 2, "/logos/nike.svg"],
@@ -46,10 +67,35 @@ after(async () => {
   await rm(tijdelijkeMap, { recursive: true, force: true });
 });
 
+
 async function verstuurGetRequest(query = "") {
   const response = await GET(new Request(`http://localhost/api/verkopers${query}`));
   return { response, inhoud: await response.json() };
 }
+
+test("toevoegen: ontbrekende velden geven 400 zonder opslag", async () => {
+  const antwoord = await verstuurPostRequest({});
+  assert.equal(antwoord.status, 400);
+  const inhoud = await antwoord.json();
+  assert.ok(inhoud.fouten.naam);
+  assert.ok(inhoud.fouten.contactpersoon);
+  assert.ok(inhoud.fouten.email);
+  const { inhoud: verkopers } = await verstuurGetRequest();
+  assert.equal(verkopers.length, testVerkopers.length);
+});
+
+test("toevoegen: ongeldig e-mailadres en dagen worden geweigerd", async () => {
+  const antwoord = await verstuurPostRequest({ ...nieuweVerkoper, email: "ongeldig", dagen: 3 });
+  assert.equal(antwoord.status, 400);
+  const inhoud = await antwoord.json();
+  assert.ok(inhoud.fouten.email);
+  assert.ok(inhoud.fouten.dagen);
+});
+
+test("toevoegen: ongeldige JSON geeft 400", async () => {
+  const antwoord = await POST(new Request("http://localhost/api/verkopers", { method: "POST", body: "{" }));
+  assert.equal(antwoord.status, 400);
+});
 
 test("happy: haalt alle verkopers op", async () => {
   const { response, inhoud } = await verstuurGetRequest();
@@ -195,4 +241,39 @@ test("stuurt alleen de afgesproken responsevelden terug", async () => {
     "specialeStatus",
     "verkooptSoort",
   ]);
+});
+
+test("toevoegen: verkoper en gekoppelde contactpersoon worden opgeslagen", async () => {
+  const antwoord = await verstuurPostRequest(nieuweVerkoper);
+  assert.equal(antwoord.status, 201);
+  const { id } = await antwoord.json();
+  const { inhoud } = await verstuurGetRequest("?zoek=Nieuwe%20Sneakerzaak");
+  assert.equal(inhoud[0].id, id);
+  const database = await initialiseerDatabase();
+  try {
+    const rijen = await haalRijenOp(database, `
+      SELECT v.Adres, v.Postcode, v.Plaats, c.Email FROM Verkoper v
+      JOIN Contactpersoonverkoper k ON k.VerkoperId = v.Id
+      JOIN contactpersonen c ON c.id = k.ContactpersoonId WHERE v.Id = ?
+    `, [id]);
+    assert.equal(rijen[0].Email, nieuweVerkoper.email);
+    assert.equal(rijen[0].Adres, nieuweVerkoper.adres);
+  } finally {
+    await sluitDatabase(database);
+  }
+});
+
+test("toevoegen: mislukte koppeling draait verkoper en contactpersoon terug", async () => {
+  const database = await initialiseerDatabase();
+  try {
+    await voerQueryUit(database, `CREATE TRIGGER weigerKoppeling BEFORE INSERT ON Contactpersoonverkoper
+      BEGIN SELECT RAISE(ABORT, 'testfout'); END`);
+    const antwoord = await verstuurPostRequest({ ...nieuweVerkoper, naam: "Rollbackzaak", email: "rollback@example.nl" });
+    assert.equal(antwoord.status, 500);
+    assert.deepEqual(await haalRijenOp(database, "SELECT Id FROM Verkoper WHERE Naam = 'Rollbackzaak'"), []);
+    assert.deepEqual(await haalRijenOp(database, "SELECT id FROM contactpersonen WHERE Email = 'rollback@example.nl'"), []);
+  } finally {
+    await voerQueryUit(database, "DROP TRIGGER IF EXISTS weigerKoppeling");
+    await sluitDatabase(database);
+  }
 });

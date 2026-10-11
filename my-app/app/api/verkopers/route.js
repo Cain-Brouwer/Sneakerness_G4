@@ -2,7 +2,9 @@ import {
   haalRijenOp,
   initialiseerDatabase,
   sluitDatabase,
+  voegVerkoperToe,
 } from "../../../lib/database/db.js";
+import { valideerNieuweVerkoper } from "../../lib/verkoper-validatie.js";
 
 const toegestaneParameters = new Set(["zoek", "dagen", "specialeStatus"]);
 
@@ -127,5 +129,25 @@ export async function GET(request) {
       { error: "Verkopers konden niet worden opgehaald." },
       { status: 500 },
     );
+  }
+}
+
+export async function POST(request) {
+  let invoer;
+  try {
+    invoer = await request.json();
+  } catch {
+    return Response.json({ error: "Ongeldige aanvraag." }, { status: 400 });
+  }
+  const { gegevens, fouten } = valideerNieuweVerkoper(invoer);
+  if (Object.keys(fouten).length) {
+    return Response.json({ error: "Controleer de ingevulde gegevens.", fouten }, { status: 400 });
+  }
+  try {
+    const resultaat = await voegVerkoperToe(gegevens);
+    return Response.json(resultaat, { status: 201 });
+  } catch (fout) {
+    console.error("Verkoper toevoegen mislukt:", fout);
+    return Response.json({ error: "De verkoper kon niet worden toegevoegd. Probeer opnieuw." }, { status: 500 });
   }
 }
