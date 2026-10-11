@@ -11,7 +11,7 @@ const navigatieItems = [
   { href: "/verkopers", label: "Verkopers" },
   { href: "/tickets", label: "Tickets" },
   { href: "/#info", label: "Info" },
-  { href: "/contactpersonen", label: "Contact"}
+  { href: "/contactpersonen", label: "Contact" },
 ];
 
 export default function Header() {
@@ -41,15 +41,21 @@ export default function Header() {
           className="hidden items-center justify-center gap-1 border-l border-neutral-800 px-3 py-2 text-sm md:flex"
           aria-label="Hoofdnavigatie"
         >
-          {navigatieItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-lg px-4 py-2 font-medium text-neutral-300 transition-all hover:bg-neutral-800 hover:text-white"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navigatieItems.map((item) => {
+            const isAnchor = item.href.startsWith("#");
+            const Component = isAnchor ? "a" : Link;
+
+            return (
+              <Component
+                key={item.href}
+                href={item.href}
+                className="rounded-lg px-4 py-2 font-medium text-neutral-300 transition-all hover:bg-neutral-800 hover:text-white"
+                onClick={sluitMobielMenu}
+              >
+                {item.label}
+              </Component>
+            );
+          })}
         </nav>
 
         <button
@@ -72,18 +78,24 @@ export default function Header() {
           className="flex flex-col border-t border-neutral-800 bg-neutral-900 md:hidden"
           aria-label="Mobiele navigatie"
         >
-          {navigatieItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="border-b border-neutral-800/60 px-5 py-3.5 text-sm font-medium text-neutral-300 transition-colors last:border-b-0 hover:bg-neutral-800 hover:text-white"
-              onClick={sluitMobielMenu}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navigatieItems.map((item) => {
+            const isAnchor = item.href.startsWith("#");
+            const Component = isAnchor ? "a" : Link;
+
+            return (
+              <Component
+                key={item.href}
+                href={item.href}
+                className="border-b border-neutral-800/60 px-5 py-3.5 text-sm font-medium text-neutral-300 transition-colors last:border-b-0 hover:bg-neutral-800 hover:text-white"
+                onClick={sluitMobielMenu}
+              >
+                {item.label}
+              </Component>
+            );
+          })}
         </nav>
       )}
     </header>
   );
 }
+
