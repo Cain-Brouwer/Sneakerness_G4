@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test tests/stands-api.test.js tests/verkopers-api.test.js"
+    "test": "node --test tests/stands-api.test.js tests/verkopers-api.test.js tests/stand-toevoegen.test.js tests/stand-reserveren.test.js"
   },
   "dependencies": {
     "next": "16.3.5",

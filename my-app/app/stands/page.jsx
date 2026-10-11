@@ -1,4 +1,5 @@
 import Footer from "../components/footer";
+import Link from "next/link";
 import Header from "../components/header";
 import StandsOverzicht from "./stands-overzicht";
 
@@ -18,6 +19,14 @@ export default function StandsPagina() {
         </h1>
 
         <StandsOverzicht />
+        <div className="flex flex-wrap justify-end gap-3">
+          <Link href="/stands/reserveren" className="rounded-xl border border-orange-700 px-5 py-3 font-bold text-orange-400 hover:bg-orange-950/40">
+            Stand Reserveren
+          </Link>
+          <Link href="/stands/toevoegen" className="rounded-xl bg-orange-600 px-5 py-3 font-bold text-white hover:bg-orange-500">
+            Stand Toevoegen
+          </Link>
+        </div>
       </main>
 
       <Footer
