@@ -1,10 +1,14 @@
 // Test page for forcing a runtime error intentionally.
 // This is only triggered when a debug flag is explicitly enabled, so the production build stays stable.
-export default function TriggerErrorPage({ searchParams }) {
-  const shouldCrash = searchParams?.debug === '1' || process.env.NEXT_PUBLIC_TRIGGER_ERROR === 'true';
+// Gebruik ?debug=1 of zet NEXT_PUBLIC_TRIGGER_ERROR=true om de error boundary handmatig te testen.
+export const dynamic = "force-dynamic";
+
+export default async function TriggerErrorPage({ searchParams }) {
+  const params = await searchParams;
+  const shouldCrash = params?.debug === "1" || process.env.NEXT_PUBLIC_TRIGGER_ERROR === "true";
 
   if (shouldCrash) {
-    throw new Error('Handmatig getriggerde outage voor testdoeleinden');
+    throw new Error("Handmatig getriggerde outage voor testdoeleinden");
   }
 
   return (

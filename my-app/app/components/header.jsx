@@ -1,44 +1,56 @@
 "use client";
 
-import { useState } from "react";
+// Header component: displays the main navigation and mobile menu for the website.
+// It keeps the brand visible and links users to the important sections of the homepage.
 import Link from "next/link";
+import { useState } from "react";
 
-const navItems = [
+const navigatieItems = [
   { href: "/", label: "Home" },
-  { href: "#tickets", label: "Tickets" },
-  { href: "#stands", label: "Stands" },
-  { href: "#info", label: "Info" },
+  { href: "/stands", label: "Stands" },
+  { href: "/verkopers", label: "Verkopers" },
+  { href: "/tickets", label: "Tickets" },
+  { href: "/#info", label: "Info" },
+  { href: "/contactpersonen", label: "Contact" },
 ];
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobielMenuOpen, setMobielMenuOpen] = useState(false);
+
+  function wisselMobielMenu() {
+    setMobielMenuOpen((menuOpen) => !menuOpen);
+  }
+
+  function sluitMobielMenu() {
+    setMobielMenuOpen(false);
+  }
 
   return (
-    <header className="bg-neutral-900/80 backdrop-blur-md border border-neutral-800 rounded-xl overflow-hidden shadow-lg">
+    <header className="overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/80 shadow-lg backdrop-blur-md">
       <div className="grid grid-cols-[auto_1fr_auto] items-stretch">
-        {/* Logo */}
         <Link
           href="/"
-          className="flex items-center justify-center border-r border-neutral-800 px-5 py-3 text-base font-black tracking-wider text-orange-500 hover:bg-neutral-800/50 transition-colors"
+          className="flex items-center justify-center border-r border-neutral-800 px-5 py-3 text-base font-black tracking-wider text-orange-500 transition-colors hover:bg-neutral-800/50"
         >
           SNEAKERNESS
         </Link>
 
         <div aria-hidden="true" />
 
-        {/* Desktop Navigatie */}
         <nav
           className="hidden items-center justify-center gap-1 border-l border-neutral-800 px-3 py-2 text-sm md:flex"
           aria-label="Hoofdnavigatie"
         >
-          {navItems.map((item) => {
+          {navigatieItems.map((item) => {
             const isAnchor = item.href.startsWith("#");
             const Component = isAnchor ? "a" : Link;
+
             return (
               <Component
                 key={item.href}
                 href={item.href}
-                className="px-4 py-2 text-neutral-300 font-medium rounded-lg hover:text-white hover:bg-neutral-800 transition-all"
+                className="rounded-lg px-4 py-2 font-medium text-neutral-300 transition-all hover:bg-neutral-800 hover:text-white"
+                onClick={sluitMobielMenu}
               >
                 {item.label}
               </Component>
@@ -46,37 +58,36 @@ export default function Header() {
           })}
         </nav>
 
-        {/* Mobiel menu knop */}
         <button
           type="button"
-          className="flex items-center justify-center border-l border-neutral-800 px-4 py-3 text-neutral-300 hover:text-white hover:bg-neutral-800 transition-colors md:hidden"
-          aria-expanded={menuOpen}
+          className="flex items-center justify-center border-l border-neutral-800 px-4 py-3 text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white md:hidden"
+          aria-expanded={mobielMenuOpen}
           aria-controls="mobiel-menu"
-          aria-label={menuOpen ? "Menu sluiten" : "Menu openen"}
-          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={mobielMenuOpen ? "Menu sluiten" : "Menu openen"}
+          onClick={wisselMobielMenu}
         >
           <span className="text-xl leading-none" aria-hidden="true">
-            {menuOpen ? "✕" : "☰"}
+            {mobielMenuOpen ? "✕" : "☰"}
           </span>
         </button>
       </div>
 
-      {/* Mobiel Menu Dropdown */}
-      {menuOpen && (
+      {mobielMenuOpen && (
         <nav
           id="mobiel-menu"
           className="flex flex-col border-t border-neutral-800 bg-neutral-900 md:hidden"
           aria-label="Mobiele navigatie"
         >
-          {navItems.map((item) => {
+          {navigatieItems.map((item) => {
             const isAnchor = item.href.startsWith("#");
             const Component = isAnchor ? "a" : Link;
+
             return (
               <Component
                 key={item.href}
                 href={item.href}
-                className="border-b border-neutral-800/60 px-5 py-3.5 text-sm font-medium text-neutral-300 last:border-b-0 hover:bg-neutral-800 hover:text-white transition-colors"
-                onClick={() => setMenuOpen(false)}
+                className="border-b border-neutral-800/60 px-5 py-3.5 text-sm font-medium text-neutral-300 transition-colors last:border-b-0 hover:bg-neutral-800 hover:text-white"
+                onClick={sluitMobielMenu}
               >
                 {item.label}
               </Component>
@@ -87,3 +98,4 @@ export default function Header() {
     </header>
   );
 }
+

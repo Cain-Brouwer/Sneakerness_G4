@@ -1,44 +1,46 @@
-import db, { databaseReady } from './db';
+import {
+  haalRijenOp,
+  initialiseerDatabase,
+  sluitDatabase,
+  voerQueryUit,
+} from "./db.js";
 
 // Haalt alle tickettypes op uit de database (voor de dropdown).
 export async function getTicketTypes() {
-    await databaseReady;
+  const database = await initialiseerDatabase();
 
-    return new Promise((resolve, reject) => {
-        db.all('SELECT id, Naam FROM tickettypes ORDER BY id', (error, rows) => {
-            if (error) {
-                reject(error);
-            } else {
-                resolve(rows);
-            }
-        });
-    });
+  try {
+    return await haalRijenOp(
+      database,
+      "SELECT id, Naam FROM tickettypes ORDER BY id",
+    );
+  } finally {
+    await sluitDatabase(database);
+  }
 }
 
 // Slaat een nieuw ticket op in de database en geeft het id van het nieuwe ticket terug.
 export async function createTicket(ticket) {
-    await databaseReady;
+  const database = await initialiseerDatabase();
 
-    return new Promise((resolve, reject) => {
-        db.run(
-            `INSERT INTO tickets
-                (Ticketnaam, TickettypeId, Prijs, AantalBeschikbaar, Evenementdatum, Beschrijving, Datumaangemaakt, Datumgewijzigd)
-             VALUES (?, ?, ?, ?, ?, ?, DATE('now'), DATE('now'))`,
-            [
-                ticket.ticketnaam,
-                ticket.tickettypeId,
-                ticket.prijs,
-                ticket.aantalBeschikbaar,
-                ticket.evenementdatum,
-                ticket.beschrijving,
-            ],
-            function (error) {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(this.lastID);
-                }
-            }
-        );
-    });
+  try {
+    const resultaat = await voerQueryUit(
+      database,
+      `INSERT INTO tickets
+          (Ticketnaam, TickettypeId, Prijs, AantalBeschikbaar, Evenementdatum, Beschrijving, Datumaangemaakt, Datumgewijzigd)
+       VALUES (?, ?, ?, ?, ?, ?, DATE('now'), DATE('now'))`,
+      [
+        ticket.ticketnaam,
+        ticket.tickettypeId,
+        ticket.prijs,
+        ticket.aantalBeschikbaar,
+        ticket.evenementdatum,
+        ticket.beschrijving,
+      ],
+    );
+
+    return resultaat.id;
+  } finally {
+    await sluitDatabase(database);
+  }
 }
