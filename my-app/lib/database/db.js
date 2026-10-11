@@ -161,6 +161,7 @@ export async function initialiseerDatabase() {
     await initialiseerVerkoperTabel(database);
     await initialiseerStandTabel(database);
     await initialiseerStandToevoegenSchema(database);
+    await initialiseerStandReserveringTabel(database);
     await initialiseerContactpersoonTabel(database);
     await initialiseerVerkoperToevoegenSchema(database);
 
@@ -196,6 +197,21 @@ async function initialiseerStandToevoegenSchema(database) {
       if (!actueleKolommen.some((kolom) => kolom.name.toLowerCase() === naam.toLowerCase())) throw fout;
     }
   }
+}
+
+async function initialiseerStandReserveringTabel(database) {
+  // De verkoperkoppeling en status blijven uitsluitend in Stand staan.
+  await voerDatabaseSqlUit(database, `
+    CREATE TABLE IF NOT EXISTS StandReservering (
+        Id INTEGER PRIMARY KEY AUTOINCREMENT
+        ,StandId INTEGER NOT NULL UNIQUE REFERENCES Stand(Id)
+        ,Evenementdatum TEXT NOT NULL
+        ,Startdatum TEXT NOT NULL
+        ,Einddatum TEXT NOT NULL CHECK (Einddatum >= Startdatum)
+        ,Opmerking TEXT
+        ,Datumaangemaakt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
 }
 
 export async function voegStandToe(gegevens) {
