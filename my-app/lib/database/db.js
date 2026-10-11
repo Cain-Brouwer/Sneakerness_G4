@@ -180,7 +180,16 @@ async function initialiseerVerkoperToevoegenSchema(database) {
   // Voegt adresvelden toe zonder bestaande verkopers te wijzigen.
   for (const naam of ["Adres", "Postcode", "Plaats"]) {
     if (!kolommen.some((kolom) => kolom.name.toLowerCase() === naam.toLowerCase())) {
-      await voerQueryUit(database, `ALTER TABLE Verkoper ADD COLUMN ${naam} TEXT`);
+      try {
+        await voerQueryUit(database, `ALTER TABLE Verkoper ADD COLUMN ${naam} TEXT`);
+      } catch (fout) {
+        // Een andere aanvraag kan de kolom inmiddels hebben toegevoegd.
+        if (!fout.message.includes("duplicate column name:")) throw fout;
+        const actueleKolommen = await haalRijenOp(database, "PRAGMA table_info(Verkoper)");
+        if (!actueleKolommen.some((kolom) => kolom.name.toLowerCase() === naam.toLowerCase())) {
+          throw fout;
+        }
+      }
     }
   }
   await voerDatabaseSqlUit(database, `

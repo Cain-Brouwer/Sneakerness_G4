@@ -277,3 +277,25 @@ test("toevoegen: mislukte koppeling draait verkoper en contactpersoon terug", as
     await sluitDatabase(database);
   }
 });
+
+test("gelijktijdige eerste aanvragen initialiseren iedere adreskolom één keer", async () => {
+  const oorspronkelijkPad = process.env.SQLITE_DATABASE_PATH;
+  process.env.SQLITE_DATABASE_PATH = path.join(tijdelijkeMap, "gelijktijdig.sqlite");
+  try {
+    await Promise.all(Array.from({ length: 6 }, async () => {
+      const database = await initialiseerDatabase();
+      try {
+        const kolommen = await haalRijenOp(database, "PRAGMA table_info(Verkoper)");
+        for (const naam of ["Adres", "Postcode", "Plaats"]) {
+          assert.equal(kolommen.filter((kolom) => kolom.name === naam).length, 1);
+        }
+        const integriteit = await haalRijenOp(database, "PRAGMA integrity_check");
+        assert.equal(integriteit[0].integrity_check, "ok");
+      } finally {
+        await sluitDatabase(database);
+      }
+    }));
+  } finally {
+    process.env.SQLITE_DATABASE_PATH = oorspronkelijkPad;
+  }
+});
