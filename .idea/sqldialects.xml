@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/my-app/app/api/contactpersonen-lijst/route.js" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/my-app/app/api/stands/route.js" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/my-app/app/api/verkopers/[id]/route.js" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/my-app/app/contactpersonen/page.jsx" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/my-app/lib/database/db.js" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/my-app/lib/database/tickets.js" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/my-app/seed.sql" dialect="SQLite" />

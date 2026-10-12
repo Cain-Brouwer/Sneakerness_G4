@@ -3,11 +3,7 @@ import Hero from '../components/layout/hero.jsx';
 import Footer from '../components/layout/footer.jsx';
 import ContactpersonenLijst from '../components/contactpersonen/ContactpersonenLijst';
 import {getHomepageContent} from '../../lib/homepage-content';
-import {
-    haalRijenOp,
-    initialiseerDatabase,
-    sluitDatabase,
-} from '../../lib/database/db';
+import { findAll } from '../models/contactpersoon.js';
 
 export const metadata = {
     title: "Contactpersonen | Sneakerness Rotterdam",
@@ -17,17 +13,7 @@ export const metadata = {
 
 export default async function Page() {
     const content = getHomepageContent();
-    const database = await initialiseerDatabase();
-    let contactpersonen;
-
-    try {
-        contactpersonen = await haalRijenOp(
-            database,
-            "SELECT id, Naam, Telefoonnummer, Email AS Email FROM contactpersonen",
-        );
-    } finally {
-        await sluitDatabase(database);
-    }
+    const contactpersonen = await findAll();
 
     return (
         <>

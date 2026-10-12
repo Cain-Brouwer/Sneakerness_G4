@@ -1,7 +1,8 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { BestellingFout, koopTicket } from '../../../lib/database/tickets';
+import TicketModel from '../../models/ticket.js';
+const { BestellingFout } = TicketModel;
 
 const MELDING_SUCCES = 'De aankoop is succesvol afgerond.';
 const MELDING_FOUT = 'Er is een fout opgetreden. De aankoop kon niet worden afgerond.';
@@ -60,7 +61,7 @@ export async function koopTickets(previousState, formData) {
             throw new Error('Handmatig getriggerde fout voor testdoeleinden');
         }
 
-        bestelling = await koopTicket({
+        bestelling = await TicketModel.purchase({
             ticketId: Number(values.ticketId),
             naam: values.naam,
             email: values.email,

@@ -1,5 +1,5 @@
-import { haalReserveringsgegevensOp, reserveerStand } from "../../../lib/stand-reserveringen-database.js";
-import { valideerStandReservering } from "../../../lib/stand-reservering-validatie.js";
+import { haalReserveringsgegevensOp, reserveerStand } from "../../../../lib/stand-reserveringen-database.js";
+import { valideerStandReservering } from "../../../../lib/stand-reservering-validatie.js";
 
 export async function GET() {
   try {

@@ -1,6 +1,6 @@
 'use server';
 
-import { createTicket, getTicketTypes } from '../../../lib/database/tickets';
+import TicketModel from '../../models/ticket.js';
 
 const MELDING_SUCCES = 'Het ticket is succesvol aangemaakt.';
 const MELDING_FOUT = 'Er is een fout opgetreden. Het ticket kon niet worden toegevoegd.';
@@ -77,7 +77,7 @@ export async function addTicket(previousState, formData) {
 
     let ticketTypes;
     try {
-        ticketTypes = await getTicketTypes();
+        ticketTypes = await TicketModel.getTypes();
     } catch (error) {
         console.error('Tickettypes ophalen mislukt:', error);
         return systeemFout();
@@ -89,7 +89,7 @@ export async function addTicket(previousState, formData) {
     }
 
     try {
-        await createTicket({
+        await TicketModel.create({
             ticketnaam: values.ticketnaam,
             tickettypeId: Number(values.tickettypeId),
             prijs: Math.round(Number(values.prijs.replace(',', '.')) * 100) / 100,

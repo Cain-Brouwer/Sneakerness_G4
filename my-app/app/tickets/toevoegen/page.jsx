@@ -3,7 +3,7 @@ import Header from "../../components/layout/header.jsx";
 import Footer from "../../components/layout/footer.jsx";
 import TicketForm from "./ticket-form";
 import { checkDatabaseConnection } from "../../../lib/database/db";
-import { getTicketTypes } from "../../../lib/database/tickets";
+import { getTypes } from "../../models/ticket.js";
 import { getHomepageContent } from "../../../lib/homepage-content";
 
 export const metadata = {
@@ -19,7 +19,7 @@ export default async function TicketToevoegenPage() {
   await checkDatabaseConnection();
 
   // De tickettypes voor de dropdown komen uit de database
-  const ticketTypes = await getTicketTypes();
+  const ticketTypes = await getTypes();
 
   // Footerteksten komen uit dezelfde bron als de homepage
   const content = getHomepageContent();

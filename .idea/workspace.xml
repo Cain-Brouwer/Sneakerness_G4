@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AirChatToolWindow" selected="68pjzsvbvzi6ln2fmicp3y2bh">
-    <tab path="4/junie/fb1fb938/0t3exozx2uek7anj9lo6ag2l9" version="20" tabKey="0t3exozx2uek7anj9lo6ag2l9" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:1831c9fd" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:1831c9fd" threadTitle="Uitleggen waarom er twee lib-mappen bestaan" threadActivity="UNREAD">
+  <component name="AirChatToolWindow" selected="2r5ygsz1wunjzot6shqjlv2s0">
+    <tab path="4/junie/fb1fb938/02d45r7tcevheqh3woulcyeqj" version="20" tabKey="02d45r7tcevheqh3woulcyeqj" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:27e3d9a2" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:27e3d9a2" threadTitle="Uitleggen wat de trigger error map doet" threadActivity="UNREAD">
       <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
     </tab>
-    <tab path="4/junie/fb1fb938/68pjzsvbvzi6ln2fmicp3y2bh" version="20" tabKey="68pjzsvbvzi6ln2fmicp3y2bh" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:508d017b" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:508d017b" threadTitle="Fix database table resolution errors and import warnings" threadActivity="PROCESSING">
+    <tab path="4/junie/fb1fb938/2r5ygsz1wunjzot6shqjlv2s0" version="20" tabKey="2r5ygsz1wunjzot6shqjlv2s0" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:a1d30d25" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:a1d30d25" threadTitle="Implementeer een MVC-structuur voor de applicatie" threadActivity="PROCESSING">
       <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
     </tab>
   </component>
@@ -16,21 +16,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="Refactor component imports and remove unused demo data file">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/aankoop/page.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/api/aankoop/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/aankoop/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/actions/contactpersonen.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/actions/contactpersonen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/api/contactpersonen-lijst/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/contactpersonen-lijst/route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/api/contactpersonen/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/contactpersonen/route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/api/stands/reserveringen/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/stands/reserveringen/route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/api/stands/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/stands/route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/api/verkopers/[id]/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/verkopers/[id]/route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/api/verkopers/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/verkopers/route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/components/footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/components/layout/footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/components/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/components/layout/header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/components/hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/components/layout/hero.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/components/toevoegen-foutmelding.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/components/error-handling/toevoegen-foutmelding.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/contactpersonen/error.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/contactpersonen/error.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/contactpersonen/nieuw/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/contactpersonen/contactpersoon-toevoegen/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/contactpersonen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/contactpersonen/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/lib/homepage-content.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/lib/stand-reservering-validatie.js" beforeDir="false" />
@@ -38,24 +34,17 @@
       <change beforePath="$PROJECT_DIR$/my-app/app/lib/stand-validatie.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/lib/stands-database.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/lib/verkoper-validatie.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/pages/contactpersonen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/pages/contactpersonen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/stands/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/stands/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/stands/reserveren/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/stands/reserveren/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/stands/reserveren/stand-reserveren-formulier.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/stands/reserveren/stand-reserveren-formulier.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/stands/toevoegen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/stands/toevoegen/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/stands/toevoegen/stand-toevoegen-formulier.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/stands/toevoegen/stand-toevoegen-formulier.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/tickets/kopen/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/tickets/kopen/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/tickets/kopen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/tickets/kopen/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/tickets/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/tickets/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/tickets/toevoegen/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/tickets/toevoegen/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/app/tickets/toevoegen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/tickets/toevoegen/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/verkopers/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/verkopers/[id]/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/verkopers/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/verkopers/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/verkopers/toevoegen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/verkopers/toevoegen/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/verkopers/toevoegen/verkoper-toevoegen-formulier.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/verkopers/toevoegen/verkoper-toevoegen-formulier.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/lib/database/DemoData.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/lib/database/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/db.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/lib/database/tickets.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/tickets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/trigger-error/page.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/components/Footer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/components/Header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/components/Hero.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/tests/stands-api.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/tests/stands-api.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/tickets/page.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +57,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="78" />
+    <option name="cachedIndexableFilesCount" value="114" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -104,61 +93,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000133943426845" />
-      <entry key="MS500" value="1.194201535465572" />
-      <entry key="S2" value="3.094650371061384" />
-      <entry key="S5" value="5.140576748271027" />
-      <entry key="S10" value="6.372601020679778" />
-      <entry key="S30" value="8.465534285444416" />
-      <entry key="S60" value="12.765978304467584" />
-      <entry key="M2" value="37.93856410331038" />
-      <entry key="M5" value="159.8415431113992" />
-      <entry key="M10" value="344.9624240837971" />
-      <entry key="M15" value="523.9741307830143" />
-      <entry key="M30" value="1017.1764071916175" />
-      <entry key="H1" value="1728.8725499553925" />
-      <entry key="H2" value="2521.689292668982" />
-      <entry key="H4" value="3201.9027617026486" />
-      <entry key="D1" value="4050.912734458544" />
-      <entry key="W1" value="4234.1486910916165" />
+      <entry key="MS100" value="1.7463600777694475" />
+      <entry key="MS500" value="5.0929444468204625" />
+      <entry key="S2" value="13.055621486262384" />
+      <entry key="S5" value="20.147965087826435" />
+      <entry key="S10" value="26.78672065663642" />
+      <entry key="S30" value="49.86692078704533" />
+      <entry key="S60" value="87.69178191990501" />
+      <entry key="M2" value="156.7318658470507" />
+      <entry key="M5" value="310.534559166536" />
+      <entry key="M10" value="516.0170194962096" />
+      <entry key="M15" value="704.6041108334958" />
+      <entry key="M30" value="1215.9185750064173" />
+      <entry key="H1" value="1962.994881685342" />
+      <entry key="H2" value="2804.578568115828" />
+      <entry key="H4" value="3531.761969243785" />
+      <entry key="D1" value="4444.823792413835" />
+      <entry key="W1" value="4642.5972751519885" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="2.198970151255571E-211" />
-      <entry key="MS500" value="7.386587841929704E-43" />
-      <entry key="S2" value="2.9316422143552146E-11" />
-      <entry key="S5" value="6.121310179865222E-5" />
-      <entry key="S10" value="0.007823880226502204" />
-      <entry key="S30" value="0.1985214313309366" />
-      <entry key="S60" value="0.4455574729515264" />
-      <entry key="M2" value="0.6676864228002272" />
-      <entry key="M5" value="0.8886384477368786" />
-      <entry key="M10" value="1.2105097108761735" />
-      <entry key="M15" value="1.5653440222800556" />
-      <entry key="M30" value="2.6814438929945394" />
-      <entry key="H1" value="5.8188902413299655" />
-      <entry key="H2" value="11.88834763557633" />
-      <entry key="H4" value="18.659315366468906" />
-      <entry key="D1" value="28.379902771311702" />
-      <entry key="W1" value="30.60871430821024" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="3.1128676850623257E-87" />
+      <entry key="S5" value="2.4961131280625946E-35" />
+      <entry key="S10" value="4.996111616109707E-18" />
+      <entry key="S30" value="1.7095325621919572E-6" />
+      <entry key="S60" value="0.001307491041550669" />
+      <entry key="M2" value="0.036169294688846915" />
+      <entry key="M5" value="0.27684207607524147" />
+      <entry key="M10" value="0.675649993220068" />
+      <entry key="M15" value="1.0611549357161452" />
+      <entry key="M30" value="2.2077668792332976" />
+      <entry key="H1" value="5.279981674787027" />
+      <entry key="H2" value="11.32446310088451" />
+      <entry key="H4" value="18.211418195742752" />
+      <entry key="D1" value="28.265211987150963" />
+      <entry key="W1" value="30.591012481465626" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.350035914709407E-5" />
-      <entry key="MS500" value="0.2597490422221807" />
-      <entry key="S2" value="2.374198554649569" />
-      <entry key="S5" value="4.6861208601185815" />
-      <entry key="S10" value="6.106550068332462" />
-      <entry key="S30" value="8.549117841944714" />
-      <entry key="S60" value="13.144507535713187" />
-      <entry key="M2" value="38.56778470600935" />
-      <entry key="M5" value="160.71137868468267" />
-      <entry key="M10" value="346.16141211568095" />
-      <entry key="M15" value="525.5303589035901" />
-      <entry key="M30" value="1019.8505655292922" />
-      <entry key="H1" value="1734.6835726408185" />
-      <entry key="H2" value="2533.5696832613976" />
-      <entry key="H4" value="3220.5559194080292" />
-      <entry key="D1" value="4079.2911048507067" />
-      <entry key="W1" value="4264.75717020962" />
+      <entry key="MS100" value="1.639936055357569" />
+      <entry key="MS500" value="5.022262338196844" />
+      <entry key="S2" value="13.008393157284862" />
+      <entry key="S5" value="20.118373338219968" />
+      <entry key="S10" value="26.766929414738303" />
+      <entry key="S30" value="49.854379690334426" />
+      <entry key="S60" value="87.68150856054143" />
+      <entry key="M2" value="156.75548080954687" />
+      <entry key="M5" value="310.79810341064024" />
+      <entry key="M10" value="516.6815059604676" />
+      <entry key="M15" value="705.6556460681089" />
+      <entry key="M30" value="1218.118462025901" />
+      <entry key="H1" value="1968.266739482238" />
+      <entry key="H2" value="2815.8949474854553" />
+      <entry key="H4" value="3549.9671225582792" />
+      <entry key="D1" value="4473.087435290339" />
+      <entry key="W1" value="4673.188046436847" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -173,34 +162,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "dev",
-    "javascript.preferred.runtime.type.id": "node",
-    "junie.onboarding.icon.badge.shown": "true",
-    "junie.plugin.stays.banner.dismissed": "true",
-    "last_opened_file_path": "/home/cainbrouwer/Projecten MBO Utrecht/Leerjaar 2/Periode 1/Project/Sneakerness_G4/my-app/app/components/error-handling",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
-    "settings.editor.selected.configurable": "ml.llm.LLMThirdPartyAiProvidersConfigurable",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "/home/cainbrouwer/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;junie.plugin.stays.banner.dismissed&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/cainbrouwer/Projecten MBO Utrecht/Leerjaar 2/Periode 1/Project/Sneakerness_G4/my-app/app/components/error-handling&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMThirdPartyAiProvidersConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/cainbrouwer/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -241,7 +230,8 @@
       <workItem from="1790937202428" duration="2991000" />
       <workItem from="1790944384094" duration="67000" />
       <workItem from="1791382257402" duration="466000" />
-      <workItem from="1791808812101" duration="5072000" />
+      <workItem from="1791808812101" duration="5179000" />
+      <workItem from="1791814032296" duration="823000" />
     </task>
     <task id="LOCAL-00001" summary="voeg knoppen en lijncomponenten toe voor contactpersonen sectie">
       <option name="closed" value="true" />
@@ -339,7 +329,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791812963132</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Refactor component imports and remove unused demo data file">
+      <option name="closed" value="true" />
+      <created>1791813894491</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1791813894491</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

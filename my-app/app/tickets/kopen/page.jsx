@@ -2,7 +2,7 @@ import { connection } from "next/server";
 import Header from "../../components/layout/header.jsx";
 import Footer from "../../components/layout/footer.jsx";
 import TicketKopenFormulier from "./ticket-kopen-formulier";
-import { getTicketsVoorVerkoop } from "../../../lib/database/tickets";
+import { findAvailable } from "../../models/ticket.js";
 import { getHomepageContent } from "../../../lib/homepage-content";
 
 export const metadata = {
@@ -24,7 +24,7 @@ export default async function TicketsKopenPage({ searchParams }) {
   let tickets = [];
   let ladenMislukt = false;
   try {
-    tickets = await getTicketsVoorVerkoop();
+    tickets = await findAvailable();
   } catch (error) {
     console.error("Tickets laden mislukt:", error);
     ladenMislukt = true;

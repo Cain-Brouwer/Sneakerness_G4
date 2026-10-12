@@ -2,7 +2,7 @@ import Link from "next/link";
 import { connection } from "next/server";
 import Header from "../components/layout/header.jsx";
 import Footer from "../components/layout/footer.jsx";
-import { getTicketOverview } from "../../lib/database/tickets";
+import { findAll } from "../models/ticket.js";
 import { getHomepageContent } from "../../lib/homepage-content";
 
 export const metadata = {
@@ -71,10 +71,10 @@ function beschikbaarheid(aantal) {
 // dan krijgt de pagina { fout: true } en worden er geen tickets getoond (zie MELDING_FOUT).
 async function laadOverzicht(gevraagdeDag, forceerFout) {
   try {
-    // Testhulp voor het foutscenario: /tickets?debug=1 (zelfde idee als /trigger-error).
+    // Testhulp voor het foutscenario: /tickets?debug=1.
     if (forceerFout) throw new Error("Handmatig getriggerde fout voor testdoeleinden");
 
-    const alleTickets = await getTicketOverview();
+    const alleTickets = await findAll();
 
     const dagen = maakDagen(alleTickets);
     const gekozenDag = dagen.find((dag) => dag.datum === gevraagdeDag) ?? dagen[0] ?? null;

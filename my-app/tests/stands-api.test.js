@@ -6,11 +6,11 @@ import { after, before, test } from "node:test";
 
 import { GET } from "../app/api/stands/route.js";
 import {
-  haalStandRijenOp,
-  initialiseerStandsDatabase,
-  sluitStandsDatabase,
-  voerStandQueryUit,
-} from "../app/lib/stands-database.js";
+  haalRijenOp as haalStandRijenOp,
+  initialiseerDatabase as initialiseerStandsDatabase,
+  sluitDatabase as sluitStandsDatabase,
+  voerQueryUit as voerStandQueryUit,
+} from "../lib/database/db.js";
 
 let tijdelijkeMap;
 

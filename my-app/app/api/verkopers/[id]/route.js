@@ -1,64 +1,10 @@
-import {
-    haalRijenOp,
-    initialiseerDatabase,
-    sluitDatabase,
-} from "../../../../lib/database/db.js";
-import {
-    koppelenContactpersoonAanVerkoper,
-    haalGekoppeldeContactpersonenOp,
-} from "../../../../lib/database/verkopers.js";
-
-async function haalVerkoperDetailsOp(verkoperId) {
-    const database = await initialiseerDatabase();
-
-    try {
-        const verkoper = await haalRijenOp(
-            database,
-            `SELECT Id AS id, Naam AS naam, SpecialeStatus AS specialeStatus, VerkooptSoort AS verkooptSoort, Dagen AS dagen, Logo AS logo FROM Verkoper WHERE Id = ?`,
-            [verkoperId],
-        );
-
-        if (verkoper.length === 0) {
-            return null;
-        }
-
-        const gekoppeldeContactpersonen = await haalGekoppeldeContactpersonenOp(database, verkoperId);
-
-        return {
-            verkoper: {
-                ...verkoper[0],
-                specialeStatus: Boolean(verkoper[0].specialeStatus),
-            },
-            gekoppeldeContactpersonen,
-        };
-    } finally {
-        await sluitDatabase(database);
-    }
-}
+import { handleShow } from "../../../controllers/verkopers.controller.js";
+import { initialiseerDatabase, sluitDatabase, haalRijenOp } from "../../../../lib/database/db.js";
+import { koppelenContactpersoonAanVerkoper } from "../../../../lib/database/verkopers.js";
 
 export async function GET(request, { params }) {
-    const { id } = await params;
-    const verkoperId = Number(id);
-
-    if (isNaN(verkoperId) || verkoperId <= 0) {
-        return Response.json({ error: "Ongeldig verkoper ID." }, { status: 400 });
-    }
-
-    try {
-        const details = await haalVerkoperDetailsOp(verkoperId);
-
-        if (details === null) {
-            return Response.json({ error: "Verkoper niet gevonden." }, { status: 404 });
-        }
-
-        return Response.json(details);
-    } catch (fout) {
-        console.error("Verkoper details ophalen mislukt:", fout);
-        return Response.json(
-            { error: "Verkoper details konden niet worden opgehaald." },
-            { status: 500 },
-        );
-    }
+  const { id } = await params;
+  return handleShow(id);
 }
 
 export async function POST(request, { params }) {
