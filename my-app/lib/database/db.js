@@ -56,6 +56,23 @@ export function voegContactpersoonToe(database, naam, telefoonnummer, email, isA
     `, [naam, telefoonnummer, email, isActief, opmerking]);
 }
 
+export function koppelenContactpersoonAanVerkoper(database, verkoperId, contactpersoonId) {
+    return voerQueryUit(database, `
+        INSERT INTO verkoper_contactpersoon (VerkoperId, ContactpersoonId)
+        VALUES (?, ?)
+    `, [verkoperId, contactpersoonId]);
+}
+
+export function haalGekoppeldeContactpersonenOp(database, verkoperId) {
+    return haalRijenOp(database, `
+        SELECT c.id, c.Naam, c.Telefoonnummer, c.Email
+        FROM contactpersonen c
+        INNER JOIN verkoper_contactpersoon vc ON c.id = vc.ContactpersoonId
+        WHERE vc.VerkoperId = ?
+        ORDER BY c.Naam COLLATE NOCASE
+    `, [verkoperId]);
+}
+
 function voerDatabaseSqlUit(database, sql) {
   return new Promise((resolve, reject) => {
     database.exec(sql, (fout) => {
@@ -124,6 +141,20 @@ async function initialiseerContactpersoonTabel(database) {
   `);
 }
 
+async function initialiseerVerkoperContactpersoonTabel(database) {
+  await voerDatabaseSqlUit(database, `
+    CREATE TABLE IF NOT EXISTS verkoper_contactpersoon (
+        id INTEGER PRIMARY KEY AUTOINCREMENT
+        ,VerkoperId INTEGER NOT NULL
+        ,ContactpersoonId INTEGER NOT NULL
+        ,Datumaangemaakt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ,FOREIGN KEY (VerkoperId) REFERENCES Verkoper(Id)
+        ,FOREIGN KEY (ContactpersoonId) REFERENCES contactpersonen(id)
+        ,UNIQUE(VerkoperId, ContactpersoonId)
+    );
+  `);
+}
+
 function moetVoorbeelddataToevoegen() {
   return process.env.NODE_ENV !== "production"
     && !process.env.SQLITE_DATABASE_PATH
@@ -161,6 +192,7 @@ export async function initialiseerDatabase() {
     await initialiseerVerkoperTabel(database);
     await initialiseerStandTabel(database);
     await initialiseerContactpersoonTabel(database);
+    await initialiseerVerkoperContactpersoonTabel(database);
 
     if (moetVoorbeelddataToevoegen()) {
       await voegDemoDataToe(database);
