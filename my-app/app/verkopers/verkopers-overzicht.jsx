@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function VerkopersOverzicht() {
   const [verkopers, setVerkopers] = useState([]);
@@ -39,7 +40,8 @@ export default function VerkopersOverzicht() {
         });
 
         if (!antwoord.ok) {
-          throw new Error("Verkopers ophalen mislukt");
+          setLaadstatus("fout");
+          return;
         }
 
         const opgehaaldeVerkopers = await antwoord.json();
@@ -217,7 +219,14 @@ function VerkoperResultaten({ verkopers }) {
           <tbody className="divide-y divide-neutral-800/60">
             {verkopers.map((verkoper) => (
               <tr key={verkoper.id} className="transition-colors hover:bg-neutral-800/40">
-                <td className="px-3 py-4 font-bold text-neutral-100">{verkoper.naam}</td>
+                <td className="px-3 py-4">
+                  <Link
+                    href={`/verkopers/${verkoper.id}`}
+                    className="font-bold text-orange-400 transition-colors hover:text-orange-300"
+                  >
+                    {verkoper.naam}
+                  </Link>
+                </td>
                 <td className="px-3 py-4 text-neutral-300">{verkoper.verkooptSoort}</td>
                 <td className="px-3 py-4 text-neutral-300">{formatteerDagen(verkoper.dagen)}</td>
                 <td className="px-3 py-4">
@@ -236,7 +245,12 @@ function VerkoperResultaten({ verkopers }) {
         {verkopers.map((verkoper) => (
           <article key={verkoper.id} className="rounded-xl border border-neutral-800 bg-neutral-950/70 p-4 shadow-md">
             <div className="flex flex-wrap items-start justify-between gap-3">
-              <h2 className="text-lg font-bold text-neutral-100">{verkoper.naam}</h2>
+              <Link
+                href={`/verkopers/${verkoper.id}`}
+                className="text-lg font-bold text-orange-400 transition-colors hover:text-orange-300"
+              >
+                {verkoper.naam}
+              </Link>
               <SpecialeStatusLabel specialeStatus={verkoper.specialeStatus} />
             </div>
             <dl className="mt-4 grid gap-3 text-sm">

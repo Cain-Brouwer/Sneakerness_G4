@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AirChatToolWindow" selected="dvvnhxwrurldmwy7x0t6oony9">
+  <component name="AirChatToolWindow" selected="54d7gayi2ycnfu796i0qtvxre">
     <tab path="4/opencode/fb1fb938/7eq944akptzt4zy5ro18ixcxb" version="20" tabKey="7eq944akptzt4zy5ro18ixcxb" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="opencode:acp:3875ad6b" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" threadId="acp:3875ad6b" threadTitle="Rest van demo-data scheiden" threadActivity="READY">
       <launchProfile name="OpenCode" agentId="opencode" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" interactionSurfaceId="native" modelId="opencode/space-bunny-free" modelDisplayName="OpenCode Zen/Space Bunny Free" reasoningEffort="MEDIUM" sessionModeId="build" />
     </tab>
@@ -10,13 +10,27 @@
     <tab path="4/opencode/fb1fb938/4x222zd3to4onf5jbj1vflhay" version="20" tabKey="4x222zd3to4onf5jbj1vflhay" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:c88e373e" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:c88e373e" threadTitle="Leg uit hoe je de contactpersonen-knop functioneel maakt." threadActivity="UNREAD">
       <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
     </tab>
-    <tab path="4/junie/fb1fb938/cwmdbukl96r5ge3pa5u8ls7kt" version="20" tabKey="cwmdbukl96r5ge3pa5u8ls7kt" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:a4d80beb" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:a4d80beb" threadTitle="Controleer of Vite Plus momenteel geldig is" threadActivity="UNREAD">
-      <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
+    <tab path="4/junie/fb1fb938/cwmdbukl96r5ge3pa5u8ls7kt" version="20" tabKey="cwmdbukl96r5ge3pa5u8ls7kt" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:a4d80beb" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:a4d80beb" threadTitle="Controleer of Vite Plus momenteel geldig is" threadActivity="READY">
+      <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
     </tab>
-    <tab path="4/junie/fb1fb938/6ycijijahzhhh3050njqj910g" version="20" tabKey="6ycijijahzhhh3050njqj910g" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:f7117a4a" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:f7117a4a" threadTitle="Koppelen van contactpersoon aan verkoper met validatie" threadActivity="PROCESSING">
-      <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
+    <tab path="4/junie/fb1fb938/6ycijijahzhhh3050njqj910g" version="20" tabKey="6ycijijahzhhh3050njqj910g" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:f7117a4a" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:f7117a4a" threadTitle="Koppelen van contactpersoon aan verkoper met validatie" threadActivity="UNREAD">
+      <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
     </tab>
     <tab path="4/junie/fb1fb938/dvvnhxwrurldmwy7x0t6oony9" version="20" tabKey="dvvnhxwrurldmwy7x0t6oony9" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:new-147f9707-1d35-482a-a60d-7dca5afdbcc6" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="" threadTitle="New Session" threadActivity="READY" pendingCreatedAtMs="1791809978911" pendingLaunchMode="default">
+      <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
+      <newSessionComposer promptText="" entryPoint="TOOLBAR">
+        <composerLaunchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
+        <agentOptions agentId="codex" />
+        <agentOptions agentId="junie" />
+      </newSessionComposer>
+    </tab>
+    <tab path="4/junie/fb1fb938/dyyf9o9xmsi1p3hpv8nnjjzf6" version="20" tabKey="dyyf9o9xmsi1p3hpv8nnjjzf6" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:65f7f599" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:65f7f599" threadTitle="Fix unresolved table contactpersonen error" threadActivity="READY">
+      <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
+    </tab>
+    <tab path="4/junie/fb1fb938/1r1q2sauflc1djogi6vwwhh2x" version="20" tabKey="1r1q2sauflc1djogi6vwwhh2x" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:7662c940" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:7662c940" threadTitle="Implementeer feature voor het genereren van aankoopbevestigingen" threadActivity="PROCESSING">
+      <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
+    </tab>
+    <tab path="4/junie/fb1fb938/54d7gayi2ycnfu796i0qtvxre" version="20" tabKey="54d7gayi2ycnfu796i0qtvxre" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:new-f241c769-d098-4131-94d4-ef464cca7017" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="" threadTitle="New Session" threadActivity="READY" pendingCreatedAtMs="1791810354092" pendingLaunchMode="default">
       <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
       <newSessionComposer promptText="" entryPoint="TOOLBAR">
         <composerLaunchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
@@ -32,11 +46,9 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="Remove unused database configuration files and update demo data insertion logic">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/components/contactpersonen/CreateButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/components/contactpersonen/CreateButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/contactpersonen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/contactpersonen/page.jsx" afterDir="false" />
+    <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="Implement contact person creation and listing features with form validation">
+      <change beforePath="$PROJECT_DIR$/my-app/app/verkopers/verkopers-overzicht.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/verkopers/verkopers-overzicht.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/lib/database/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/db.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/lib/database/sneakerness.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/sneakerness.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,61 +98,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.5283103698551128" />
-      <entry key="MS500" value="2.876176990648897" />
-      <entry key="S2" value="3.693266306719634" />
-      <entry key="S5" value="5.312144424266726" />
-      <entry key="S10" value="8.761721502165297" />
-      <entry key="S30" value="20.24907042584149" />
-      <entry key="S60" value="50.105963021626714" />
-      <entry key="M2" value="133.60143781094595" />
-      <entry key="M5" value="374.9319833055923" />
-      <entry key="M10" value="634.6896982866742" />
-      <entry key="M15" value="800.6111522207003" />
-      <entry key="M30" value="1122.6339666310853" />
-      <entry key="H1" value="1534.2345424283003" />
-      <entry key="H2" value="1988.6116684010872" />
-      <entry key="H4" value="2371.633509350616" />
-      <entry key="D1" value="2836.6200691055546" />
-      <entry key="W1" value="2934.974861870028" />
+      <entry key="MS100" value="1.444421340583285" />
+      <entry key="MS500" value="1.8502741600641959" />
+      <entry key="S2" value="1.9602620048260948" />
+      <entry key="S5" value="1.983911400773053" />
+      <entry key="S10" value="1.9942731446849185" />
+      <entry key="S30" value="3.2665093067131044" />
+      <entry key="S60" value="9.411181333611397" />
+      <entry key="M2" value="33.96154933494619" />
+      <entry key="M5" value="189.40446710694658" />
+      <entry key="M10" value="449.6815617348888" />
+      <entry key="M15" value="640.1683348692916" />
+      <entry key="M30" value="1014.2454852043876" />
+      <entry key="H1" value="1470.903875417817" />
+      <entry key="H2" value="1962.0164368947035" />
+      <entry key="H4" value="2373.2278931784153" />
+      <entry key="D1" value="2872.115017908186" />
+      <entry key="W1" value="2977.716405810612" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="6.234999628113856E-142" />
-      <entry key="S10" value="2.496998123370121E-71" />
-      <entry key="S30" value="2.922846930736545E-24" />
-      <entry key="S60" value="1.709633566217204E-12" />
-      <entry key="M2" value="1.3075295688493118E-6" />
-      <entry key="M5" value="0.004435837987984198" />
-      <entry key="M10" value="0.0727021974480952" />
-      <entry key="M15" value="0.24391850835431844" />
-      <entry key="M30" value="1.603035478519466" />
-      <entry key="H1" value="5.793858193595608" />
-      <entry key="H2" value="12.058913176617214" />
-      <entry key="H4" value="17.861373736901594" />
-      <entry key="D1" value="25.164814178286786" />
-      <entry key="W1" value="26.72881683891753" />
+      <entry key="S5" value="2.574348841298708E-164" />
+      <entry key="S10" value="1.604477747212073E-82" />
+      <entry key="S30" value="5.433894881122121E-28" />
+      <entry key="S60" value="2.3310716164721617E-14" />
+      <entry key="M2" value="1.5267847347568873E-7" />
+      <entry key="M5" value="0.0018789109261519582" />
+      <entry key="M10" value="0.04731651998087793" />
+      <entry key="M15" value="0.18318430489040952" />
+      <entry key="M30" value="1.3892003593594706" />
+      <entry key="H1" value="5.393600033204557" />
+      <entry key="H2" value="11.634925490993723" />
+      <entry key="H4" value="17.544563876043227" />
+      <entry key="D1" value="25.08986633740855" />
+      <entry key="W1" value="26.7174300282797" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.4485597111144453" />
-      <entry key="MS500" value="2.8443422698532532" />
-      <entry key="S2" value="3.682802629574061" />
-      <entry key="S5" value="5.306145349312634" />
-      <entry key="S10" value="8.756808284956193" />
-      <entry key="S30" value="20.245372645168462" />
-      <entry key="S60" value="50.10151218431347" />
-      <entry key="M2" value="133.5954762162701" />
-      <entry key="M5" value="374.92893579986503" />
-      <entry key="M10" value="634.7551736918706" />
-      <entry key="M15" value="800.8482585762847" />
-      <entry key="M30" value="1124.229390424918" />
-      <entry key="H1" value="1540.0189039247007" />
-      <entry key="H2" value="2000.661743380893" />
-      <entry key="H4" value="2389.4886357705705" />
-      <entry key="D1" value="2861.783471106465" />
-      <entry key="W1" value="2961.703465849955" />
+      <entry key="MS100" value="1.3989723932962639" />
+      <entry key="MS500" value="1.837701278923327" />
+      <entry key="S2" value="1.956881936908565" />
+      <entry key="S5" value="1.9825389824488904" />
+      <entry key="S10" value="1.99358211759904" />
+      <entry key="S30" value="3.2660091338689408" />
+      <entry key="S60" value="9.410196159615989" />
+      <entry key="M2" value="33.95971457818131" />
+      <entry key="M5" value="189.40234711774363" />
+      <entry key="M10" value="449.72366446547187" />
+      <entry key="M15" value="640.3460382045672" />
+      <entry key="M30" value="1015.6278933843251" />
+      <entry key="H1" value="1476.2885333595236" />
+      <entry key="H2" value="1973.6427833000528" />
+      <entry key="H4" value="2390.7662944980225" />
+      <entry key="D1" value="2897.203471900263" />
+      <entry key="W1" value="3004.433622444957" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -216,7 +228,7 @@
       <workItem from="1790937202428" duration="2991000" />
       <workItem from="1790944384094" duration="67000" />
       <workItem from="1791382257402" duration="466000" />
-      <workItem from="1791808812101" duration="1182000" />
+      <workItem from="1791808812101" duration="1545000" />
     </task>
     <task id="LOCAL-00001" summary="voeg knoppen en lijncomponenten toe voor contactpersonen sectie">
       <option name="closed" value="true" />
@@ -258,7 +270,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791796701900</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implement contact person creation and listing features with form validation">
+      <option name="closed" value="true" />
+      <created>1791810009054</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1791810009054</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +290,7 @@
     <MESSAGE value="Add demo data modules for contact persons, stands, and vendors" />
     <MESSAGE value="Add initial project files and configurations for Sneakerness G4" />
     <MESSAGE value="Remove unused database configuration files and update demo data insertion logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unused database configuration files and update demo data insertion logic" />
+    <MESSAGE value="Implement contact person creation and listing features with form validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement contact person creation and listing features with form validation" />
   </component>
 </project>

@@ -49,6 +49,21 @@ export function haalRijenOp(database, sql, parameters = []) {
   });
 }
 
+export function maakBevestigingAan(database, bestellerNaam, bestellerEmail, aantalTickets, ticketType, prijs, status) {
+    return voerQueryUit(database, `
+        INSERT INTO bevestigingen (BestellerNaam, BestellerEmail, AantalTickets, TicketType, Prijs, Status, Datumaangemaakt)
+        VALUES (?, ?, ?, ?, ?, ?, DATETIME('now'))
+    `, [bestellerNaam, bestellerEmail, aantalTickets, ticketType, prijs, status]);
+}
+
+export function haalBevestigingOp(database, id) {
+    return haalRijenOp(database, `
+        SELECT id, BestellerNaam, BestellerEmail, AantalTickets, TicketType, Prijs, Status, Datumaangemaakt
+        FROM bevestigingen
+        WHERE id = ?
+    `, [id]);
+}
+
 export function voegContactpersoonToe(database, naam, telefoonnummer, email, isActief, opmerking) {
     return voerQueryUit(database, `
         INSERT INTO contactpersonen (Naam, Telefoonnummer, Email, IsActief, Opmerking, Datumaangemaakt, Datumgewijzigd)
@@ -155,6 +170,22 @@ async function initialiseerVerkoperContactpersoonTabel(database) {
   `);
 }
 
+async function initialiseerBevestigingTabel(database) {
+  await voerDatabaseSqlUit(database, `
+    CREATE TABLE IF NOT EXISTS bevestigingen (
+        id INTEGER PRIMARY KEY AUTOINCREMENT
+        ,BestellerNaam TEXT NOT NULL
+        ,BestellerEmail TEXT NOT NULL
+        ,AantalTickets INTEGER NOT NULL DEFAULT 1
+        ,TicketType TEXT NOT NULL
+        ,Prijs TEXT NOT NULL
+        ,Status TEXT NOT NULL DEFAULT 'afgerond'
+            CHECK (Status IN ('afgerond', 'fout'))
+        ,Datumaangemaakt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+}
+
 function moetVoorbeelddataToevoegen() {
   return process.env.NODE_ENV !== "production"
     && !process.env.SQLITE_DATABASE_PATH
@@ -193,6 +224,7 @@ export async function initialiseerDatabase() {
     await initialiseerStandTabel(database);
     await initialiseerContactpersoonTabel(database);
     await initialiseerVerkoperContactpersoonTabel(database);
+    await initialiseerBevestigingTabel(database);
 
     if (moetVoorbeelddataToevoegen()) {
       await voegDemoDataToe(database);
