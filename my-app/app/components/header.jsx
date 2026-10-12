@@ -16,7 +16,13 @@ const navigatieItems = [
 
 // terugHref (optioneel): toont op mobiel een "← Terug"-link in plaats van het menu
 // (zoals in de wireframe van het ticketoverzicht).
-export default function Header({ terugHref }) {
+// terugOpDesktop (optioneel): toont de terug-link ook op desktop, in plaats van de navigatie,
+// met de tekst uit terugLabel (zoals in de wireframe van tickets kopen).
+export default function Header({
+  terugHref,
+  terugOpDesktop = false,
+  terugLabel = "Terug naar home",
+}) {
   const [mobielMenuOpen, setMobielMenuOpen] = useState(false);
 
   function wisselMobielMenu() {
@@ -40,7 +46,9 @@ export default function Header({ terugHref }) {
         <div aria-hidden="true" />
 
         <nav
-          className="hidden items-center justify-center gap-1 border-l border-neutral-800 px-3 py-2 text-sm md:flex"
+          className={`items-center justify-center gap-1 border-l border-neutral-800 px-3 py-2 text-sm ${
+            terugHref && terugOpDesktop ? "hidden" : "hidden md:flex"
+          }`}
           aria-label="Hoofdnavigatie"
         >
           {navigatieItems.map((item) => {
@@ -63,10 +71,19 @@ export default function Header({ terugHref }) {
         {terugHref ? (
           <Link
             href={terugHref}
-            className="flex items-center justify-center gap-2 border-l border-neutral-800 px-4 py-3 text-sm font-medium text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white md:hidden"
+            className={`flex items-center justify-center gap-2 border-l border-neutral-800 px-4 py-3 text-sm font-medium text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white ${
+              terugOpDesktop ? "" : "md:hidden"
+            }`}
           >
             <span aria-hidden="true">←</span>
-            Terug
+            {terugOpDesktop ? (
+              <>
+                <span className="md:hidden">Terug</span>
+                <span className="hidden md:inline">{terugLabel}</span>
+              </>
+            ) : (
+              "Terug"
+            )}
           </Link>
         ) : (
           <button
