@@ -92,22 +92,45 @@ async function haalVerkopersOp(filters) {
     const rijen = await haalRijenOp(
       database,
       `SELECT
-         Id AS id,
-         Naam AS naam,
-         SpecialeStatus AS specialeStatus,
-         VerkooptSoort AS verkooptSoort,
-         Dagen AS dagen,
-         Logo AS logo
-       FROM Verkoper
+         v.Id AS id,
+         v.Naam AS naam,
+         v.SpecialeStatus AS specialeStatus,
+         v.VerkooptSoort AS verkooptSoort,
+         v.Dagen AS dagen,
+         v.Logo AS logo,
+         c.id AS contactId,
+         c.Naam AS contactNaam
+       FROM Verkoper v
+       LEFT JOIN verkoper_contactpersoon vc ON v.Id = vc.VerkoperId
+       LEFT JOIN contactpersonen c ON c.id = vc.ContactpersoonId
        ${where}
-       ORDER BY Naam COLLATE NOCASE, Id`,
+       ORDER BY v.Naam COLLATE NOCASE, v.Id, c.Naam COLLATE NOCASE`,
       parameters,
     );
 
-    return rijen.map((verkoper) => ({
-      ...verkoper,
-      specialeStatus: Boolean(verkoper.specialeStatus),
-    }));
+    // Groepeer rijen per verkoper en verzamel gekoppelde contactpersonen
+    const verkoperMap = new Map();
+    for (const rij of rijen) {
+      if (!verkoperMap.has(rij.id)) {
+        verkoperMap.set(rij.id, {
+          id: rij.id,
+          naam: rij.naam,
+          specialeStatus: Boolean(rij.specialeStatus),
+          verkooptSoort: rij.verkooptSoort,
+          dagen: rij.dagen,
+          logo: rij.logo,
+          contactpersonen: [],
+        });
+      }
+      if (rij.contactId) {
+        verkoperMap.get(rij.id).contactpersonen.push({
+          id: rij.contactId,
+          naam: rij.contactNaam,
+        });
+      }
+    }
+
+    return Array.from(verkoperMap.values());
   } finally {
     await sluitDatabase(database);
   }

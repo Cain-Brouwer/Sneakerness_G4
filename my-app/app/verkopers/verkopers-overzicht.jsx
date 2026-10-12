@@ -213,6 +213,7 @@ function VerkoperResultaten({ verkopers }) {
               <th className="px-3 pb-3 font-semibold">Verkoopt</th>
               <th className="px-3 pb-3 font-semibold">Dagen</th>
               <th className="px-3 pb-3 font-semibold">Status</th>
+              <th className="px-3 pb-3 font-semibold">Gekoppelde contactpersonen</th>
               <th className="px-3 pb-3 font-semibold">Logo</th>
             </tr>
           </thead>
@@ -231,6 +232,9 @@ function VerkoperResultaten({ verkopers }) {
                 <td className="px-3 py-4 text-neutral-300">{formatteerDagen(verkoper.dagen)}</td>
                 <td className="px-3 py-4">
                   <SpecialeStatusLabel specialeStatus={verkoper.specialeStatus} />
+                </td>
+                <td className="px-3 py-4">
+                  <ContactpersonenLijst contactpersonen={verkoper.contactpersonen} />
                 </td>
                 <td className="px-3 py-4">
                   <LogoLink logo={verkoper.logo} />
@@ -254,10 +258,27 @@ function VerkoperResultaten({ verkopers }) {
               <SpecialeStatusLabel specialeStatus={verkoper.specialeStatus} />
             </div>
             <dl className="mt-4 grid gap-3 text-sm">
-              <VerkoperGegeven label="Verkoopt" waarde={verkoper.verkooptSoort} />
-              <VerkoperGegeven label="Dagen" waarde={formatteerDagen(verkoper.dagen)} />
+              <div>
+                <dt className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Verkoopt</dt>
+                <dd className="mt-1 text-neutral-300">{verkoper.verkooptSoort}</dd>
+              </div>
+              <div>
+                <dt className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Dagen</dt>
+                <dd className="mt-1 text-neutral-300">{formatteerDagen(verkoper.dagen)}</dd>
+              </div>
+              <div>
+                <dt className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Gekoppelde contactpersonen</dt>
+                <dd className="mt-1 text-neutral-300">
+                  <ContactpersonenLijst contactpersonen={verkoper.contactpersonen} />
+                </dd>
+              </div>
               {verkoper.logo && (
-                <VerkoperGegeven label="Logo" waarde={<LogoLink logo={verkoper.logo} />} />
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Logo</dt>
+                  <dd className="mt-1 text-neutral-300">
+                    <LogoLink logo={verkoper.logo} />
+                  </dd>
+                </div>
               )}
             </dl>
           </article>
@@ -300,11 +321,21 @@ function LogoLink({ logo }) {
   );
 }
 
-function VerkoperGegeven({ label, waarde }) {
+function ContactpersonenLijst({ contactpersonen }) {
+  if (!contactpersonen || contactpersonen.length === 0) {
+    return <span className="text-neutral-600">—</span>;
+  }
+
   return (
-    <div>
-      <dt className="text-xs font-semibold uppercase tracking-wide text-neutral-500">{label}</dt>
-      <dd className="mt-1 break-words text-neutral-300">{waarde}</dd>
+    <div className="flex flex-wrap gap-1">
+      {contactpersonen.map((cp) => (
+        <span
+          key={cp.id}
+          className="rounded-full bg-orange-950/60 border border-orange-800 px-2 py-0.5 text-xs font-medium text-orange-300"
+        >
+          {cp.naam}
+        </span>
+      ))}
     </div>
   );
 }
