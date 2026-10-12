@@ -230,7 +230,7 @@ export default async function TicketOverzichtPage({ searchParams }) {
         )}
       </section>
 
-      {/* Hint links en knop rechts onder de tabel (knop rechts, zoals op de stands-pagina) */}
+      {/* Hint links en knoppen rechts onder de tabel (zoals op de stands-pagina) */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         {!fout && tickets.length > 0 && (
           <p className="rounded-xl border border-neutral-800 bg-neutral-900/60 px-4 py-4 text-center text-sm text-neutral-300 md:border-0 md:bg-transparent md:p-0 md:text-left md:text-base md:italic">
@@ -239,13 +239,21 @@ export default async function TicketOverzichtPage({ searchParams }) {
           </p>
         )}
 
-        <Link
-          href="/tickets/toevoegen"
-          className="ml-auto flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-5 py-3 text-base font-bold text-white shadow-lg transition-all hover:bg-orange-500 hover:shadow-orange-500/20 active:scale-[0.99]"
-        >
-          <span aria-hidden="true">+</span>
-          Ticket toevoegen
-        </Link>
+        <div className="ml-auto flex flex-wrap justify-end gap-3">
+          <Link
+            href="/tickets/kopen"
+            className="flex items-center justify-center rounded-xl border border-orange-600 px-5 py-3 text-base font-bold text-orange-500 transition-all hover:bg-orange-600/10 active:scale-[0.99]"
+          >
+            Tickets kopen
+          </Link>
+          <Link
+            href="/tickets/toevoegen"
+            className="flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-5 py-3 text-base font-bold text-white shadow-lg transition-all hover:bg-orange-500 hover:shadow-orange-500/20 active:scale-[0.99]"
+          >
+            <span aria-hidden="true">+</span>
+            Ticket toevoegen
+          </Link>
+        </div>
       </div>
 
       {/* Footer */}
