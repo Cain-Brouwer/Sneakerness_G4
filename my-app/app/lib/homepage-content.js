@@ -1,25 +1,48 @@
+// Content source for the homepage: centralizes all static text used across the landing page.
+// This keeps the page content easy to edit and ensures consistent event information everywhere.
 export function getHomepageContent() {
-  return {
-    title: "Sneakerness Rotterdam",
-    eventName: "Sneakerness Rotterdam",
-    venue: "Rotterdam Ahoy",
-    tagline: "De grootste sneaker- en streetwearbeurs van Nederland.",
+  const content = {
+    title: "Homepagina",
+    eventName: "Sneakerness® Rotterdam",
+    venue: "Van Nellefabriek",
+    tagline: "Tweedaags sneaker-event",
     aboutTitle: "Over het event",
     aboutText:
-      "Sneakerness Rotterdam brengt samen streetwear, sneakers, exclusieve releases en een bruisende community in één unieke beurservaring. Van premium drops tot verborgen gems: iedereen vindt hier iets dat bij zijn stijl past.",
-    ticketsTitle: "Tickets & toegang",
+      "Sneakerness Rotterdam is een tweedaags sneaker-event in de Van Nellefabriek. Bezoekers vinden releases, vintage pairs, customizers en community-stands onder één dak. Koop tickets of huur een stand en word onderdeel van het event.",
+    ticketsTitle: "Tickets & Toegang",
     tickets: [
-      { type: "Early Bird", price: "€29,99", available: "Ja" },
-      { type: "Standard", price: "€39,99", available: "Ja" },
-      { type: "VIP", price: "€69,99", available: "Beperkt" },
+      {
+        type: "Dagkaart",
+        price: "€25",
+        available: "Ja",
+        access: "1 dag",
+      },
+      {
+        type: "Weekendpas",
+        price: "€40",
+        available: "Ja",
+        access: "2 dagen",
+      },
+      {
+        type: "Early Entry",
+        price: "€55",
+        available: "Beperkt",
+        access: "Vroege toegang",
+      },
     ],
     stands: [
-      { name: "Sneaker Drops", description: "Exclusieve releases en limited-edition pairs voor echte collectors." },
-      { name: "Streetwear Labels", description: "Topmerken, capsule drops en statement basics voor iedere stijl." },
-      { name: "Vintage Finds", description: "Retro silhouettes, iconische modellen en unieke hidden gems." },
-      { name: "Creator Corner", description: "Meet lokale makers, stylers en community-ervaringen in de echte hub." },
+      { name: "AA+ Stand", description: "Premium locatie, grootste oppervlakte" },
+      { name: "AA Stand", description: "Grote stand op een zichtbare plek" },
+      { name: "A Stand", description: "Standaard stand voor verkopers" },
+      { name: "Side-Stand", description: "Compacte stand langs de zijlijn" },
     ],
-    footerInfo: "Rotterdam Ahoy • 14 maart 2026 • 10:00 - 18:00",
-    copyright: "© 2026 Sneakerness Rotterdam. Alle rechten voorbehouden.",
+    footerInfo: "Locatie: Van Nellefabriek, Rotterdam. Tweedaags sneaker-event.",
+    copyright: `© ${new Date().getFullYear()} Sneakerness Rotterdam. Alle rechten voorbehouden.`,
   };
+
+  if (!content.eventName || !content.tickets?.length) {
+    throw new Error("HOMEPAGE_LOAD_FAILED");
+  }
+
+  return content;
 }

@@ -3,11 +3,13 @@
   "description": "Next.js landing page for the Sneakerness Rotterdam event.",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint",
+    "test": "node --test tests/stands-api.test.js tests/verkopers-api.test.js tests/stand-toevoegen.test.js tests/stand-reserveren.test.js"
   },
   "dependencies": {
     "next": "16.3.5",
@@ -21,5 +23,8 @@
     "eslint-config-next": "16.3.5",
     "lightningcss": "^1.32.0",
     "tailwindcss": "^4"
+  },
+  "allowScripts": {
+    "sqlite3@6.0.1": true
   }
 }
