@@ -1,11 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import {
-    initialiseerDatabase,
-    sluitDatabase,
-    voegContactpersoonToe
-} from '../../lib/database/db';
+import { create } from '../models/contactpersoon.js';
 
 export async function voegContactpersoonFormulierAan(state, formData) {
     const naam = formData.get('naam');
@@ -21,13 +17,7 @@ export async function voegContactpersoonFormulierAan(state, formData) {
         };
     }
 
-    const database = await initialiseerDatabase();
-
-    try {
-        await voegContactpersoonToe(database, naam, telefoonnummer, email, isActief, opmerking);
-    } finally {
-        await sluitDatabase(database);
-    }
+    await create({ naam, telefoonnummer, email, isActief, opmerking });
 
     redirect('/contactpersonen');
 }

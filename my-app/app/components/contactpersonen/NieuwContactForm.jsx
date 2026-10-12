@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { voegContactpersoonFormulierAan } from '../../actions/contactpersonen';
+import { voegContactpersoonFormulierAan } from '../../contactpersonen/actions';
 
 export default function NieuwContactForm() {
     const [error, setError] = useState('');
