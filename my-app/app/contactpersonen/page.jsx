@@ -23,7 +23,7 @@ export default async function Page() {
     try {
         contactpersonen = await haalRijenOp(
             database,
-            "SELECT Naam, Telefoonnummer, Email AS Email FROM contactpersonen",
+            "SELECT id, Naam, Telefoonnummer, Email AS Email FROM contactpersonen",
         );
     } finally {
         await sluitDatabase(database);

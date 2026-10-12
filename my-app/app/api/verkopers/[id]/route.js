@@ -35,7 +35,8 @@ async function haalVerkoperDetailsOp(verkoperId) {
 }
 
 export async function GET(request, { params }) {
-    const verkoperId = Number(params.id);
+    const { id } = await params;
+    const verkoperId = Number(id);
 
     if (isNaN(verkoperId) || verkoperId <= 0) {
         return Response.json({ error: "Ongeldig verkoper ID." }, { status: 400 });
@@ -59,7 +60,8 @@ export async function GET(request, { params }) {
 }
 
 export async function POST(request, { params }) {
-    const verkoperId = Number(params.id);
+    const { id } = await params;
+    const verkoperId = Number(id);
 
     if (isNaN(verkoperId) || verkoperId <= 0) {
         return Response.json({ error: "Ongeldig verkoper ID." }, { status: 400 });

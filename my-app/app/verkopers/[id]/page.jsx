@@ -6,7 +6,8 @@ export function generateStaticParams() {
     return [];
 }
 
-export default function Page({ params }) {
+export default async function Page({ params }) {
+    const { id } = await params;
     return (
         <>
             <Header />
@@ -16,7 +17,7 @@ export default function Page({ params }) {
                     <h1 className="mb-8 text-center text-3xl font-extrabold uppercase tracking-widest text-neutral-300 sm:text-4xl">
                         Verkoper Details
                     </h1>
-                    <VerkoperDetail verkoperId={params.id} />
+                    <VerkoperDetail verkoperId={id} />
                 </div>
             </main>
 

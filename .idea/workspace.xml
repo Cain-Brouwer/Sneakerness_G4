@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AirChatToolWindow" selected="54d7gayi2ycnfu796i0qtvxre">
+  <component name="AirChatToolWindow" selected="6ycijijahzhhh3050njqj910g">
     <tab path="4/opencode/fb1fb938/7eq944akptzt4zy5ro18ixcxb" version="20" tabKey="7eq944akptzt4zy5ro18ixcxb" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="opencode:acp:3875ad6b" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" threadId="acp:3875ad6b" threadTitle="Rest van demo-data scheiden" threadActivity="READY">
       <launchProfile name="OpenCode" agentId="opencode" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" interactionSurfaceId="native" modelId="opencode/space-bunny-free" modelDisplayName="OpenCode Zen/Space Bunny Free" reasoningEffort="MEDIUM" sessionModeId="build" />
     </tab>
@@ -13,7 +13,7 @@
     <tab path="4/junie/fb1fb938/cwmdbukl96r5ge3pa5u8ls7kt" version="20" tabKey="cwmdbukl96r5ge3pa5u8ls7kt" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:a4d80beb" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:a4d80beb" threadTitle="Controleer of Vite Plus momenteel geldig is" threadActivity="READY">
       <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
     </tab>
-    <tab path="4/junie/fb1fb938/6ycijijahzhhh3050njqj910g" version="20" tabKey="6ycijijahzhhh3050njqj910g" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:f7117a4a" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:f7117a4a" threadTitle="Koppelen van contactpersoon aan verkoper met validatie" threadActivity="UNREAD">
+    <tab path="4/junie/fb1fb938/6ycijijahzhhh3050njqj910g" version="20" tabKey="6ycijijahzhhh3050njqj910g" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:f7117a4a" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:f7117a4a" threadTitle="Koppelen van contactpersoon aan verkoper met validatie" threadActivity="PROCESSING">
       <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
     </tab>
     <tab path="4/junie/fb1fb938/dvvnhxwrurldmwy7x0t6oony9" version="20" tabKey="dvvnhxwrurldmwy7x0t6oony9" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:new-147f9707-1d35-482a-a60d-7dca5afdbcc6" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="" threadTitle="New Session" threadActivity="READY" pendingCreatedAtMs="1791809978911" pendingLaunchMode="default">
@@ -30,7 +30,7 @@
     <tab path="4/junie/fb1fb938/1r1q2sauflc1djogi6vwwhh2x" version="20" tabKey="1r1q2sauflc1djogi6vwwhh2x" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:7662c940" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:7662c940" threadTitle="Implementeer feature voor het genereren van aankoopbevestigingen" threadActivity="UNREAD">
       <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
     </tab>
-    <tab path="4/junie/fb1fb938/54d7gayi2ycnfu796i0qtvxre" version="20" tabKey="54d7gayi2ycnfu796i0qtvxre" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:17a3dfc6" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:17a3dfc6" threadTitle="Fix local exception throws and configure SQL dialect warnings" threadActivity="PROCESSING">
+    <tab path="4/junie/fb1fb938/54d7gayi2ycnfu796i0qtvxre" version="20" tabKey="54d7gayi2ycnfu796i0qtvxre" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:17a3dfc6" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:17a3dfc6" threadTitle="Fix local exception throws and configure SQL dialect warnings" threadActivity="UNREAD">
       <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
     </tab>
   </component>
@@ -42,51 +42,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="Implement verkoper details page with contact person linking and confirmation features">
-      <change afterPath="$PROJECT_DIR$/.idea/db-forest-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/CLAUDE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/api/stands/reserveringen/route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/components/toevoegen-foutmelding.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/lib/stand-reservering-validatie.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/lib/stand-reserveringen-database.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/lib/stand-validatie.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/lib/verkoper-validatie.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/stands/reserveren/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/stands/reserveren/stand-reserveren-formulier.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/stands/toevoegen/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/stands/toevoegen/stand-toevoegen-formulier.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/tickets/kopen/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/tickets/kopen/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/tickets/kopen/ticket-kopen-formulier.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/tickets/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/tickets/toevoegen/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/tickets/toevoegen/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/tickets/toevoegen/ticket-form.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/verkopers/toevoegen/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/app/verkopers/toevoegen/verkoper-toevoegen-formulier.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/components/Hero.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/eslint.config.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/lib/database/tickets.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/tests/stand-reserveren.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/tests/stand-toevoegen.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/api/stands/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/stands/route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/api/verkopers/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/verkopers/route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/components/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/components/header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/stands/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/stands/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/stands/stands-overzicht.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/stands/stands-overzicht.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/trigger-error/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/trigger-error/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/lib/database/DemoData.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/DemoData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/lib/database/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/api/verkopers/[id]/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/verkopers/[id]/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/components/contactpersonen/ContactpersonenLijst.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/components/contactpersonen/ContactpersonenLijst.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/contactpersonen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/contactpersonen/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/verkopers/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/verkopers/[id]/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/lib/database/sneakerness.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/sneakerness.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/seed.sql" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/seed.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/tests/verkopers-api.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/tests/verkopers-api.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,61 +96,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0531609901790937" />
-      <entry key="MS500" value="2.2577124673424027" />
-      <entry key="S2" value="9.423982825750405" />
-      <entry key="S5" value="16.64462654398141" />
-      <entry key="S10" value="20.66519770818917" />
-      <entry key="S30" value="24.050537798082203" />
-      <entry key="S60" value="25.216561289443202" />
-      <entry key="M2" value="30.636078464285397" />
-      <entry key="M5" value="114.80613400447233" />
-      <entry key="M10" value="334.16630271604714" />
-      <entry key="M15" value="523.6423894685391" />
-      <entry key="M30" value="920.2683119802442" />
-      <entry key="H1" value="1407.1777949485804" />
-      <entry key="H2" value="1927.2359691226745" />
-      <entry key="H4" value="2362.180075498182" />
-      <entry key="D1" value="2890.593469289919" />
-      <entry key="W1" value="3002.6011432180117" />
+      <entry key="MS100" value="1.5689017567043635" />
+      <entry key="MS500" value="3.841300380281603" />
+      <entry key="S2" value="9.203948418024892" />
+      <entry key="S5" value="12.365102901902347" />
+      <entry key="S10" value="17.37973083865035" />
+      <entry key="S30" value="38.59631515819304" />
+      <entry key="S60" value="75.29052553702209" />
+      <entry key="M2" value="162.0111784238621" />
+      <entry key="M5" value="348.62564932274285" />
+      <entry key="M10" value="567.0240353252765" />
+      <entry key="M15" value="760.1765821365336" />
+      <entry key="M30" value="1207.4243499128456" />
+      <entry key="H1" value="1774.6297366654067" />
+      <entry key="H2" value="2378.813481681686" />
+      <entry key="H4" value="2885.236823089443" />
+      <entry key="D1" value="3504.287312731539" />
+      <entry key="W1" value="3636.1406476624356" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="5.41427985244635E-184" />
-      <entry key="S10" value="2.3268605141792215E-92" />
-      <entry key="S30" value="2.8548948464389635E-31" />
-      <entry key="S60" value="5.343121602994801E-16" />
-      <entry key="M2" value="2.3115193327097477E-8" />
-      <entry key="M5" value="8.829865337840717E-4" />
-      <entry key="M10" value="0.03243670566494249" />
-      <entry key="M15" value="0.14241997012281377" />
-      <entry key="M30" value="1.224915701672106" />
-      <entry key="H1" value="5.064649498946332" />
-      <entry key="H2" value="11.274542684016495" />
-      <entry key="H4" value="17.270711968355858" />
-      <entry key="D1" value="25.02416673470862" />
-      <entry key="W1" value="26.70742429461874" />
+      <entry key="MS500" value="4.286277881914511E-292" />
+      <entry key="S2" value="2.2916740589056788E-73" />
+      <entry key="S5" value="1.3260050131160525E-29" />
+      <entry key="S10" value="5.145514284954649E-15" />
+      <entry key="S30" value="2.739994804532888E-5" />
+      <entry key="S60" value="0.007402524992300344" />
+      <entry key="M2" value="0.12167530483451898" />
+      <entry key="M5" value="0.652777580138036" />
+      <entry key="M10" value="1.1534627915272144" />
+      <entry key="M15" value="1.4459691989866985" />
+      <entry key="M30" value="2.51218523979589" />
+      <entry key="H1" value="6.047453552552509" />
+      <entry key="H2" value="12.207250661334403" />
+      <entry key="H4" value="18.460046103552042" />
+      <entry key="D1" value="26.82827469403848" />
+      <entry key="W1" value="28.677537210119414" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9969996286513505" />
-      <entry key="MS500" value="2.234442535125394" />
-      <entry key="S2" value="9.401407295261105" />
-      <entry key="S5" value="16.628818481765645" />
-      <entry key="S10" value="20.65539327925428" />
-      <entry key="S30" value="24.04673422653225" />
-      <entry key="S60" value="25.214561613616066" />
-      <entry key="M2" value="30.634792572442336" />
-      <entry key="M5" value="114.80472968939043" />
-      <entry key="M10" value="334.19496040987815" />
-      <entry key="M15" value="523.780411430376" />
-      <entry key="M30" value="921.4871702805979" />
-      <entry key="H1" value="1412.2340134759525" />
-      <entry key="H2" value="1938.5021813210803" />
-      <entry key="H4" value="2379.4447125343695" />
-      <entry key="D1" value="2915.616225949651" />
-      <entry key="W1" value="3029.308353994611" />
+      <entry key="MS100" value="1.4907180744164525" />
+      <entry key="MS500" value="3.800205359385796" />
+      <entry key="S2" value="9.179263172600512" />
+      <entry key="S5" value="12.351726886168354" />
+      <entry key="S10" value="17.37030793062196" />
+      <entry key="S30" value="38.588995074702524" />
+      <entry key="S60" value="75.29040265489053" />
+      <entry key="M2" value="162.12429245699775" />
+      <entry key="M5" value="349.27034343927875" />
+      <entry key="M10" value="568.1706759803044" />
+      <entry key="M15" value="761.6162289936284" />
+      <entry key="M30" value="1209.9299333182478" />
+      <entry key="H1" value="1780.6688815656275" />
+      <entry key="H2" value="2391.0124641653088" />
+      <entry key="H4" value="2903.6907281183794" />
+      <entry key="D1" value="3531.114131312416" />
+      <entry key="W1" value="3664.817963473658" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -204,33 +165,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/contactpersoon-toevoegen&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;junie.plugin.stays.banner.dismissed&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMThirdPartyAiProvidersConfigurable&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/cainbrouwer/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "dev",
+    "javascript.preferred.runtime.type.id": "node",
+    "junie.onboarding.icon.badge.shown": "true",
+    "junie.plugin.stays.banner.dismissed": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+    "settings.editor.selected.configurable": "ml.llm.LLMThirdPartyAiProvidersConfigurable",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/home/cainbrouwer/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -265,7 +226,7 @@
       <workItem from="1790937202428" duration="2991000" />
       <workItem from="1790944384094" duration="67000" />
       <workItem from="1791382257402" duration="466000" />
-      <workItem from="1791808812101" duration="2145000" />
+      <workItem from="1791808812101" duration="2818000" />
     </task>
     <task id="LOCAL-00001" summary="voeg knoppen en lijncomponenten toe voor contactpersonen sectie">
       <option name="closed" value="true" />
@@ -331,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791810665145</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implement verkoper details page with contact person linking and confirmation features">
+      <option name="closed" value="true" />
+      <created>1791811013218</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1791811013218</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
