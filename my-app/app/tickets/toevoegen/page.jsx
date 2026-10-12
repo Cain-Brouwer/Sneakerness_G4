@@ -1,14 +1,14 @@
 import { connection } from "next/server";
-import Header from "../../components/header";
-import Footer from "../../components/footer";
+import Header from "../../components/layout/header.jsx";
+import Footer from "../../components/layout/footer.jsx";
 import TicketForm from "./ticket-form";
 import { checkDatabaseConnection } from "../../../lib/database/db";
 import { getTicketTypes } from "../../../lib/database/tickets";
-import { getHomepageContent } from "../../lib/homepage-content";
+import { getHomepageContent } from "../../../lib/homepage-content";
 
 export const metadata = {
   title: "Ticket toevoegen | Sneakerness Rotterdam",
-  description: "Voeg een nieuw ticket toe voor Sneakerness Rotterdam.",
+  description: "Voeg een contactpersoon-toevoegen ticket toe voor Sneakerness Rotterdam.",
 };
 
 export default async function TicketToevoegenPage() {

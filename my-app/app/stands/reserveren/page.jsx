@@ -1,5 +1,5 @@
-import Header from "../../components/header";
-import Footer from "../../components/footer";
+import Header from "../../components/layout/header.jsx";
+import Footer from "../../components/layout/footer.jsx";
 import StandReserverenFormulier from "./stand-reserveren-formulier";
 
 export const metadata = { title: "Stand Reserveren | Sneakerness Rotterdam" };

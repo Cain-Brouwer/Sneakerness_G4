@@ -1,5 +1,5 @@
-import Header from "../../components/header";
-import Footer from "../../components/footer";
+import Header from "../../components/layout/header.jsx";
+import Footer from "../../components/layout/footer.jsx";
 import VerkoperDetail from "./verkoper-detail";
 
 export function generateStaticParams() {

@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import ToevoegenFoutmelding from "../../components/toevoegen-foutmelding";
+import ToevoegenFoutmelding from "../../components/error-handling/toevoegen-foutmelding.jsx";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import { valideerNieuweVerkoper } from "../../lib/verkoper-validatie";
+import { valideerNieuweVerkoper } from "../../../lib/verkoper-validatie";
 
 const invoervelden = [
   ["naam", "Bedrijfsnaam", "text", "organization"],
@@ -55,7 +55,7 @@ export default function VerkoperToevoegenFormulier() {
         setMelding(resultaat.error ?? "De verkoper kon niet worden toegevoegd. Probeer opnieuw.");
         return;
       }
-      // Het overzicht haalt de nieuw opgeslagen verkoper via de API op.
+      // Het overzicht haalt de contactpersoon-toevoegen opgeslagen verkoper via de API op.
       router.push("/verkopers");
       router.refresh();
     } catch {

@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import ToevoegenFoutmelding from "../../components/toevoegen-foutmelding";
-import { standtypes } from "../../lib/stand-validatie";
-import { valideerStandReservering } from "../../lib/stand-reservering-validatie";
+import ToevoegenFoutmelding from "../../components/error-handling/toevoegen-foutmelding.jsx";
+import { standtypes } from "../../../lib/stand-validatie";
+import { valideerStandReservering } from "../../../lib/stand-reservering-validatie";
 
 const veldstijl = "mt-2 min-h-12 w-full min-w-0 rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3 text-neutral-100 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/30";
 const knopstijl = "min-h-12 rounded-xl bg-orange-600 px-5 py-3 font-bold text-white transition hover:bg-orange-500 disabled:cursor-not-allowed disabled:opacity-60";

@@ -1,9 +1,9 @@
 import { connection } from "next/server";
-import Header from "../../components/header";
-import Footer from "../../components/footer";
+import Header from "../../components/layout/header.jsx";
+import Footer from "../../components/layout/footer.jsx";
 import TicketKopenFormulier from "./ticket-kopen-formulier";
 import { getTicketsVoorVerkoop } from "../../../lib/database/tickets";
-import { getHomepageContent } from "../../lib/homepage-content";
+import { getHomepageContent } from "../../../lib/homepage-content";
 
 export const metadata = {
   title: "Tickets kopen | Sneakerness Rotterdam",

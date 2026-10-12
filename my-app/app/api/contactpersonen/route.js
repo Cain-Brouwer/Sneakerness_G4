@@ -1,4 +1,5 @@
-import {voegContactpersoonToe} from "../../../lib/database/db.js";
+import {initialiseerDatabase, sluitDatabase} from "../../../lib/database/db.js";
+import {voegContactpersoonToe} from "../../../lib/database/contactpersonen.js";
 
 export async function POST(request) {
     const { naam, telefoonnummer, email, isActief, opmerking } = await request.json();

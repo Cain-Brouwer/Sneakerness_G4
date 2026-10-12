@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import Header from "../components/header";
+import Header from "../components/layout/header.jsx";
 
 export default function Error({ error, reset }) {
   useEffect(() => {

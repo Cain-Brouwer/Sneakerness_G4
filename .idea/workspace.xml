@@ -1,39 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AirChatToolWindow">
-    <tab path="4/opencode/fb1fb938/7eq944akptzt4zy5ro18ixcxb" version="20" tabKey="7eq944akptzt4zy5ro18ixcxb" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="opencode:acp:3875ad6b" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" threadId="acp:3875ad6b" threadTitle="Rest van demo-data scheiden" threadActivity="READY">
-      <launchProfile name="OpenCode" agentId="opencode" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" interactionSurfaceId="native" modelId="opencode/space-bunny-free" modelDisplayName="OpenCode Zen/Space Bunny Free" reasoningEffort="MEDIUM" sessionModeId="build" />
-    </tab>
-    <tab path="4/opencode/fb1fb938/c05ep3swaijjkla9o5uidz0o4" version="20" tabKey="c05ep3swaijjkla9o5uidz0o4" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="opencode:acp:3b769319" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" threadId="acp:3b769319" threadTitle="@`/home/cainbrouwer/Projecten MBO Utrecht/Leerjaar 2/Periode 1/Project/Sneakerne" threadActivity="READY">
-      <launchProfile name="OpenCode" agentId="opencode" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" interactionSurfaceId="native" modelId="opencode/space-bunny-free" modelDisplayName="OpenCode Zen/Space Bunny Free" reasoningEffort="MEDIUM" sessionModeId="build" />
-    </tab>
-    <tab path="4/opencode/fb1fb938/4x222zd3to4onf5jbj1vflhay" version="20" tabKey="4x222zd3to4onf5jbj1vflhay" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:c88e373e" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:c88e373e" threadTitle="Leg uit hoe je de contactpersonen-knop functioneel maakt." threadActivity="UNREAD">
-      <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
-    </tab>
-    <tab path="4/junie/fb1fb938/cwmdbukl96r5ge3pa5u8ls7kt" version="20" tabKey="cwmdbukl96r5ge3pa5u8ls7kt" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:a4d80beb" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:a4d80beb" threadTitle="Controleer of Vite Plus momenteel geldig is" threadActivity="READY">
-      <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
-    </tab>
-    <tab path="4/junie/fb1fb938/6ycijijahzhhh3050njqj910g" version="20" tabKey="6ycijijahzhhh3050njqj910g" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:f7117a4a" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:f7117a4a" threadTitle="Koppelen van contactpersoon aan verkoper met validatie" threadActivity="UNREAD">
-      <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
-    </tab>
-    <tab path="4/junie/fb1fb938/dvvnhxwrurldmwy7x0t6oony9" version="20" tabKey="dvvnhxwrurldmwy7x0t6oony9" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:new-147f9707-1d35-482a-a60d-7dca5afdbcc6" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="" threadTitle="New Session" threadActivity="READY" pendingCreatedAtMs="1791809978911" pendingLaunchMode="default">
-      <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
-      <newSessionComposer promptText="" entryPoint="TOOLBAR">
-        <composerLaunchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
-        <agentOptions agentId="codex" />
-        <agentOptions agentId="junie" />
-      </newSessionComposer>
-    </tab>
-    <tab path="4/junie/fb1fb938/dyyf9o9xmsi1p3hpv8nnjjzf6" version="20" tabKey="dyyf9o9xmsi1p3hpv8nnjjzf6" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:65f7f599" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:65f7f599" threadTitle="Fix unresolved table contactpersonen error" threadActivity="READY">
-      <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
-    </tab>
-    <tab path="4/junie/fb1fb938/1r1q2sauflc1djogi6vwwhh2x" version="20" tabKey="1r1q2sauflc1djogi6vwwhh2x" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:7662c940" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:7662c940" threadTitle="Implementeer feature voor het genereren van aankoopbevestigingen" threadActivity="UNREAD">
-      <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
-    </tab>
-    <tab path="4/junie/fb1fb938/54d7gayi2ycnfu796i0qtvxre" version="20" tabKey="54d7gayi2ycnfu796i0qtvxre" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:17a3dfc6" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:17a3dfc6" threadTitle="Fix local exception throws and configure SQL dialect warnings" threadActivity="UNREAD">
+  <component name="AirChatToolWindow" selected="68pjzsvbvzi6ln2fmicp3y2bh">
+    <tab path="4/junie/fb1fb938/0t3exozx2uek7anj9lo6ag2l9" version="20" tabKey="0t3exozx2uek7anj9lo6ag2l9" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:1831c9fd" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:1831c9fd" threadTitle="Uitleggen waarom er twee lib-mappen bestaan" threadActivity="UNREAD">
       <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
     </tab>
-    <tab path="4/junie/fb1fb938/4a23hzpfoxlo6ayu18s6n9iy2" version="20" tabKey="4a23hzpfoxlo6ayu18s6n9iy2" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:f4cb1c8c" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:f4cb1c8c" threadTitle="Leg de functie van dit bestand uit" threadActivity="PROCESSING">
+    <tab path="4/junie/fb1fb938/68pjzsvbvzi6ln2fmicp3y2bh" version="20" tabKey="68pjzsvbvzi6ln2fmicp3y2bh" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:508d017b" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:508d017b" threadTitle="Fix database table resolution errors and import warnings" threadActivity="PROCESSING">
       <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
     </tab>
   </component>
@@ -44,10 +15,47 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="Add linked contact persons display in verkopers overview">
+    <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="Refactor component imports and remove unused demo data file">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/lib/database/demo-data.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/demo-data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/lib/database/sneakerness.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/sneakerness.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/aankoop/page.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/api/aankoop/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/aankoop/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/api/contactpersonen/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/contactpersonen/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/api/stands/reserveringen/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/stands/reserveringen/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/api/stands/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/stands/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/api/verkopers/[id]/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/verkopers/[id]/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/api/verkopers/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/api/verkopers/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/components/footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/components/layout/footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/components/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/components/layout/header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/components/hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/components/layout/hero.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/components/toevoegen-foutmelding.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/components/error-handling/toevoegen-foutmelding.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/contactpersonen/error.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/contactpersonen/error.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/contactpersonen/nieuw/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/contactpersonen/contactpersoon-toevoegen/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/contactpersonen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/contactpersonen/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/lib/homepage-content.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/lib/stand-reservering-validatie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/lib/stand-reserveringen-database.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/lib/stand-validatie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/lib/stands-database.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/lib/verkoper-validatie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/pages/contactpersonen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/pages/contactpersonen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/stands/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/stands/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/stands/reserveren/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/stands/reserveren/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/stands/reserveren/stand-reserveren-formulier.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/stands/reserveren/stand-reserveren-formulier.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/stands/toevoegen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/stands/toevoegen/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/stands/toevoegen/stand-toevoegen-formulier.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/stands/toevoegen/stand-toevoegen-formulier.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/tickets/kopen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/tickets/kopen/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/tickets/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/tickets/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/tickets/toevoegen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/tickets/toevoegen/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/verkopers/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/verkopers/[id]/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/verkopers/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/verkopers/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/verkopers/toevoegen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/verkopers/toevoegen/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/verkopers/toevoegen/verkoper-toevoegen-formulier.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/verkopers/toevoegen/verkoper-toevoegen-formulier.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/lib/database/DemoData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/lib/database/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/lib/database/tickets.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/tickets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/tests/stands-api.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/tests/stands-api.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,61 +104,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.127481262761667" />
-      <entry key="MS500" value="4.567405891687614" />
-      <entry key="S2" value="9.938015338793807" />
-      <entry key="S5" value="17.748159537404895" />
-      <entry key="S10" value="35.74490993060279" />
-      <entry key="S30" value="80.65160351619504" />
-      <entry key="S60" value="104.79363753001503" />
-      <entry key="M2" value="121.42217026976365" />
-      <entry key="M5" value="160.49363405383136" />
-      <entry key="M10" value="293.3794542967972" />
-      <entry key="M15" value="460.35380805158195" />
-      <entry key="M30" value="931.0971971453785" />
-      <entry key="H1" value="1590.6156229446494" />
-      <entry key="H2" value="2311.7788961033943" />
-      <entry key="H4" value="2923.942993021072" />
-      <entry key="D1" value="3681.223044344941" />
-      <entry key="W1" value="3843.7744326557417" />
+      <entry key="MS100" value="1.0000133943426845" />
+      <entry key="MS500" value="1.194201535465572" />
+      <entry key="S2" value="3.094650371061384" />
+      <entry key="S5" value="5.140576748271027" />
+      <entry key="S10" value="6.372601020679778" />
+      <entry key="S30" value="8.465534285444416" />
+      <entry key="S60" value="12.765978304467584" />
+      <entry key="M2" value="37.93856410331038" />
+      <entry key="M5" value="159.8415431113992" />
+      <entry key="M10" value="344.9624240837971" />
+      <entry key="M15" value="523.9741307830143" />
+      <entry key="M30" value="1017.1764071916175" />
+      <entry key="H1" value="1728.8725499553925" />
+      <entry key="H2" value="2521.689292668982" />
+      <entry key="H4" value="3201.9027617026486" />
+      <entry key="D1" value="4050.912734458544" />
+      <entry key="W1" value="4234.1486910916165" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.5836288418751463E-108" />
-      <entry key="S5" value="7.583354545777613E-44" />
-      <entry key="S10" value="2.75378912514695E-22" />
-      <entry key="S30" value="6.50594259358244E-8" />
-      <entry key="S60" value="2.55070640421614E-4" />
-      <entry key="M2" value="0.016050173504302486" />
-      <entry key="M5" value="0.22584323527302236" />
-      <entry key="M10" value="0.7031735800840617" />
-      <entry key="M15" value="1.1197769660547663" />
-      <entry key="M30" value="2.2994992632985585" />
-      <entry key="H1" value="5.606866305661809" />
-      <entry key="H2" value="11.735836226528784" />
-      <entry key="H4" value="18.33153044648181" />
-      <entry key="D1" value="27.550606601108495" />
-      <entry key="W1" value="29.635008983388474" />
+      <entry key="MS100" value="2.198970151255571E-211" />
+      <entry key="MS500" value="7.386587841929704E-43" />
+      <entry key="S2" value="2.9316422143552146E-11" />
+      <entry key="S5" value="6.121310179865222E-5" />
+      <entry key="S10" value="0.007823880226502204" />
+      <entry key="S30" value="0.1985214313309366" />
+      <entry key="S60" value="0.4455574729515264" />
+      <entry key="M2" value="0.6676864228002272" />
+      <entry key="M5" value="0.8886384477368786" />
+      <entry key="M10" value="1.2105097108761735" />
+      <entry key="M15" value="1.5653440222800556" />
+      <entry key="M30" value="2.6814438929945394" />
+      <entry key="H1" value="5.8188902413299655" />
+      <entry key="H2" value="11.88834763557633" />
+      <entry key="H4" value="18.659315366468906" />
+      <entry key="D1" value="28.379902771311702" />
+      <entry key="W1" value="30.60871430821024" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.0333269904321205" />
-      <entry key="MS500" value="4.521565752990895" />
-      <entry key="S2" value="9.911345856163255" />
-      <entry key="S5" value="17.728653625644718" />
-      <entry key="S10" value="35.724998391760835" />
-      <entry key="S30" value="80.63645158319781" />
-      <entry key="S60" value="104.78399896089076" />
-      <entry key="M2" value="121.4324245590006" />
-      <entry key="M5" value="160.7161304691176" />
-      <entry key="M10" value="294.0792582968451" />
-      <entry key="M15" value="461.4698823166911" />
-      <entry key="M30" value="933.3918999350204" />
-      <entry key="H1" value="1596.215582177767" />
-      <entry key="H2" value="2323.5072078449357" />
-      <entry key="H4" value="2942.26864067147" />
-      <entry key="D1" value="3708.7721916637615" />
-      <entry key="W1" value="3873.409217993907" />
+      <entry key="MS100" value="4.350035914709407E-5" />
+      <entry key="MS500" value="0.2597490422221807" />
+      <entry key="S2" value="2.374198554649569" />
+      <entry key="S5" value="4.6861208601185815" />
+      <entry key="S10" value="6.106550068332462" />
+      <entry key="S30" value="8.549117841944714" />
+      <entry key="S60" value="13.144507535713187" />
+      <entry key="M2" value="38.56778470600935" />
+      <entry key="M5" value="160.71137868468267" />
+      <entry key="M10" value="346.16141211568095" />
+      <entry key="M15" value="525.5303589035901" />
+      <entry key="M30" value="1019.8505655292922" />
+      <entry key="H1" value="1734.6835726408185" />
+      <entry key="H2" value="2533.5696832613976" />
+      <entry key="H4" value="3220.5559194080292" />
+      <entry key="D1" value="4079.2911048507067" />
+      <entry key="W1" value="4264.75717020962" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -179,6 +187,7 @@
     "javascript.preferred.runtime.type.id": "node",
     "junie.onboarding.icon.badge.shown": "true",
     "junie.plugin.stays.banner.dismissed": "true",
+    "last_opened_file_path": "/home/cainbrouwer/Projecten MBO Utrecht/Leerjaar 2/Periode 1/Project/Sneakerness_G4/my-app/app/components/error-handling",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
@@ -200,6 +209,12 @@
         <entry key="com.intellij.reactbuddy.storybook" value="false" />
       </map>
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/my-app/app/components/error-handling" />
+      <recent name="$PROJECT_DIR$/my-app/app/components/layout" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -226,7 +241,7 @@
       <workItem from="1790937202428" duration="2991000" />
       <workItem from="1790944384094" duration="67000" />
       <workItem from="1791382257402" duration="466000" />
-      <workItem from="1791808812101" duration="4133000" />
+      <workItem from="1791808812101" duration="5072000" />
     </task>
     <task id="LOCAL-00001" summary="voeg knoppen en lijncomponenten toe voor contactpersonen sectie">
       <option name="closed" value="true" />
@@ -316,7 +331,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791811960446</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Remove unused demo data files and update demo data insertion logic">
+      <option name="closed" value="true" />
+      <created>1791812963132</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1791812963132</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,6 +355,8 @@
     <MESSAGE value="Implement verkoper details page with contact person linking and confirmation features" />
     <MESSAGE value="Implement contact person linking and validation in verkoper details page" />
     <MESSAGE value="Add linked contact persons display in verkopers overview" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add linked contact persons display in verkopers overview" />
+    <MESSAGE value="Remove unused demo data files and update demo data insertion logic" />
+    <MESSAGE value="Refactor component imports and remove unused demo data file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor component imports and remove unused demo data file" />
   </component>
 </project>

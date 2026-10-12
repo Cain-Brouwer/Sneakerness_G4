@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import ToevoegenFoutmelding from "../../components/toevoegen-foutmelding";
+import ToevoegenFoutmelding from "../../components/error-handling/toevoegen-foutmelding.jsx";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import { standtypes, valideerNieuweStand } from "../../lib/stand-validatie";
+import { standtypes, valideerNieuweStand } from "../../../lib/stand-validatie";
 
 const veldstijl = "mt-2 min-h-12 w-full min-w-0 rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3 text-neutral-100 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500/30";
 

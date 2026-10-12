@@ -1,5 +1,5 @@
-import Footer from "../components/footer";
-import Header from "../components/header";
+import Footer from "../components/layout/footer.jsx";
+import Header from "../components/layout/header.jsx";
 import VerkopersOverzicht from "./verkopers-overzicht";
 
 export const metadata = {

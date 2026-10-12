@@ -2,9 +2,11 @@ import {
     haalRijenOp,
     initialiseerDatabase,
     sluitDatabase,
+} from "../../../../lib/database/db.js";
+import {
     koppelenContactpersoonAanVerkoper,
     haalGekoppeldeContactpersonenOp,
-} from "../../../../lib/database/db.js";
+} from "../../../../lib/database/verkopers.js";
 
 async function haalVerkoperDetailsOp(verkoperId) {
     const database = await initialiseerDatabase();

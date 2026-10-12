@@ -1,4 +1,5 @@
-import {initialiseerDatabase, sluitDatabase, maakBevestigingAan} from "../../../lib/database/db.js";
+import {initialiseerDatabase, sluitDatabase} from "../../../lib/database/db.js";
+import {maakBevestigingAan} from "../../../lib/database/bevestigingen.js";
 
 export async function POST(request) {
     const { bestellerNaam, bestellerEmail, aantalTickets, ticketType, prijs, forceerFout } = await request.json();

@@ -37,7 +37,7 @@ export default function Header({
     <header className="overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/80 shadow-lg backdrop-blur-md">
       <div className="grid grid-cols-[auto_1fr_auto] items-stretch">
         <Link
-          href="/"
+          href="/my-app/public"
           className="flex items-center justify-center border-r border-neutral-800 px-5 py-3 text-base font-black tracking-wider text-orange-500 transition-colors hover:bg-neutral-800/50"
         >
           SNEAKERNESS

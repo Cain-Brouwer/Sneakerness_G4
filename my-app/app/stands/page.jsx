@@ -1,6 +1,6 @@
-import Footer from "../components/footer";
+import Footer from "../components/layout/footer.jsx";
 import Link from "next/link";
-import Header from "../components/header";
+import Header from "../components/layout/header.jsx";
 import StandsOverzicht from "./stands-overzicht";
 
 export const metadata = {

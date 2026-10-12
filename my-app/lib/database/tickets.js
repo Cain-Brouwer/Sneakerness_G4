@@ -23,7 +23,7 @@ export async function getTicketTypes() {
   }
 }
 
-// Slaat een nieuw ticket op in de database en geeft het id van het nieuwe ticket terug.
+// Slaat een contactpersoon-toevoegen ticket op in de database en geeft het id van het nieuwe ticket terug.
 export async function createTicket(ticket) {
   const database = await initialiseerDatabase();
 

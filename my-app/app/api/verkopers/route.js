@@ -2,9 +2,9 @@ import {
   haalRijenOp,
   initialiseerDatabase,
   sluitDatabase,
-  voegVerkoperToe,
 } from "../../../lib/database/db.js";
-import { valideerNieuweVerkoper } from "../../lib/verkoper-validatie.js";
+import { voegVerkoperToe } from "../../../lib/database/verkopers.js";
+import { valideerNieuweVerkoper } from "../../../lib/verkoper-validatie.js";
 
 const toegestaneParameters = new Set(["zoek", "dagen", "specialeStatus"]);
 
@@ -69,19 +69,19 @@ async function haalVerkopersOp(filters) {
 
       // Zoekt op naam en verkoopsoort.
       voorwaarden.push(`(
-        Naam LIKE ? ESCAPE '\\' COLLATE NOCASE OR
-        VerkooptSoort LIKE ? ESCAPE '\\' COLLATE NOCASE
+        v.Naam LIKE ? ESCAPE '\\' COLLATE NOCASE OR
+        v.VerkooptSoort LIKE ? ESCAPE '\\' COLLATE NOCASE
       )`);
       parameters.push(zoekwaarde, zoekwaarde);
     }
 
     if (filters.dagen) {
-      voorwaarden.push("Dagen = ?");
+      voorwaarden.push("v.Dagen = ?");
       parameters.push(Number(filters.dagen));
     }
 
     if (filters.specialeStatus) {
-      voorwaarden.push("SpecialeStatus = ?");
+      voorwaarden.push("v.SpecialeStatus = ?");
       parameters.push(filters.specialeStatus === "true" ? 1 : 0);
     }
 

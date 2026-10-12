@@ -1,10 +1,10 @@
 import {
-  haalStandRijenOp,
-  initialiseerStandsDatabase,
-  sluitStandsDatabase,
-} from "../../lib/stands-database.js";
-import { voegStandToe } from "../../../lib/database/db.js";
-import { valideerNieuweStand } from "../../lib/stand-validatie.js";
+  haalRijenOp as haalStandRijenOp,
+  initialiseerDatabase as initialiseerStandsDatabase,
+  sluitDatabase as sluitStandsDatabase,
+} from "../../../lib/database/db.js";
+import { voegStandToe } from "../../../lib/database/stands.js";
+import { valideerNieuweStand } from "../../../lib/stand-validatie.js";
 
 const geldigeStandtypes = new Set(["aa-plus", "aa", "a", "side-stand"]);
 const geldigeQueryparameters = new Set(["zoek", "type"]);
