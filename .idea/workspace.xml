@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AirChatToolWindow">
+  <component name="AirChatToolWindow" selected="a5suwl3ix60w689sdka2pls5x">
     <tab path="4/opencode/fb1fb938/7eq944akptzt4zy5ro18ixcxb" version="20" tabKey="7eq944akptzt4zy5ro18ixcxb" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="opencode:acp:3875ad6b" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" threadId="acp:3875ad6b" threadTitle="scheid de rest van de demo data" threadActivity="READY">
       <launchProfile name="OpenCode" agentId="opencode" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" interactionSurfaceId="native" modelId="opencode/space-bunny-free" modelDisplayName="OpenCode Zen/Space Bunny Free" reasoningEffort="MEDIUM" sessionModeId="build" />
     </tab>
@@ -10,7 +10,10 @@
     <tab path="4/opencode/fb1fb938/4x222zd3to4onf5jbj1vflhay" version="20" tabKey="4x222zd3to4onf5jbj1vflhay" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:c88e373e" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:c88e373e" threadTitle="Leg uit hoe je de contactpersonen-knop functioneel maakt." threadActivity="UNREAD">
       <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
     </tab>
-    <tab path="4/junie/fb1fb938/cwmdbukl96r5ge3pa5u8ls7kt" version="20" tabKey="cwmdbukl96r5ge3pa5u8ls7kt" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:a4d80beb" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:a4d80beb" threadTitle="Controleer of Vite Plus momenteel geldig is" threadActivity="PROCESSING">
+    <tab path="4/junie/fb1fb938/cwmdbukl96r5ge3pa5u8ls7kt" version="20" tabKey="cwmdbukl96r5ge3pa5u8ls7kt" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:a4d80beb" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:a4d80beb" threadTitle="Controleer of Vite Plus momenteel geldig is" threadActivity="UNREAD">
+      <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
+    </tab>
+    <tab path="4/junie/fb1fb938/a5suwl3ix60w689sdka2pls5x" version="20" tabKey="a5suwl3ix60w689sdka2pls5x" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:65f7f599" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:65f7f599" threadTitle="Fix unresolved table contactpersonen error" threadActivity="PROCESSING">
       <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
     </tab>
   </component>
@@ -21,36 +24,15 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="Add demo data modules for contact persons, stands, and vendors">
-      <change afterPath="$PROJECT_DIR$/.ai/mcp/mcp.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Sneakerness_G4.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/db-forest-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/AGENTS.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/components/Footer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/components/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/lib/database/DemoData.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/public.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/seed.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/tickets/page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/app/trigger-error/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/trigger-error/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/eslint.config.mjs" beforeDir="false" />
+    <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="Add initial project files and configurations for Sneakerness G4">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d7056ee-0ef4-45c3-b8fa-fcd1cdd35bb4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d7056ee-0ef4-45c3-b8fa-fcd1cdd35bb4/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4efe3c9d-909f-4df1-97cc-cfb305dbe493.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4efe3c9d-909f-4df1-97cc-cfb305dbe493/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/lib/database/DemoData.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/DemoData.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/lib/database/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/db.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/next.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/postcss.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/postcss.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/lib/database/sneakerness.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/sneakerness.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,62 +80,65 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.1079593360145366" />
-      <entry key="MS500" value="2.353629257764538" />
-      <entry key="S2" value="9.022646955677976" />
-      <entry key="S5" value="15.172478491736296" />
-      <entry key="S10" value="18.614781259576457" />
-      <entry key="S30" value="24.677790518575282" />
-      <entry key="S60" value="31.937575285690418" />
-      <entry key="M2" value="48.903020495373134" />
-      <entry key="M5" value="110.47750068975411" />
-      <entry key="M10" value="186.3340633527767" />
-      <entry key="M15" value="249.4453339960222" />
-      <entry key="M30" value="438.7286932306068" />
-      <entry key="H1" value="745.3180801142903" />
-      <entry key="H2" value="1089.8255162416667" />
-      <entry key="H4" value="1372.6863184412755" />
-      <entry key="D1" value="1705.9052658510616" />
-      <entry key="W1" value="1775.0711843482125" />
+      <entry key="MS100" value="1.5597074313462862" />
+      <entry key="MS500" value="3.1347848563642353" />
+      <entry key="S2" value="11.226425857148964" />
+      <entry key="S5" value="19.305244722808652" />
+      <entry key="S10" value="23.957421725501973" />
+      <entry key="S30" value="34.270123320476905" />
+      <entry key="S60" value="48.745072609303755" />
+      <entry key="M2" value="66.6152016353541" />
+      <entry key="M5" value="99.7443828293446" />
+      <entry key="M10" value="159.8932884007556" />
+      <entry key="M15" value="221.7248651990933" />
+      <entry key="M30" value="410.36674270238757" />
+      <entry key="H1" value="729.5146870107881" />
+      <entry key="H2" value="1105.665623547987" />
+      <entry key="H4" value="1424.325538577316" />
+      <entry key="D1" value="1808.342778732158" />
+      <entry key="W1" value="1889.0490756959225" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="3.9272021279919497E-146" />
-      <entry key="S2" value="4.451647969744022E-37" />
-      <entry key="S5" value="2.8801050286373527E-15" />
-      <entry key="S10" value="5.366660999762659E-8" />
-      <entry key="S30" value="0.003771968473827812" />
-      <entry key="S60" value="0.06141635347224557" />
-      <entry key="M2" value="0.24782323081347157" />
-      <entry key="M5" value="0.5728644523827243" />
-      <entry key="M10" value="0.8262008488965166" />
-      <entry key="M15" value="1.2329254619690693" />
-      <entry key="M30" value="3.6040363894614664" />
-      <entry key="H1" value="8.68742119438332" />
-      <entry key="H2" value="14.766231625005497" />
-      <entry key="H4" value="19.764945083799084" />
-      <entry key="D1" value="25.593156568541993" />
-      <entry key="W1" value="26.793342504165228" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="2.0044376672563916E-185" />
+      <entry key="S5" value="1.3206782395563841E-74" />
+      <entry key="S10" value="1.1492076572823519E-37" />
+      <entry key="S30" value="4.861827028592167E-13" />
+      <entry key="S60" value="6.972680279915439E-7" />
+      <entry key="M2" value="8.350257666247528E-4" />
+      <entry key="M5" value="0.058759084283254985" />
+      <entry key="M10" value="0.2646044900009802" />
+      <entry key="M15" value="0.5771356076597348" />
+      <entry key="M30" value="2.4658104654859536" />
+      <entry key="H1" value="7.18581678827987" />
+      <entry key="H2" value="13.429576194337816" />
+      <entry key="H4" value="18.849156814037745" />
+      <entry key="D1" value="25.39159053950621" />
+      <entry key="W1" value="26.76309476454913" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.7305967635771806" />
-      <entry key="MS500" value="2.226064300296185" />
-      <entry key="S2" value="8.930032563513683" />
-      <entry key="S5" value="15.109853529213321" />
-      <entry key="S10" value="18.57594707046864" />
-      <entry key="S30" value="24.66464139630349" />
-      <entry key="S60" value="31.988006516464598" />
-      <entry key="M2" value="49.14230402948209" />
-      <entry key="M5" value="111.04334856943075" />
-      <entry key="M10" value="187.15464121011757" />
-      <entry key="M15" value="250.6724724517518" />
-      <entry key="M30" value="442.32381721930193" />
-      <entry key="H1" value="753.994387350929" />
-      <entry key="H2" value="1104.5822924179183" />
-      <entry key="H4" value="1392.444989948105" />
-      <entry key="D1" value="1731.497087076983" />
-      <entry key="W1" value="1801.8643277545516" />
+      <entry key="MS100" value="1.3118284572935648" />
+      <entry key="MS500" value="3.029120773730709" />
+      <entry key="S2" value="11.149590312108225" />
+      <entry key="S5" value="19.258056329477927" />
+      <entry key="S10" value="23.92921576182424" />
+      <entry key="S30" value="34.25729394821563" />
+      <entry key="S60" value="48.73619749028818" />
+      <entry key="M2" value="66.61000996597365" />
+      <entry key="M5" value="99.79921162985801" />
+      <entry key="M10" value="160.15426250224235" />
+      <entry key="M15" value="222.29801157531273" />
+      <entry key="M30" value="412.82578167423037" />
+      <entry key="H1" value="736.6909648582156" />
+      <entry key="H2" value="1119.0864248356047" />
+      <entry key="H4" value="1443.1686242014746" />
+      <entry key="D1" value="1833.7330296454095" />
+      <entry key="W1" value="1915.811969470959" />
     </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -250,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791382304903</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add initial project files and configurations for Sneakerness G4">
+      <option name="closed" value="true" />
+      <created>1791795518972</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1791795518972</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +252,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="voeg knoppen en lijncomponenten toe voor contactpersonen sectie" />
     <MESSAGE value="Add initial project structure with essential files and configurations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add initial project structure with essential files and configurations" />
+    <MESSAGE value="Add demo data modules for contact persons, stands, and vendors" />
+    <MESSAGE value="Add initial project files and configurations for Sneakerness G4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add initial project files and configurations for Sneakerness G4" />
   </component>
 </project>
