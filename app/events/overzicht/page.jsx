@@ -1,6 +1,10 @@
+'use client';
+
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import Footer from '../../components/footer';
 import Header from '../../components/header';
+import { formatEventDateRange, getStoredEvents } from '../eventStorage';
 
 const upcomingEvents = [
   { date: '14–15 november 2026', title: 'Sneakerness Rotterdam 2026', location: 'Van Nellefabriek, Rotterdam', description: 'De grootste sneakerbeurs van Nederland met sneakers, streetwear en limited drops.', time: '10:00–18:00 uur', action: 'Tickets kopen', primary: true },
@@ -29,6 +33,18 @@ function EventCard({ event }) {
 }
 
 export default function EventsOverviewPage() {
+  const [createdEvents, setCreatedEvents] = useState([]);
+  const [storageError, setStorageError] = useState('');
+
+  useEffect(() => {
+    try {
+      setCreatedEvents(getStoredEvents());
+    } catch (error) {
+      console.error('Opgeslagen events konden niet worden geladen.', error);
+      setStorageError('Opgeslagen events konden niet worden geladen vanuit de browseropslag.');
+    }
+  }, []);
+
   return (
     <div className="site-shell">
       <Header active="events" />
@@ -36,10 +52,26 @@ export default function EventsOverviewPage() {
         <section className="page-heading" aria-labelledby="events-title">
           <Link className="back-link" href="/">← Terug</Link>
           <h1 id="events-title">Evenementen overzicht</h1>
+          <Link className="button button-primary add-event-link" href="/events/toevoegen">Event toevoegen</Link>
         </section>
         <section className="event-section" aria-labelledby="upcoming-title">
           <div className="section-heading"><h2 id="upcoming-title">Aankomende events</h2></div>
-          <div className="event-list">{upcomingEvents.map((event) => <EventCard key={event.title} event={event} />)}</div>
+          {storageError && <p className="form-message form-message-error" role="alert">{storageError}</p>}
+          <div className="event-list">
+            {upcomingEvents.map((event) => <EventCard key={event.title} event={event} />)}
+            {createdEvents.map((event) => (
+              <EventCard
+                key={event.id}
+                event={{
+                  ...event,
+                  date: formatEventDateRange(event.startDate, event.endDate),
+                  time: `${event.startTime}–${event.endTime} uur`,
+                  action: 'Bekijk details',
+                  primary: false,
+                }}
+              />
+            ))}
+          </div>
         </section>
         <section className="archive-section" aria-labelledby="archive-title">
           <div className="section-heading"><h2 id="archive-title">Vorige edities</h2></div>
