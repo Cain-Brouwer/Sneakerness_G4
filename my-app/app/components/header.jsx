@@ -11,10 +11,18 @@ const navigatieItems = [
   { href: "/verkopers", label: "Verkopers" },
   { href: "/tickets", label: "Tickets" },
   { href: "/#info", label: "Info" },
-  { href: "/contactpersonen", label: "Contact"}
+  { href: "/contactpersonen", label: "Contact" },
 ];
 
-export default function Header() {
+// terugHref (optioneel): toont op mobiel een "← Terug"-link in plaats van het menu
+// (zoals in de wireframe van het ticketoverzicht).
+// terugOpDesktop (optioneel): toont de terug-link ook op desktop, in plaats van de navigatie,
+// met de tekst uit terugLabel (zoals in de wireframe van tickets kopen).
+export default function Header({
+  terugHref,
+  terugOpDesktop = false,
+  terugLabel = "Terug naar home",
+}) {
   const [mobielMenuOpen, setMobielMenuOpen] = useState(false);
 
   function wisselMobielMenu() {
@@ -38,50 +46,82 @@ export default function Header() {
         <div aria-hidden="true" />
 
         <nav
-          className="hidden items-center justify-center gap-1 border-l border-neutral-800 px-3 py-2 text-sm md:flex"
+          className={`items-center justify-center gap-1 border-l border-neutral-800 px-3 py-2 text-sm ${
+            terugHref && terugOpDesktop ? "hidden" : "hidden md:flex"
+          }`}
           aria-label="Hoofdnavigatie"
         >
-          {navigatieItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-lg px-4 py-2 font-medium text-neutral-300 transition-all hover:bg-neutral-800 hover:text-white"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navigatieItems.map((item) => {
+            const isAnchor = item.href.startsWith("#");
+            const Component = isAnchor ? "a" : Link;
+
+            return (
+              <Component
+                key={item.href}
+                href={item.href}
+                className="rounded-lg px-4 py-2 font-medium text-neutral-300 transition-all hover:bg-neutral-800 hover:text-white"
+                onClick={sluitMobielMenu}
+              >
+                {item.label}
+              </Component>
+            );
+          })}
         </nav>
 
-        <button
-          type="button"
-          className="flex items-center justify-center border-l border-neutral-800 px-4 py-3 text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white md:hidden"
-          aria-expanded={mobielMenuOpen}
-          aria-controls="mobiel-menu"
-          aria-label={mobielMenuOpen ? "Menu sluiten" : "Menu openen"}
-          onClick={wisselMobielMenu}
-        >
-          <span className="text-xl leading-none" aria-hidden="true">
-            {mobielMenuOpen ? "✕" : "☰"}
-          </span>
-        </button>
+        {terugHref ? (
+          <Link
+            href={terugHref}
+            className={`flex items-center justify-center gap-2 border-l border-neutral-800 px-4 py-3 text-sm font-medium text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white ${
+              terugOpDesktop ? "" : "md:hidden"
+            }`}
+          >
+            <span aria-hidden="true">←</span>
+            {terugOpDesktop ? (
+              <>
+                <span className="md:hidden">Terug</span>
+                <span className="hidden md:inline">{terugLabel}</span>
+              </>
+            ) : (
+              "Terug"
+            )}
+          </Link>
+        ) : (
+          <button
+            type="button"
+            className="flex items-center justify-center border-l border-neutral-800 px-4 py-3 text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white md:hidden"
+            aria-expanded={mobielMenuOpen}
+            aria-controls="mobiel-menu"
+            aria-label={mobielMenuOpen ? "Menu sluiten" : "Menu openen"}
+            onClick={wisselMobielMenu}
+          >
+            <span className="text-xl leading-none" aria-hidden="true">
+              {mobielMenuOpen ? "✕" : "☰"}
+            </span>
+          </button>
+        )}
       </div>
 
-      {mobielMenuOpen && (
+      {!terugHref && mobielMenuOpen && (
         <nav
           id="mobiel-menu"
           className="flex flex-col border-t border-neutral-800 bg-neutral-900 md:hidden"
           aria-label="Mobiele navigatie"
         >
-          {navigatieItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="border-b border-neutral-800/60 px-5 py-3.5 text-sm font-medium text-neutral-300 transition-colors last:border-b-0 hover:bg-neutral-800 hover:text-white"
-              onClick={sluitMobielMenu}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navigatieItems.map((item) => {
+            const isAnchor = item.href.startsWith("#");
+            const Component = isAnchor ? "a" : Link;
+
+            return (
+              <Component
+                key={item.href}
+                href={item.href}
+                className="border-b border-neutral-800/60 px-5 py-3.5 text-sm font-medium text-neutral-300 transition-colors last:border-b-0 hover:bg-neutral-800 hover:text-white"
+                onClick={sluitMobielMenu}
+              >
+                {item.label}
+              </Component>
+            );
+          })}
         </nav>
       )}
     </header>

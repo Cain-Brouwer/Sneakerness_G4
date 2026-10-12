@@ -1,4 +1,4 @@
-import { mkdir } from "node:fs/promises";
+import { mkdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import sqlite3 from "sqlite3";
 import { voegDemoDataToe } from "./DemoData.js";
@@ -9,6 +9,7 @@ const standaardDatabasePad = path.join(
   "database",
   "sneakerness.sqlite3",
 );
+const databaseSeedPad = path.join(process.cwd(), "seed.sql");
 
 export function openDatabase(databasePad) {
   return new Promise((resolve, reject) => {
@@ -17,7 +18,6 @@ export function openDatabase(databasePad) {
         reject(fout);
         return;
       }
-
       resolve(database);
     });
   });
@@ -30,7 +30,6 @@ export function voerQueryUit(database, sql, parameters = []) {
         reject(fout);
         return;
       }
-
       resolve({ id: this.lastID, wijzigingen: this.changes });
     });
   });
@@ -43,7 +42,6 @@ export function haalRijenOp(database, sql, parameters = []) {
         reject(fout);
         return;
       }
-
       resolve(rijen);
     });
   });
@@ -95,7 +93,6 @@ function voerDatabaseSqlUit(database, sql) {
         reject(fout);
         return;
       }
-
       resolve();
     });
   });
@@ -186,6 +183,49 @@ async function initialiseerBevestigingTabel(database) {
   `);
 }
 
+async function initialiseerTicketTabellen(database) {
+  await voerDatabaseSqlUit(
+    database,
+    `
+    CREATE TABLE IF NOT EXISTS tickettypes (
+        id INTEGER PRIMARY KEY,
+        Naam TEXT NOT NULL UNIQUE
+    );
+
+    CREATE TABLE IF NOT EXISTS tickets (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        Ticketnaam TEXT NOT NULL,
+        TickettypeId INTEGER NOT NULL,
+        Prijs REAL NOT NULL,
+        AantalBeschikbaar INTEGER NOT NULL,
+        Evenementdatum DATE NOT NULL,
+        Beschrijving TEXT,
+        Datumaangemaakt DATE,
+        Datumgewijzigd DATE,
+        FOREIGN KEY (TickettypeId) REFERENCES tickettypes (id)
+    );
+
+    INSERT OR IGNORE INTO tickettypes (id, Naam) VALUES (1, 'Dagkaart');
+    INSERT OR IGNORE INTO tickettypes (id, Naam) VALUES (2, 'Weekendpas');
+    INSERT OR IGNORE INTO tickettypes (id, Naam) VALUES (3, 'Early Entry');
+  `
+  );
+}
+
+// Voegt de kolom "Tijdslot" toe aan oudere databases (bijv. "11:00"; leeg = hele dag).
+async function initialiseerTicketTijdslotSchema(database) {
+  const kolommen = await haalRijenOp(database, "PRAGMA table_info(tickets)");
+
+  if (kolommen.some((kolom) => kolom.name.toLowerCase() === "tijdslot")) return;
+
+  try {
+    await voerQueryUit(database, "ALTER TABLE tickets ADD COLUMN Tijdslot TEXT");
+  } catch (fout) {
+    // Een andere aanvraag kan de kolom inmiddels hebben toegevoegd.
+    if (!fout.message.includes("duplicate column name:")) throw fout;
+  }
+}
+
 function moetVoorbeelddataToevoegen() {
   return process.env.NODE_ENV !== "production"
     && !process.env.SQLITE_DATABASE_PATH
@@ -199,7 +239,6 @@ export function sluitDatabase(database) {
         reject(fout);
         return;
       }
-
       resolve();
     });
   });
@@ -222,17 +261,160 @@ export async function initialiseerDatabase() {
     await schakelForeignKeysIn(database);
     await initialiseerVerkoperTabel(database);
     await initialiseerStandTabel(database);
+    await initialiseerStandToevoegenSchema(database);
+    await initialiseerStandReserveringTabel(database);
     await initialiseerContactpersoonTabel(database);
     await initialiseerVerkoperContactpersoonTabel(database);
     await initialiseerBevestigingTabel(database);
+    await initialiseerVerkoperToevoegenSchema(database);
+    await initialiseerTicketTabellen(database); // tickets toegevoegd
+    await initialiseerTicketTijdslotSchema(database);
 
     if (moetVoorbeelddataToevoegen()) {
-      await voegDemoDataToe(database);
+      const databaseSeed = await readFile(databaseSeedPad, "utf8");
+      await voerDatabaseSqlUit(database, databaseSeed);
     }
 
     return database;
   } catch (fout) {
     await sluitDatabase(database);
     throw fout;
+  }
+}
+
+export async function checkDatabaseConnection() {
+  // Gooit een Error als er geen databaseverbinding is (bijv. FORCE_DB_ERROR=1).
+  const database = await initialiseerDatabase();
+  await sluitDatabase(database);
+}
+
+async function initialiseerStandToevoegenSchema(database) {
+  const kolommen = await haalRijenOp(database, "PRAGMA table_info(Stand)");
+  const nieuweKolommen = [
+    ["Locatie", "TEXT"],
+    ["Grootte", "REAL CHECK (Grootte > 0)"],
+    ["PrijsCenten", "INTEGER CHECK (PrijsCenten >= 0)"],
+    ["Status", "TEXT NOT NULL DEFAULT 'Beschikbaar'"],
+    ["VerkoperId", "INTEGER REFERENCES Verkoper(Id)"],
+  ];
+  for (const [naam, definitie] of nieuweKolommen) {
+    if (kolommen.some((kolom) => kolom.name.toLowerCase() === naam.toLowerCase())) continue;
+    try {
+      await voerQueryUit(database, `ALTER TABLE Stand ADD COLUMN ${naam} ${definitie}`);
+    } catch (fout) {
+      // Een andere aanvraag kan dezelfde kolom inmiddels hebben toegevoegd.
+      if (!fout.message.includes("duplicate column name:")) throw fout;
+      const actueleKolommen = await haalRijenOp(database, "PRAGMA table_info(Stand)");
+      if (!actueleKolommen.some((kolom) => kolom.name.toLowerCase() === naam.toLowerCase())) throw fout;
+    }
+  }
+}
+
+async function initialiseerStandReserveringTabel(database) {
+  // De verkoperkoppeling en status blijven uitsluitend in Stand staan.
+  await voerDatabaseSqlUit(database, `
+    CREATE TABLE IF NOT EXISTS StandReservering (
+        Id INTEGER PRIMARY KEY AUTOINCREMENT
+        ,StandId INTEGER NOT NULL UNIQUE REFERENCES Stand(Id)
+        ,Evenementdatum TEXT NOT NULL
+        ,Startdatum TEXT NOT NULL
+        ,Einddatum TEXT NOT NULL CHECK (Einddatum >= Startdatum)
+        ,Opmerking TEXT
+        ,Datumaangemaakt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+}
+
+export async function voegStandToe(gegevens) {
+  const database = await initialiseerDatabase();
+  try {
+    // Bewaart geldbedragen in centen om afrondingsverschillen te voorkomen.
+    return await voerQueryUit(database, `
+      INSERT INTO Stand (Standnummer, Standtype, Locatie, Grootte, PrijsCenten, Status, Opmerking)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `, [gegevens.standnummer, gegevens.standtype, gegevens.locatie, gegevens.grootte,
+      gegevens.prijsCenten, gegevens.status, gegevens.opmerking || null]);
+  } finally {
+    await sluitDatabase(database);
+  }
+}
+
+async function initialiseerVerkoperToevoegenSchema(database) {
+  const kolommen = await haalRijenOp(database, "PRAGMA table_info(Verkoper)");
+
+  for (const naam of ["Adres", "Postcode", "Plaats"]) {
+    if (!kolommen.some((kolom) => kolom.name.toLowerCase() === naam.toLowerCase())) {
+      try {
+        await voerQueryUit(database, `ALTER TABLE Verkoper ADD COLUMN ${naam} TEXT`);
+      } catch (fout) {
+        if (!fout.message.includes("duplicate column name:")) throw fout;
+        const actueleKolommen = await haalRijenOp(database, "PRAGMA table_info(Verkoper)");
+        if (!actueleKolommen.some((kolom) => kolom.name.toLowerCase() === naam.toLowerCase())) {
+          throw fout;
+        }
+      }
+    }
+  }
+
+  await voerDatabaseSqlUit(
+    database,
+    `
+    CREATE TABLE IF NOT EXISTS Contactpersoonverkoper (
+        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+        VerkoperId INTEGER NOT NULL REFERENCES Verkoper(Id),
+        ContactpersoonId INTEGER NOT NULL REFERENCES contactpersonen(id),
+        UNIQUE (VerkoperId, ContactpersoonId)
+    );
+  `
+  );
+}
+
+export async function voegVerkoperToe(gegevens) {
+  const database = await initialiseerDatabase();
+  try {
+    await voerQueryUit(database, "BEGIN IMMEDIATE");
+    try {
+      const verkoper = await voerQueryUit(
+        database,
+        `
+        INSERT INTO Verkoper (Naam, VerkooptSoort, Dagen, Adres, Postcode, Plaats, Opmerking)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+      `,
+        [
+          gegevens.naam,
+          gegevens.verkooptSoort,
+          gegevens.dagen,
+          gegevens.adres,
+          gegevens.postcode,
+          gegevens.plaats,
+          gegevens.opmerking || null,
+        ]
+      );
+
+      const contactpersoon = await voegContactpersoonToe(
+        database,
+        gegevens.contactpersoon,
+        gegevens.telefoon || null,
+        gegevens.email,
+        1,
+        null
+      );
+
+      await voerQueryUit(
+        database,
+        `
+        INSERT INTO Contactpersoonverkoper (VerkoperId, ContactpersoonId) VALUES (?, ?)
+      `,
+        [verkoper.id, contactpersoon.id]
+      );
+
+      await voerQueryUit(database, "COMMIT");
+      return { id: verkoper.id };
+    } catch (fout) {
+      await voerQueryUit(database, "ROLLBACK");
+      throw fout;
+    }
+  } finally {
+    await sluitDatabase(database);
   }
 }

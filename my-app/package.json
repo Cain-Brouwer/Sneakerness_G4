@@ -8,8 +8,8 @@
     "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
-    "lint": "vp lint",
-    "test": "node --test tests/stands-api.test.js tests/verkopers-api.test.js"
+    "lint": "eslint",
+    "test": "node --test tests/stands-api.test.js tests/verkopers-api.test.js tests/stand-toevoegen.test.js tests/stand-reserveren.test.js"
   },
   "dependencies": {
     "next": "16.3.5",
@@ -19,13 +19,12 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
-    "vite-plus": "1.1.0"
+    "eslint": "^9",
+    "eslint-config-next": "16.3.5",
+    "lightningcss": "^1.32.0",
+    "tailwindcss": "^4"
   },
   "allowScripts": {
     "sqlite3@6.0.1": true
-  },
-  "overrides": {
-    "vite": "npm:@voidzero-dev/vite-plus-core@1.1.0"
   }
 }
