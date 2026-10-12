@@ -1,8 +1,6 @@
-import { mkdir } from "node:fs/promises";
+import { mkdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import sqlite3 from "sqlite3";
-
-import { voegDemoDataToe } from "./demo-data.js";
 
 const standaardDatabasePad = path.join(
   process.cwd(),
@@ -10,6 +8,7 @@ const standaardDatabasePad = path.join(
   "database",
   "sneakerness.sqlite3",
 );
+const databaseSeedPad = path.join(process.cwd(), "seed.sql");
 
 export function openDatabase(databasePad) {
   return new Promise((resolve, reject) => {
@@ -164,7 +163,8 @@ export async function initialiseerDatabase() {
     await initialiseerContactpersoonTabel(database);
 
     if (moetVoorbeelddataToevoegen()) {
-      await voegDemoDataToe(database);
+      const databaseSeed = await readFile(databaseSeedPad, "utf8");
+      await voerDatabaseSqlUit(database, databaseSeed);
     }
 
     return database;

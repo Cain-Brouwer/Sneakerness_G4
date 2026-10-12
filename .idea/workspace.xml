@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AirChatToolWindow">
-    <tab path="4/opencode/fb1fb938/7eq944akptzt4zy5ro18ixcxb" version="19" tabKey="7eq944akptzt4zy5ro18ixcxb" projectHash="fb1fb938" projectPath="$PROJECT_DIR$" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="opencode:acp:3875ad6b" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" threadId="acp:3875ad6b" threadTitle="scheid de rest van de demo data" threadActivity="READY">
+    <tab path="4/opencode/fb1fb938/7eq944akptzt4zy5ro18ixcxb" version="20" tabKey="7eq944akptzt4zy5ro18ixcxb" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="opencode:acp:3875ad6b" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" threadId="acp:3875ad6b" threadTitle="scheid de rest van de demo data" threadActivity="READY">
       <launchProfile name="OpenCode" agentId="opencode" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" interactionSurfaceId="native" modelId="opencode/space-bunny-free" modelDisplayName="OpenCode Zen/Space Bunny Free" reasoningEffort="MEDIUM" sessionModeId="build" />
     </tab>
-    <tab path="4/opencode/fb1fb938/c05ep3swaijjkla9o5uidz0o4" version="19" tabKey="c05ep3swaijjkla9o5uidz0o4" projectHash="fb1fb938" projectPath="$PROJECT_DIR$" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="opencode:acp:3b769319" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" threadId="acp:3b769319" threadTitle="@`/home/cainbrouwer/Projecten MBO Utrecht/Leerjaar 2/Periode 1/Project/Sneakerne" threadActivity="READY">
+    <tab path="4/opencode/fb1fb938/c05ep3swaijjkla9o5uidz0o4" version="20" tabKey="c05ep3swaijjkla9o5uidz0o4" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="opencode:acp:3b769319" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" threadId="acp:3b769319" threadTitle="@`/home/cainbrouwer/Projecten MBO Utrecht/Leerjaar 2/Periode 1/Project/Sneakerne" threadActivity="READY">
       <launchProfile name="OpenCode" agentId="opencode" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6f70656e636f6465" interactionSurfaceId="native" modelId="opencode/space-bunny-free" modelDisplayName="OpenCode Zen/Space Bunny Free" reasoningEffort="MEDIUM" sessionModeId="build" />
+    </tab>
+    <tab path="4/opencode/fb1fb938/4x222zd3to4onf5jbj1vflhay" version="20" tabKey="4x222zd3to4onf5jbj1vflhay" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:c88e373e" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:c88e373e" threadTitle="Leg uit hoe je de contactpersonen-knop functioneel maakt." threadActivity="UNREAD">
+      <launchProfile name="" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" reasoningEffort="AUTO" />
+    </tab>
+    <tab path="4/junie/fb1fb938/cwmdbukl96r5ge3pa5u8ls7kt" version="20" tabKey="cwmdbukl96r5ge3pa5u8ls7kt" projectHash="fb1fb938" sessionWorkspaceId="$PROJECT_DIR$" projectDirectory="$PROJECT_DIR$" threadIdentity="junie:acp:a4d80beb" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" threadId="acp:a4d80beb" threadTitle="Controleer of Vite Plus momenteel geldig is" threadActivity="PROCESSING">
+      <launchProfile name="Junie" agentId="junie" launchMode="DEFAULT" launchTargetId="acp.v1.6163702e72656769737472792e6a756e6965" interactionSurfaceId="native" modelId="v1:15:proxy:ingrazzio:junie-lite" modelDisplayName="Lite" reasoningEffort="LOW" sessionModeId="brave-auto" />
     </tab>
   </component>
   <component name="AutoImportSettings">
@@ -15,7 +21,37 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="Add demo data modules for contact persons, stands, and vendors" />
+    <list default="true" id="f21cea2c-93ef-4498-8380-c85606f8a6fc" name="Changes" comment="Add demo data modules for contact persons, stands, and vendors">
+      <change afterPath="$PROJECT_DIR$/.ai/mcp/mcp.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Sneakerness_G4.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/db-forest-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-app/AGENTS.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-app/components/Footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-app/components/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-app/lib/database/DemoData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-app/public.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-app/seed.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-app/tickets/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app/trigger-error/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app/trigger-error/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/eslint.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/lib/database/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/lib/database/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/next.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/postcss.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/postcss.config.mjs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,61 +98,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.3148639970521143" />
-      <entry key="MS500" value="4.155268954836592" />
-      <entry key="S2" value="12.526848755961444" />
-      <entry key="S5" value="19.520893293236004" />
-      <entry key="S10" value="23.239518756188836" />
-      <entry key="S30" value="27.76979281112972" />
-      <entry key="S60" value="32.144891729790885" />
-      <entry key="M2" value="40.85252913695663" />
-      <entry key="M5" value="70.34390408750895" />
-      <entry key="M10" value="110.12686067017682" />
-      <entry key="M15" value="158.99995779702854" />
-      <entry key="M30" value="337.74936057254644" />
-      <entry key="H1" value="631.079330316111" />
-      <entry key="H2" value="953.083354252255" />
-      <entry key="H4" value="1212.9084843203311" />
-      <entry key="D1" value="1515.0213689229024" />
-      <entry key="W1" value="1577.2772877116877" />
+      <entry key="MS100" value="1.1079593360145366" />
+      <entry key="MS500" value="2.353629257764538" />
+      <entry key="S2" value="9.022646955677976" />
+      <entry key="S5" value="15.172478491736296" />
+      <entry key="S10" value="18.614781259576457" />
+      <entry key="S30" value="24.677790518575282" />
+      <entry key="S60" value="31.937575285690418" />
+      <entry key="M2" value="48.903020495373134" />
+      <entry key="M5" value="110.47750068975411" />
+      <entry key="M10" value="186.3340633527767" />
+      <entry key="M15" value="249.4453339960222" />
+      <entry key="M30" value="438.7286932306068" />
+      <entry key="H1" value="745.3180801142903" />
+      <entry key="H2" value="1089.8255162416667" />
+      <entry key="H4" value="1372.6863184412755" />
+      <entry key="D1" value="1705.9052658510616" />
+      <entry key="W1" value="1775.0711843482125" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="1.242440833151436E-193" />
-      <entry key="S10" value="3.6613699073448287E-97" />
-      <entry key="S30" value="9.469263355550704E-33" />
-      <entry key="S60" value="1.3482098391569112E-16" />
-      <entry key="M2" value="1.875063371479399E-8" />
-      <entry key="M5" value="0.002182622513935007" />
-      <entry key="M10" value="0.14260826685226433" />
-      <entry key="M15" value="0.6491520755197451" />
-      <entry key="M30" value="3.419144123751481" />
-      <entry key="H1" value="8.71350794023896" />
-      <entry key="H2" value="14.63746989615622" />
-      <entry key="H4" value="19.345411130441004" />
-      <entry key="D1" value="24.717753537418435" />
-      <entry key="W1" value="25.811957046719158" />
+      <entry key="MS500" value="3.9272021279919497E-146" />
+      <entry key="S2" value="4.451647969744022E-37" />
+      <entry key="S5" value="2.8801050286373527E-15" />
+      <entry key="S10" value="5.366660999762659E-8" />
+      <entry key="S30" value="0.003771968473827812" />
+      <entry key="S60" value="0.06141635347224557" />
+      <entry key="M2" value="0.24782323081347157" />
+      <entry key="M5" value="0.5728644523827243" />
+      <entry key="M10" value="0.8262008488965166" />
+      <entry key="M15" value="1.2329254619690693" />
+      <entry key="M30" value="3.6040363894614664" />
+      <entry key="H1" value="8.68742119438332" />
+      <entry key="H2" value="14.766231625005497" />
+      <entry key="H4" value="19.764945083799084" />
+      <entry key="D1" value="25.593156568541993" />
+      <entry key="W1" value="26.793342504165228" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.2530537981154426" />
-      <entry key="MS500" value="4.119838674930848" />
-      <entry key="S2" value="12.501481442617024" />
-      <entry key="S5" value="19.505196686485753" />
-      <entry key="S10" value="23.230169550993715" />
-      <entry key="S30" value="27.765464664396895" />
-      <entry key="S60" value="32.14177493934236" />
-      <entry key="M2" value="40.85018891313422" />
-      <entry key="M5" value="70.34431182195277" />
-      <entry key="M10" value="110.2673783843839" />
-      <entry key="M15" value="159.645379750776" />
-      <entry key="M30" value="341.159700525524" />
-      <entry key="H1" value="639.7815072822629" />
-      <entry key="H2" value="967.7113682721356" />
-      <entry key="H4" value="1232.2477187740114" />
-      <entry key="D1" value="1539.7378277928976" />
-      <entry key="W1" value="1603.0890522691325" />
+      <entry key="MS100" value="0.7305967635771806" />
+      <entry key="MS500" value="2.226064300296185" />
+      <entry key="S2" value="8.930032563513683" />
+      <entry key="S5" value="15.109853529213321" />
+      <entry key="S10" value="18.57594707046864" />
+      <entry key="S30" value="24.66464139630349" />
+      <entry key="S60" value="31.988006516464598" />
+      <entry key="M2" value="49.14230402948209" />
+      <entry key="M5" value="111.04334856943075" />
+      <entry key="M10" value="187.15464121011757" />
+      <entry key="M15" value="250.6724724517518" />
+      <entry key="M30" value="442.32381721930193" />
+      <entry key="H1" value="753.994387350929" />
+      <entry key="H2" value="1104.5822924179183" />
+      <entry key="H4" value="1392.444989948105" />
+      <entry key="D1" value="1731.497087076983" />
+      <entry key="W1" value="1801.8643277545516" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
