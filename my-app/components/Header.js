@@ -1,18 +1,17 @@
 "use client";
 
-// Header component: displays the main navigation and mobile menu for the website.
-// It keeps the brand visible and links users to the important sections of the homepage.
 import { useState } from "react";
 import Link from "next/link";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "#tickets", label: "Tickets" },
-  { href: "#stands", label: "Stands" },
+  { href: "/tickets", label: "Tickets" },
+  { href: "/#stands", label: "Stands" },
   { href: "#info", label: "Info" },
 ];
 
-export default function Header() {
+// terugHref (optioneel): toont op mobiel een "← Terug"-link in plaats van het menu (zie wireframe).
+export default function Header({ terugHref }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -48,23 +47,33 @@ export default function Header() {
           })}
         </nav>
 
-        {/* Mobiel menu knop */}
-        <button
-          type="button"
-          className="flex items-center justify-center border-l border-neutral-800 px-4 py-3 text-neutral-300 hover:text-white hover:bg-neutral-800 transition-colors md:hidden"
-          aria-expanded={menuOpen}
-          aria-controls="mobiel-menu"
-          aria-label={menuOpen ? "Menu sluiten" : "Menu openen"}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span className="text-xl leading-none" aria-hidden="true">
-            {menuOpen ? "✕" : "☰"}
-          </span>
-        </button>
+        {/* Mobiel: "Terug"-link (als terugHref is meegegeven) of menu knop */}
+        {terugHref ? (
+          <Link
+            href={terugHref}
+            className="flex items-center justify-center gap-2 border-l border-neutral-800 px-4 py-3 text-sm font-medium text-neutral-300 hover:text-white hover:bg-neutral-800 transition-colors md:hidden"
+          >
+            <span aria-hidden="true">←</span>
+            Terug
+          </Link>
+        ) : (
+          <button
+            type="button"
+            className="flex items-center justify-center border-l border-neutral-800 px-4 py-3 text-neutral-300 hover:text-white hover:bg-neutral-800 transition-colors md:hidden"
+            aria-expanded={menuOpen}
+            aria-controls="mobiel-menu"
+            aria-label={menuOpen ? "Menu sluiten" : "Menu openen"}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span className="text-xl leading-none" aria-hidden="true">
+              {menuOpen ? "✕" : "☰"}
+            </span>
+          </button>
+        )}
       </div>
 
       {/* Mobiel Menu Dropdown */}
-      {menuOpen && (
+      {!terugHref && menuOpen && (
         <nav
           id="mobiel-menu"
           className="flex flex-col border-t border-neutral-800 bg-neutral-900 md:hidden"

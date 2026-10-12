@@ -157,6 +157,20 @@ async function initialiseerTicketTabellen(database) {
   );
 }
 
+// Voegt de kolom "Tijdslot" toe aan oudere databases (bijv. "11:00"; leeg = hele dag).
+async function initialiseerTicketTijdslotSchema(database) {
+  const kolommen = await haalRijenOp(database, "PRAGMA table_info(tickets)");
+
+  if (kolommen.some((kolom) => kolom.name.toLowerCase() === "tijdslot")) return;
+
+  try {
+    await voerQueryUit(database, "ALTER TABLE tickets ADD COLUMN Tijdslot TEXT");
+  } catch (fout) {
+    // Een andere aanvraag kan de kolom inmiddels hebben toegevoegd.
+    if (!fout.message.includes("duplicate column name:")) throw fout;
+  }
+}
+
 function moetVoorbeelddataToevoegen() {
   return (
     process.env.NODE_ENV !== "production" &&
@@ -200,6 +214,7 @@ export async function initialiseerDatabase() {
     await initialiseerContactpersoonTabel(database);
     await initialiseerVerkoperToevoegenSchema(database);
     await initialiseerTicketTabellen(database); // tickets toegevoegd
+    await initialiseerTicketTijdslotSchema(database);
 
     if (moetVoorbeelddataToevoegen()) {
       const databaseSeed = await readFile(databaseSeedPad, "utf8");

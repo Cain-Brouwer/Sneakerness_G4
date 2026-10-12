@@ -14,7 +14,9 @@ const navigatieItems = [
   { href: "/contactpersonen", label: "Contact" },
 ];
 
-export default function Header() {
+// terugHref (optioneel): toont op mobiel een "← Terug"-link in plaats van het menu
+// (zoals in de wireframe van het ticketoverzicht).
+export default function Header({ terugHref }) {
   const [mobielMenuOpen, setMobielMenuOpen] = useState(false);
 
   function wisselMobielMenu() {
@@ -58,21 +60,31 @@ export default function Header() {
           })}
         </nav>
 
-        <button
-          type="button"
-          className="flex items-center justify-center border-l border-neutral-800 px-4 py-3 text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white md:hidden"
-          aria-expanded={mobielMenuOpen}
-          aria-controls="mobiel-menu"
-          aria-label={mobielMenuOpen ? "Menu sluiten" : "Menu openen"}
-          onClick={wisselMobielMenu}
-        >
-          <span className="text-xl leading-none" aria-hidden="true">
-            {mobielMenuOpen ? "✕" : "☰"}
-          </span>
-        </button>
+        {terugHref ? (
+          <Link
+            href={terugHref}
+            className="flex items-center justify-center gap-2 border-l border-neutral-800 px-4 py-3 text-sm font-medium text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white md:hidden"
+          >
+            <span aria-hidden="true">←</span>
+            Terug
+          </Link>
+        ) : (
+          <button
+            type="button"
+            className="flex items-center justify-center border-l border-neutral-800 px-4 py-3 text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white md:hidden"
+            aria-expanded={mobielMenuOpen}
+            aria-controls="mobiel-menu"
+            aria-label={mobielMenuOpen ? "Menu sluiten" : "Menu openen"}
+            onClick={wisselMobielMenu}
+          >
+            <span className="text-xl leading-none" aria-hidden="true">
+              {mobielMenuOpen ? "✕" : "☰"}
+            </span>
+          </button>
+        )}
       </div>
 
-      {mobielMenuOpen && (
+      {!terugHref && mobielMenuOpen && (
         <nav
           id="mobiel-menu"
           className="flex flex-col border-t border-neutral-800 bg-neutral-900 md:hidden"
@@ -98,4 +110,3 @@ export default function Header() {
     </header>
   );
 }
-
