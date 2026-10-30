@@ -51,7 +51,22 @@ function maakDagen(tickets) {
   });
 }
 
-function beschikbaarheid(aantal) {
+function beschikbaarheid(ticket) {
+  const aantal = ticket.AantalBeschikbaar;
+
+  // Geannuleerde of gebruikte tickets tonen we met hun status
+  if (ticket.Status === "geannuleerd") {
+    return {
+      tekst: "Geannuleerd",
+      klasse: "bg-red-950 text-red-400 border border-red-900/60",
+    };
+  }
+  if (ticket.Status === "gebruikt") {
+    return {
+      tekst: "Gebruikt",
+      klasse: "bg-neutral-800 text-neutral-300 border border-neutral-700",
+    };
+  }
   if (aantal <= 0) {
     return {
       tekst: "Uitverkocht",
@@ -196,8 +211,8 @@ export default async function TicketOverzichtPage({ searchParams }) {
             </thead>
             <tbody className="block space-y-3 md:table-row-group md:space-y-0 md:divide-y md:divide-neutral-800/60">
               {tickets.map((ticket) => {
-                const status = beschikbaarheid(ticket.AantalBeschikbaar);
-                const isUitverkocht = ticket.AantalBeschikbaar <= 0;
+                const status = beschikbaarheid(ticket);
+                const isUitverkocht = ticket.AantalBeschikbaar <= 0 || ticket.Status !== "actief";
                 return (
                   <tr
                     key={ticket.id}
@@ -223,14 +238,23 @@ export default async function TicketOverzichtPage({ searchParams }) {
                         {status.tekst}
                       </span>
                     </td>
-                    {/* Ingang naar Ticket wijzigen */}
-                    <td className="col-span-3 flex justify-end md:table-cell md:px-2 md:py-4 md:text-center">
+                    {/* Ingang naar Ticket wijzigen (organisator) en Ticket annuleren (bezoeker) */}
+                    <td className="col-span-3 flex flex-wrap justify-end gap-2 md:table-cell md:px-2 md:py-4 md:text-center">
                       <Link
                         href={`/tickets/wijzigen?id=${ticket.id}`}
                         className="inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-neutral-800 px-3 py-1.5 text-xs font-bold text-neutral-100 transition-all hover:border-neutral-500 hover:bg-neutral-700 md:text-sm"
                       >
                         Wijzigen
                       </Link>
+                      {/* Een ticket dat al geannuleerd of gebruikt is, kan niet meer geannuleerd worden */}
+                      {ticket.Status === "actief" && (
+                        <Link
+                          href={`/tickets/annuleren?id=${ticket.id}`}
+                          className="inline-flex items-center justify-center rounded-lg border border-red-900/60 px-3 py-1.5 text-xs font-bold text-red-400 transition-all hover:bg-red-950/40 md:text-sm"
+                        >
+                          Annuleren
+                        </Link>
+                      )}
                     </td>
                   </tr>
                 );
