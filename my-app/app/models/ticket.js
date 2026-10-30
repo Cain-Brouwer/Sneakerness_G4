@@ -1,5 +1,5 @@
 import { initialiseerDatabase, sluitDatabase, haalRijenOp } from "../../lib/database/db.js";
-import { createTicket as createTicketDatabase, getTicketOverview, getTicketsVoorVerkoop, getTicketTypes, koopTicket, updateTicket, BestellingFout } from "../../lib/database/tickets.js";
+import { createTicket as createTicketDatabase, getTicketOverview, getTicketsVoorVerkoop, getTicketTypes, koopTicket, updateTicket, annuleerTicket, BestellingFout } from "../../lib/database/tickets.js";
 
 /**
  * Model voor Ticket
@@ -39,7 +39,7 @@ export async function findById(id) {
 }
 
 // Haalt een ticket op ID inclusief de naam van het tickettype (JOIN met tickettypes).
-// Gebruikt door de pagina Ticket wijzigen.
+// Gebruikt door de pagina's Ticket wijzigen en Ticket annuleren.
 export async function findDetailById(id) {
   const database = await initialiseerDatabase();
   try {
@@ -53,7 +53,8 @@ export async function findDetailById(id) {
               t.AantalBeschikbaar,
               t.Evenementdatum,
               t.Tijdslot,
-              t.Beschrijving
+              t.Beschrijving,
+              t.Status
        FROM tickets t
        JOIN tickettypes tt ON tt.id = t.TickettypeId
        WHERE t.id = ?`,
@@ -80,6 +81,11 @@ export async function update(id, ticket) {
   return await updateTicket(id, ticket);
 }
 
+// Annuleert een ticket: Status wordt 'geannuleerd' (PBI 373)
+export async function cancel(id) {
+  return await annuleerTicket(id);
+}
+
 // Default export zodat de pagina's "import TicketModel from ..." kunnen blijven gebruiken
 // (toevoegen/actions.js en kopen/actions.js deden dat al; zonder default export crashte de build).
 const TicketModel = {
@@ -91,6 +97,7 @@ const TicketModel = {
   create,
   purchase,
   update,
+  cancel,
   BestellingFout,
 };
 
