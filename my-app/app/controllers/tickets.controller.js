@@ -1,4 +1,4 @@
-import { findAll, findAvailable, getTypes, findById, create, purchase, update, BestellingFout } from "../models/ticket.js";
+import { findAll, findAvailable, getTypes, findById, create, purchase, update, cancel, BestellingFout } from "../models/ticket.js";
 import { valideerTicket } from "../../lib/ticket-validatie.js";
 import { logInfo, logFout } from "../../lib/logger.js";
 
@@ -169,4 +169,27 @@ export async function handleUpdate(id, values) {
   // Happy scenario: opgeslagen
   await logInfo("tickets.wijzigen", `Ticket ${id} gewijzigd`);
   return { status: "success", message: MELDING_WIJZIGEN_SUCCES, errors: {}, values };
+}
+
+// Meldingen uit de acceptatiecriteria van PBI 373 (Ticket annuleren)
+const MELDING_ANNULEREN_SUCCES = "Het ticket is succesvol geannuleerd.";
+const MELDING_ANNULEREN_FOUT = "Er is een fout opgetreden. Het ticket kon niet worden geannuleerd.";
+
+// Annuleert een ticket. Wordt aangeroepen door de server action "annuleerTicket".
+// Gebruikt of al geannuleerd? Dan wijzigt de database niets en komt hier de foutmelding.
+export async function handleCancel(id) {
+  if (!/^\d+$/.test(String(id))) {
+    await logFout("tickets.annuleren", `Ongeldig ticket-id: ${id}`);
+    return { status: "error", message: MELDING_ANNULEREN_FOUT };
+  }
+
+  try {
+    await cancel(Number(id));
+  } catch (fout) {
+    await logFout("tickets.annuleren", `Ticket ${id} niet geannuleerd`, fout);
+    return { status: "error", message: MELDING_ANNULEREN_FOUT };
+  }
+
+  await logInfo("tickets.annuleren", `Ticket ${id} geannuleerd`);
+  return { status: "success", message: MELDING_ANNULEREN_SUCCES };
 }
