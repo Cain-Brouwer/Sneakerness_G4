@@ -1,7 +1,7 @@
 import Header from "./components/layout/header.jsx";
 import Hero from "./components/layout/hero.jsx";
 import Footer from "./components/layout/footer.jsx";
-import { getHomepageContent } from "../../lib/homepage-content";
+import { getHomepageContent } from "../lib/homepage-content";
 
 export default async function HomePage() {
   const content = getHomepageContent();
