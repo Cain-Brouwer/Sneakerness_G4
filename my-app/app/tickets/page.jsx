@@ -191,6 +191,7 @@ export default async function TicketOverzichtPage({ searchParams }) {
                 <th className="pb-3 text-center font-semibold">Tijd</th>
                 <th className="pb-3 text-center font-semibold">Prijs</th>
                 <th className="pb-3 text-center font-semibold">Beschikbaarheid</th>
+                <th className="pb-3 text-center font-semibold">Acties</th>
               </tr>
             </thead>
             <tbody className="block space-y-3 md:table-row-group md:space-y-0 md:divide-y md:divide-neutral-800/60">
@@ -221,6 +222,15 @@ export default async function TicketOverzichtPage({ searchParams }) {
                       >
                         {status.tekst}
                       </span>
+                    </td>
+                    {/* Ingang naar Ticket wijzigen */}
+                    <td className="col-span-3 flex justify-end md:table-cell md:px-2 md:py-4 md:text-center">
+                      <Link
+                        href={`/tickets/wijzigen?id=${ticket.id}`}
+                        className="inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-neutral-800 px-3 py-1.5 text-xs font-bold text-neutral-100 transition-all hover:border-neutral-500 hover:bg-neutral-700 md:text-sm"
+                      >
+                        Wijzigen
+                      </Link>
                     </td>
                   </tr>
                 );

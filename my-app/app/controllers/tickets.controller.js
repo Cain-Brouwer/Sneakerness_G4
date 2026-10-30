@@ -1,4 +1,6 @@
-import { findAll, findAvailable, getTypes, findById, create, purchase, BestellingFout } from "../models/ticket.js";
+import { findAll, findAvailable, getTypes, findById, create, purchase, update, BestellingFout } from "../models/ticket.js";
+import { valideerTicket } from "../../lib/ticket-validatie.js";
+import { logInfo, logFout } from "../../lib/logger.js";
 
 /**
  * Controller voor Tickets API
@@ -110,4 +112,61 @@ export async function handlePurchase(request) {
       { status: 500 }
     );
   }
+}
+
+// Meldingen uit de acceptatiecriteria van PBI 372 (Ticket wijzigen)
+const MELDING_WIJZIGEN_SUCCES = "De wijzigingen zijn succesvol opgeslagen.";
+const MELDING_WIJZIGEN_FOUT = "Er is een fout opgetreden. De wijzigingen konden niet worden opgeslagen.";
+
+// Wijzigt een ticket. Wordt aangeroepen door de server action "wijzigTicket".
+// Geeft altijd een "state" terug voor het formulier: success, invalid (veldfouten) of error (systeemfout).
+export async function handleUpdate(id, values) {
+  // Systeemfout: er wordt niets opgeslagen en de ingevulde waarden blijven staan.
+  const systeemFout = () => ({
+    status: "error",
+    message: MELDING_WIJZIGEN_FOUT,
+    errors: {},
+    values,
+  });
+
+  if (!/^\d+$/.test(String(id))) {
+    await logFout("tickets.wijzigen", `Ongeldig ticket-id: ${id}`);
+    return systeemFout();
+  }
+
+  let ticketTypes;
+  try {
+    ticketTypes = await getTypes();
+  } catch (fout) {
+    await logFout("tickets.wijzigen", `Tickettypes ophalen mislukt (ticket ${id})`, fout);
+    return systeemFout();
+  }
+
+  // Unhappy scenario: een verplicht veld is leeg of ongeldig -> niets opslaan
+  const errors = valideerTicket(values, ticketTypes);
+  if (Object.keys(errors).length > 0) {
+    await logInfo(
+      "tickets.wijzigen",
+      `Ticket ${id} niet gewijzigd, ongeldige velden: ${Object.keys(errors).join(", ")}`,
+    );
+    return { status: "invalid", message: MELDING_WIJZIGEN_FOUT, errors, values };
+  }
+
+  try {
+    await update(Number(id), {
+      ticketnaam: values.ticketnaam,
+      tickettypeId: Number(values.tickettypeId),
+      prijs: Math.round(Number(values.prijs.replace(",", ".")) * 100) / 100,
+      aantalBeschikbaar: Number(values.aantalBeschikbaar),
+      evenementdatum: values.evenementdatum,
+      beschrijving: values.beschrijving || null,
+    });
+  } catch (fout) {
+    await logFout("tickets.wijzigen", `Ticket ${id} wijzigen mislukt`, fout);
+    return systeemFout();
+  }
+
+  // Happy scenario: opgeslagen
+  await logInfo("tickets.wijzigen", `Ticket ${id} gewijzigd`);
+  return { status: "success", message: MELDING_WIJZIGEN_SUCCES, errors: {}, values };
 }

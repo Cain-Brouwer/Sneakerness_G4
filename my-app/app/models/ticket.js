@@ -1,5 +1,5 @@
 import { initialiseerDatabase, sluitDatabase, haalRijenOp } from "../../lib/database/db.js";
-import { createTicket as createTicketDatabase, getTicketOverview, getTicketsVoorVerkoop, getTicketTypes, koopTicket, BestellingFout } from "../../lib/database/tickets.js";
+import { createTicket as createTicketDatabase, getTicketOverview, getTicketsVoorVerkoop, getTicketTypes, koopTicket, updateTicket, BestellingFout } from "../../lib/database/tickets.js";
 
 /**
  * Model voor Ticket
@@ -38,6 +38,33 @@ export async function findById(id) {
   }
 }
 
+// Haalt een ticket op ID inclusief de naam van het tickettype (JOIN met tickettypes).
+// Gebruikt door de pagina Ticket wijzigen.
+export async function findDetailById(id) {
+  const database = await initialiseerDatabase();
+  try {
+    const rijen = await haalRijenOp(
+      database,
+      `SELECT t.id,
+              t.Ticketnaam,
+              t.TickettypeId,
+              tt.Naam AS Tickettype,
+              t.Prijs,
+              t.AantalBeschikbaar,
+              t.Evenementdatum,
+              t.Tijdslot,
+              t.Beschrijving
+       FROM tickets t
+       JOIN tickettypes tt ON tt.id = t.TickettypeId
+       WHERE t.id = ?`,
+      [id],
+    );
+    return rijen[0] || null;
+  } finally {
+    await sluitDatabase(database);
+  }
+}
+
 // Maakt een nieuw ticket aan
 export async function create(ticket) {
   return await createTicketDatabase(ticket);
@@ -47,3 +74,24 @@ export async function create(ticket) {
 export async function purchase({ ticketId, naam, email, aantal }) {
   return await koopTicket({ ticketId, naam, email, aantal });
 }
+
+// Past een bestaand ticket aan (PBI 372)
+export async function update(id, ticket) {
+  return await updateTicket(id, ticket);
+}
+
+// Default export zodat de pagina's "import TicketModel from ..." kunnen blijven gebruiken
+// (toevoegen/actions.js en kopen/actions.js deden dat al; zonder default export crashte de build).
+const TicketModel = {
+  getTypes,
+  findAll,
+  findAvailable,
+  findById,
+  findDetailById,
+  create,
+  purchase,
+  update,
+  BestellingFout,
+};
+
+export default TicketModel;
