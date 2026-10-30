@@ -133,7 +133,9 @@ export async function koopTicket({ ticketId, naam, email, aantal }) {
       const ticket = rijen[0];
 
       if (!ticket) {
-        throw new BestellingFout("Dit ticket bestaat niet meer. Kies een ander ticket.");
+        throw new BestellingFout(
+          "Dit ticket bestaat niet meer. Kies een ander ticket.",
+        );
       }
       if (ticket.AantalBeschikbaar <= 0) {
         throw new BestellingFout("Dit ticket is helaas uitverkocht.");
@@ -172,6 +174,42 @@ export async function koopTicket({ ticketId, naam, email, aantal }) {
     } catch (fout) {
       await voerQueryUit(database, "ROLLBACK");
       throw fout;
+    }
+  } finally {
+    await sluitDatabase(database);
+  }
+}
+
+// Past de gegevens van een bestaand ticket aan en zet Datumgewijzigd op vandaag (PBI 372).
+// Gooit een fout als er geen ticket met dit id is, zodat er nooit "stil" niets gebeurt.
+export async function updateTicket(id, ticket) {
+  const database = await initialiseerDatabase();
+
+  try {
+    const resultaat = await voerQueryUit(
+      database,
+      `UPDATE tickets
+       SET Ticketnaam = ?,
+           TickettypeId = ?,
+           Prijs = ?,
+           AantalBeschikbaar = ?,
+           Evenementdatum = ?,
+           Beschrijving = ?,
+           Datumgewijzigd = DATE('now')
+       WHERE id = ?`,
+      [
+        ticket.ticketnaam,
+        ticket.tickettypeId,
+        ticket.prijs,
+        ticket.aantalBeschikbaar,
+        ticket.evenementdatum,
+        ticket.beschrijving,
+        id,
+      ],
+    );
+
+    if (resultaat.wijzigingen !== 1) {
+      throw new Error(`Ticket ${id} bestaat niet`);
     }
   } finally {
     await sluitDatabase(database);
