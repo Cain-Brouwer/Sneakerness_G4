@@ -1,6 +1,6 @@
 'use server';
 
-import TicketModel from '../../models/ticket.js';
+import { create } from '../../models/ticket.js';
 
 const MELDING_SUCCES = 'Het ticket is succesvol aangemaakt.';
 const MELDING_FOUT = 'Er is een fout opgetreden. Het ticket kon niet worden toegevoegd.';

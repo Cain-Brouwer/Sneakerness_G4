@@ -1,7 +1,35 @@
 import Header from "./components/layout/header.jsx";
 import Hero from "./components/layout/hero.jsx";
 import Footer from "./components/layout/footer.jsx";
-import { getHomepageContent } from "../../lib/homepage-content";
+// import { getHomepageContent } from "../../lib/homepage-content";
+
+// Dummy content voor homepage
+const homepageContent = {
+  title: "Welkom bij Sneakerness Rotterdam",
+  eventName: "Sneakerness Rotterdam",
+  venue: "Rotterdam Ahoy",
+  tagline: "De grootste sneakerbeurs van Nederland!",
+  aboutTitle: "Over Sneakerness",
+  aboutText: "Sneakerness is het grootste sneaker evenement van Nederland, waar verzamelaars en liefhebbers samenkomen om de nieuwste releases te ontdekken, te ruilen en te kopen.",
+  ticketsTitle: "Tickets",
+  tickets: [
+    { type: "VIP Toegang", price: "€25,00", available: "Ja" },
+    { type: "Standaard Toegang", price: "€15,00", available: "Ja" },
+    { type: "Studentenkorting", price: "€10,00", available: "Nee" },
+  ],
+  stands: [
+    { name: "Nike", description: "Officiële Nike stand met de nieuwste releases en exclusieve collecties." },
+    { name: "Adidas", description: "Adidas presenteert hun laatste sneaker releases en samenwerkingen." },
+    { name: "Puma", description: "Puma toont hun innovatieve designs en klassiekers." },
+    { name: "Andere merken", description: "Ook andere merken zoals Jordan, New Balance en meer zijn aanwezig." },
+  ],
+  footerInfo: "© 2025 Sneakerness. Alle rechten voorbehouden.",
+  copyright: "Sneakerness is een geregistreerd handelsmerk.",
+};
+
+function getHomepageContent() {
+  return homepageContent;
+}
 
 export default async function HomePage() {
   const content = getHomepageContent();

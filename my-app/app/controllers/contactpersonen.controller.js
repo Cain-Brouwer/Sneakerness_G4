@@ -53,3 +53,20 @@ export async function handleShow(id) {
     );
   }
 }
+
+export async function handleUpdate(id, request) {
+  const { naam, telefoonnummer, email, isActief, opmerking } = await request.json();
+
+  try {
+    await update(id, {
+      naam, telefoonnummer, email, isActief, opmerking
+    });
+    return new Response(JSON.stringify({ message: "Contactpersoon succesvol gewijzigd" }), { status: 200 });
+  } catch (error) {
+    console.error("Fout bij het wijzigen van contactpersoon:", error);
+    return new Response(
+      JSON.stringify({ error: "Fout bij het wijzigen van contactpersoon" }),
+      { status: 500 }
+    );
+  }
+}

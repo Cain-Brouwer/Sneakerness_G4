@@ -1,8 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import TicketModel from '../../models/ticket.js';
-const { BestellingFout } = TicketModel;
+import { BestellingFout } from '../../models/ticket.js';
 
 const MELDING_SUCCES = 'De aankoop is succesvol afgerond.';
 const MELDING_FOUT = 'Er is een fout opgetreden. De aankoop kon niet worden afgerond.';

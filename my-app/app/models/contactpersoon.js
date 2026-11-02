@@ -55,6 +55,25 @@ export async function koppelenAanVerkoper(database, verkoperId, contactpersoonId
   `, [verkoperId, contactpersoonId]);
 }
 
+// Wijzigt een bestaande contactpersoon
+export async function update(id, { naam, telefoonnummer, email, isActief, opmerking }) {
+  const database = await initialiseerDatabase();
+  try {
+    await voerQueryUit(database, `
+      UPDATE contactpersonen
+      SET Naam = ?,
+          Telefoonnummer = ?,
+          Email = ?,
+          IsActief = ?,
+          Opmerking = ?
+      WHERE id = ?
+    `, [naam, telefoonnummer, email, isActief, opmerking, id]);
+    return { id };
+  } finally {
+    await sluitDatabase(database);
+  }
+}
+
 // Haalt alle contactpersonen op die aan een verkoper gekoppeld zijn
 export async function findByVerkoperId(verkoperId) {
   const database = await initialiseerDatabase();
