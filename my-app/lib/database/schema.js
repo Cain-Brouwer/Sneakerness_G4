@@ -140,6 +140,25 @@ async function initialiseerTicketTijdslotSchema(database) {
   }
 }
 
+// Voegt de kolom "Status" toe aan oudere databases (PBI 373 Ticket annuleren).
+// Waarden: 'actief' (standaard), 'geannuleerd' of 'gebruikt'. Een ticket wordt dus nooit verwijderd.
+async function initialiseerTicketStatusSchema(database) {
+  const kolommen = await haalRijenOp(database, "PRAGMA table_info(tickets)");
+
+  if (kolommen.some((kolom) => kolom.name.toLowerCase() === "status")) return;
+
+  try {
+    await voerQueryUit(
+      database,
+      `ALTER TABLE tickets ADD COLUMN Status TEXT NOT NULL DEFAULT 'actief'
+         CHECK (Status IN ('actief', 'geannuleerd', 'gebruikt'))`,
+    );
+  } catch (fout) {
+    // Een andere aanvraag kan de kolom inmiddels hebben toegevoegd.
+    if (!fout.message.includes("duplicate column name:")) throw fout;
+  }
+}
+
 async function initialiseerStandToevoegenSchema(database) {
   const kolommen = await haalRijenOp(database, "PRAGMA table_info(Stand)");
   const nieuweKolommen = [
@@ -219,4 +238,5 @@ export async function initialiseerAlleTabellen(database) {
   await initialiseerVerkoperToevoegenSchema(database);
   await initialiseerTicketTabellen(database);
   await initialiseerTicketTijdslotSchema(database);
+  await initialiseerTicketStatusSchema(database);
 }
