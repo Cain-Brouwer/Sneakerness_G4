@@ -11,6 +11,7 @@ export default function VerkoperDetail({ verkoperId }) {
     const [geselecteerdeContactpersoon, setGeselecteerdeContactpersoon] = useState("");
     const [melding, setMelding] = useState({ tekst: "", type: "" });
     const [laadstatus, setLaadstatus] = useState("laden");
+    const [loskoppelenBezig, setLoskoppelenBezig] = useState(null);
 
     useEffect(() => {
         async function haalDataOp() {
@@ -26,8 +27,8 @@ export default function VerkoperDetail({ verkoperId }) {
                 }
 
                 const verkoperData = await verkoperAntwoord.json();
-                setVerkoper(verkoperData.verkoper);
-                setGekoppeldeContactpersonen(verkoperData.gekoppeldeContactpersonen);
+                setVerkoper(verkoperData);
+                setGekoppeldeContactpersonen(verkoperData.contactpersonen ?? []);
 
                 // Haal alle contactpersonen op voor de dropdown
                 const contactpersonenAntwoord = await fetch("/api/contactpersonen-lijst", {
@@ -87,7 +88,7 @@ export default function VerkoperDetail({ verkoperId }) {
                     cache: "no-store",
                 });
                 const verkoperData = await verkoperAntwoord.json();
-                setGekoppeldeContactpersonen(verkoperData.gekoppeldeContactpersonen);
+                setGekoppeldeContactpersonen(verkoperData.contactpersonen ?? []);
 
                 // Reset de selectie
                 setGeselecteerdeContactpersoon("");
@@ -103,6 +104,51 @@ export default function VerkoperDetail({ verkoperId }) {
                 tekst: "Er is een fout opgetreden bij het koppelen.",
                 type: "fout",
             });
+        }
+    }
+
+    async function handleLoskoppelen(event, contactpersoonId) {
+        event.preventDefault();
+        setMelding({ tekst: "", type: "" });
+        setLoskoppelenBezig(contactpersoonId);
+
+        try {
+            const antwoord = await fetch(`/api/verkopers/${verkoperId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ contactpersoonId }),
+            });
+
+            const data = await antwoord.json();
+
+            if (antwoord.ok) {
+                setMelding({
+                    tekst: "De contactpersoon is succesvol losgekoppeld.",
+                    type: "succes",
+                });
+
+                // Haal de bijgewerkte lijst op
+                const verkoperAntwoord = await fetch(`/api/verkopers/${verkoperId}`, {
+                    cache: "no-store",
+                });
+                const verkoperData = await verkoperAntwoord.json();
+                setGekoppeldeContactpersonen(verkoperData.contactpersonen ?? []);
+            } else {
+                setMelding({
+                    tekst: data.error || "Er is een fout opgetreden. De contactpersoon kon niet worden losgekoppeld.",
+                    type: "fout",
+                });
+            }
+        } catch (fout) {
+            console.error(fout);
+            setMelding({
+                tekst: "Er is een fout opgetreden. De contactpersoon kon niet worden losgekoppeld.",
+                type: "fout",
+            });
+        } finally {
+            setLoskoppelenBezig(null);
         }
     }
 
@@ -214,13 +260,27 @@ export default function VerkoperDetail({ verkoperId }) {
                                 key={contactpersoon.id}
                                 className="rounded-lg border border-neutral-800 bg-neutral-950/50 p-4"
                             >
-                                <p className="font-bold text-neutral-100">{contactpersoon.Naam}</p>
-                                {contactpersoon.Telefoonnummer && (
-                                    <p className="text-sm text-neutral-400">📞 {contactpersoon.Telefoonnummer}</p>
-                                )}
-                                {contactpersoon.Email && (
-                                    <p className="text-sm text-neutral-400">✉️ {contactpersoon.Email}</p>
-                                )}
+                                <div className="flex flex-wrap items-start justify-between gap-3">
+                                    <div>
+                                        <p className="font-bold text-neutral-100">{contactpersoon.naam}</p>
+                                        {contactpersoon.telefoon && (
+                                            <p className="text-sm text-neutral-400">📞 {contactpersoon.telefoon}</p>
+                                        )}
+                                        {contactpersoon.email && (
+                                            <p className="text-sm text-neutral-400">✉️ {contactpersoon.email}</p>
+                                        )}
+                                    </div>
+
+                                    <form onSubmit={(event) => handleLoskoppelen(event, contactpersoon.id)}>
+                                        <button
+                                            type="submit"
+                                            disabled={loskoppelenBezig === contactpersoon.id}
+                                            className="rounded-lg border border-red-800 bg-red-950/60 px-3 py-1.5 text-sm font-semibold text-red-300 transition-colors hover:border-red-600 hover:text-red-200 disabled:cursor-not-allowed disabled:opacity-50"
+                                        >
+                                            {loskoppelenBezig === contactpersoon.id ? "Bezig..." : "Loskoppelen opslaan"}
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         ))}
                     </div>

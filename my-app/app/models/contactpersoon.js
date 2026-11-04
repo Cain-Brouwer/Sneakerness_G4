@@ -1,5 +1,5 @@
 import { initialiseerDatabase, sluitDatabase, voerQueryUit, haalRijenOp } from "../../lib/database/db.js";
-import { voegContactpersoonToe as voegContactpersoonToeDatabase } from "../../lib/database/contactpersonen.js";
+import { voegContactpersoonToe as voegContactpersoonToeDatabase, verwijderContactpersoon as verwijderContactpersoonDatabase } from "../../lib/database/contactpersonen.js";
 
 /**
  * Model voor Contactpersoon
@@ -12,7 +12,7 @@ export async function findAll() {
   try {
     return await haalRijenOp(
       database,
-      "SELECT id, Naam, Telefoonnummer, Email FROM contactpersonen",
+      "SELECT id, Naam, Telefoonnummer, Email, IsActief, Opmerking FROM contactpersonen",
     );
   } finally {
     await sluitDatabase(database);
@@ -69,6 +69,33 @@ export async function update(id, { naam, telefoonnummer, email, isActief, opmerk
       WHERE id = ?
     `, [naam, telefoonnummer, email, isActief, opmerking, id]);
     return { id };
+  } finally {
+    await sluitDatabase(database);
+  }
+}
+
+// Verwijdert een bestaande contactpersoon definitief
+export async function remove(id) {
+  const database = await initialiseerDatabase();
+  try {
+    const bestaand = await haalRijenOp(
+      database,
+      "SELECT id FROM contactpersonen WHERE id = ?",
+      [id],
+    );
+
+    if (bestaand.length === 0) {
+      throw new Error('Contactpersoon niet gevonden');
+    }
+
+    await voerQueryUit(database, "BEGIN IMMEDIATE");
+    try {
+      await verwijderContactpersoonDatabase(database, id);
+      await voerQueryUit(database, "COMMIT");
+    } catch (fout) {
+      await voerQueryUit(database, "ROLLBACK");
+      throw fout;
+    }
   } finally {
     await sluitDatabase(database);
   }

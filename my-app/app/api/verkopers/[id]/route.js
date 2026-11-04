@@ -1,4 +1,4 @@
-import { handleShow, handleKoppelContactpersoon } from "../../../controllers/verkopers.controller.js";
+import { handleShow, handleKoppelContactpersoon, handleOntkoppelContactpersoon } from "../../../controllers/verkopers.controller.js";
 
 export async function GET(request, { params }) {
   const { id } = await params;
@@ -14,4 +14,15 @@ export async function POST(request, { params }) {
     }
 
     return handleKoppelContactpersoon(verkoperId, request);
+}
+
+export async function DELETE(request, { params }) {
+    const { id } = await params;
+    const verkoperId = Number(id);
+
+    if (isNaN(verkoperId) || verkoperId <= 0) {
+        return Response.json({ error: "Ongeldig verkoper ID." }, { status: 400 });
+    }
+
+    return handleOntkoppelContactpersoon(verkoperId, request);
 }

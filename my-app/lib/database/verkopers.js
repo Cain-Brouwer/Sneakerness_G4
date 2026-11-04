@@ -60,6 +60,19 @@ export async function koppelenContactpersoonAanVerkoper(database, verkoperId, co
     `, [verkoperId, contactpersoonId]);
 }
 
+// Verwijdert de koppeling tussen een contactpersoon en een verkoper.
+export async function ontkoppelContactpersoonVanVerkoper(database, verkoperId, contactpersoonId) {
+    await voerQueryUit(database, `
+        DELETE FROM verkoper_contactpersoon
+        WHERE VerkoperId = ? AND ContactpersoonId = ?
+    `, [verkoperId, contactpersoonId]);
+
+    await voerQueryUit(database, `
+        DELETE FROM Contactpersoonverkoper
+        WHERE VerkoperId = ? AND ContactpersoonId = ?
+    `, [verkoperId, contactpersoonId]);
+}
+
 // Haalt alle contactpersonen op die aan een verkoper gekoppeld zijn.
 export async function haalGekoppeldeContactpersonenOp(database, verkoperId) {
     return haalRijenOp(database, `

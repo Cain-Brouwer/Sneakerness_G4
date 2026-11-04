@@ -1,5 +1,5 @@
 import { initialiseerDatabase, sluitDatabase, haalRijenOp } from "../../lib/database/db.js";
-import { voegVerkoperToe as voegVerkoperToeDatabase, koppelenContactpersoonAanVerkoper as koppelenContactpersoonAanVerkoperDatabase } from "../../lib/database/verkopers.js";
+import { voegVerkoperToe as voegVerkoperToeDatabase, koppelenContactpersoonAanVerkoper as koppelenContactpersoonAanVerkoperDatabase, ontkoppelContactpersoonVanVerkoper as ontkoppelContactpersoonVanVerkoperDatabase } from "../../lib/database/verkopers.js";
 
 /**
  * Model voor Verkoper
@@ -175,6 +175,54 @@ export async function koppelContactpersoon(verkoperId, contactpersoonId) {
 
     // Koppel de contactpersoon aan de verkoper
     await koppelenContactpersoonAanVerkoperDatabase(database, verkoperId, contactpersoonId);
+  } finally {
+    await sluitDatabase(database);
+  }
+}
+
+// Ontkoppelt een contactpersoon van een verkoper
+export async function ontkoppelContactpersoon(verkoperId, contactpersoonId) {
+  const database = await initialiseerDatabase();
+  try {
+    // Controleer of de verkoper bestaat
+    const verkoper = await haalRijenOp(
+      database,
+      `SELECT Id FROM Verkoper WHERE Id = ?`,
+      [verkoperId]
+    );
+
+    if (verkoper.length === 0) {
+      throw new Error('Verkoper niet gevonden');
+    }
+
+    // Controleer of de contactpersoon bestaat
+    const contactpersoon = await haalRijenOp(
+      database,
+      `SELECT id FROM contactpersonen WHERE id = ?`,
+      [contactpersoonId]
+    );
+
+    if (contactpersoon.length === 0) {
+      throw new Error('Contactpersoon niet gevonden');
+    }
+
+    // Controleer of de koppeling bestaat voordat er iets verwijderd wordt
+    const koppeling = await haalRijenOp(
+      database,
+      `SELECT 1 FROM verkoper_contactpersoon
+       WHERE VerkoperId = ? AND ContactpersoonId = ?
+       UNION ALL
+       SELECT 1 FROM Contactpersoonverkoper
+       WHERE VerkoperId = ? AND ContactpersoonId = ?
+       LIMIT 1`,
+      [verkoperId, contactpersoonId, verkoperId, contactpersoonId]
+    );
+
+    if (koppeling.length === 0) {
+      throw new Error('Koppeling niet gevonden');
+    }
+
+    await ontkoppelContactpersoonVanVerkoperDatabase(database, verkoperId, contactpersoonId);
   } finally {
     await sluitDatabase(database);
   }
