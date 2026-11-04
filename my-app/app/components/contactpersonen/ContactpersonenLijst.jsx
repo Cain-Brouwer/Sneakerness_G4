@@ -3,12 +3,16 @@
 import { useEffect, useState } from 'react';
 import Line from './Line';
 import Button from './CreateButton';
+import WijzigContactForm from './WijzigContactForm';
+import VerwijderContactForm from './VerwijderContactForm';
 
 export default function ContactpersonenLijst({ contactpersonen }) {
     const [verkopers, setVerkopers] = useState([]);
     const [selecties, setSelecties] = useState({});
     const [meldingen, setMeldingen] = useState({});
     const [laden, setLaden] = useState({});
+    const [teWijzigen, setTeWijzigen] = useState(null);
+    const [teVerwijderen, setTeVerwijderen] = useState(null);
 
     useEffect(() => {
         fetch('/api/verkopers')
@@ -89,6 +93,7 @@ export default function ContactpersonenLijst({ contactpersonen }) {
                         <th className="pb-3 font-semibold">Telefoonnummer</th>
                         <th className="pb-3 font-semibold">E-mail</th>
                         <th className="pb-3 font-semibold">Koppel aan verkoper</th>
+                        <th className="pb-3 font-semibold">Acties</th>
                     </tr>
                     </thead>
                     <tbody className="divide-y divide-neutral-800/60">
@@ -144,11 +149,46 @@ export default function ContactpersonenLijst({ contactpersonen }) {
                                     )}
                                 </div>
                             </td>
+                            <td className="flex items-baseline justify-between gap-4 py-0.5 md:table-cell md:py-3">
+                                <span className="md:hidden text-xs uppercase text-neutral-500">Acties</span>
+                                <div className="flex gap-2">
+                                    <button
+                                        type="button"
+                                        onClick={() => setTeWijzigen(contactpersoon)}
+                                        className="rounded-lg border border-neutral-700 bg-neutral-800 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:border-orange-500 hover:text-orange-400"
+                                    >
+                                        Wijzigen
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => setTeVerwijderen(contactpersoon)}
+                                        className="rounded-lg border border-red-800 bg-red-950/60 px-3 py-1.5 text-sm font-medium text-red-300 transition-colors hover:border-red-600 hover:text-red-200"
+                                    >
+                                        Verwijderen
+                                    </button>
+                                </div>
+                            </td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
             </div>
+
+            {teWijzigen && (
+                <WijzigContactForm
+                    key={teWijzigen.id}
+                    contactpersoon={teWijzigen}
+                    onClose={() => setTeWijzigen(null)}
+                />
+            )}
+
+            {teVerwijderen && (
+                <VerwijderContactForm
+                    key={teVerwijderen.id}
+                    contactpersoon={teVerwijderen}
+                    onClose={() => setTeVerwijderen(null)}
+                />
+            )}
         </section>
     );
 }

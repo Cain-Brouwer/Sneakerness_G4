@@ -1,4 +1,4 @@
-import { handleUpdate, handleShow } from "../../../controllers/contactpersonen.controller.js";
+import { handleUpdate, handleShow, handleDelete } from "../../../controllers/contactpersonen.controller.js";
 
 export async function GET(request, { params }) {
   const { id } = await params;
@@ -8,4 +8,9 @@ export async function GET(request, { params }) {
 export async function PUT(request, { params }) {
   const { id } = await params;
   return handleUpdate(id, request);
+}
+
+export async function DELETE(request, { params }) {
+  const { id } = await params;
+  return handleDelete(id);
 }

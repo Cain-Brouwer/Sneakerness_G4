@@ -1,4 +1,4 @@
-import { findAll, findById, create, koppelContactpersoon } from "../models/verkoper.js";
+import { findAll, findById, create, koppelContactpersoon, ontkoppelContactpersoon } from "../models/verkoper.js";
 import { valideerNieuweVerkoper } from "../../lib/verkoper-validatie.js";
 
 /**
@@ -158,6 +158,50 @@ export async function handleKoppelContactpersoon(verkoperId, request) {
 
         return Response.json(
             { error: "Koppelen is mislukt." },
+            { status: 500 },
+        );
+    }
+}
+
+// Meldingen uit de acceptatiecriteria van PBI 305 (Contactpersoon aan verkoper loskoppelen)
+const MELDING_LOSKOPPELEN_SUCCES = "De contactpersoon is succesvol losgekoppeld.";
+const MELDING_LOSKOPPELEN_FOUT = "Er is een fout opgetreden. De contactpersoon kon niet worden losgekoppeld.";
+
+export async function handleOntkoppelContactpersoon(verkoperId, request) {
+    let body;
+    try {
+        body = await request.json();
+    } catch {
+        return Response.json({ error: "Ongeldig JSON lichaam." }, { status: 400 });
+    }
+
+    const contactpersoonId = Number(body.contactpersoonId);
+
+    if (isNaN(contactpersoonId) || contactpersoonId <= 0) {
+        return Response.json(
+            { error: "Selecteer een contactpersoon om los te koppelen." },
+            { status: 400 },
+        );
+    }
+
+    try {
+        await ontkoppelContactpersoon(verkoperId, contactpersoonId);
+        return Response.json(
+            { message: MELDING_LOSKOPPELEN_SUCCES },
+            { status: 200 },
+        );
+    } catch (fout) {
+        console.error("Loskoppelen contactpersoon mislukt:", fout);
+
+        if (fout.message === 'Koppeling niet gevonden') {
+            return Response.json(
+                { error: MELDING_LOSKOPPELEN_FOUT },
+                { status: 404 },
+            );
+        }
+
+        return Response.json(
+            { error: MELDING_LOSKOPPELEN_FOUT },
             { status: 500 },
         );
     }

@@ -1,4 +1,4 @@
-import { findAll, findById, create } from "../models/contactpersoon.js";
+import { findAll, findById, create, update, remove } from "../models/contactpersoon.js";
 
 /**
  * Controller voor Contactpersonen API
@@ -55,17 +55,65 @@ export async function handleShow(id) {
 }
 
 export async function handleUpdate(id, request) {
-  const { naam, telefoonnummer, email, isActief, opmerking } = await request.json();
+  let invoer;
+  try {
+    invoer = await request.json();
+  } catch {
+    return new Response(
+      JSON.stringify({ error: "Ongeldige aanvraag." }),
+      { status: 400 }
+    );
+  }
+
+  const { naam, telefoonnummer, email, isActief, opmerking } = invoer;
+
+  if (!naam || !telefoonnummer || !email) {
+    return new Response(
+      JSON.stringify({ error: "Naam, telefoonnummer en email zijn verplicht." }),
+      { status: 400 }
+    );
+  }
 
   try {
     await update(id, {
       naam, telefoonnummer, email, isActief, opmerking
     });
-    return new Response(JSON.stringify({ message: "Contactpersoon succesvol gewijzigd" }), { status: 200 });
+    return new Response(
+      JSON.stringify({ message: "De wijzigingen zijn succesvol opgeslagen." }),
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Fout bij het wijzigen van contactpersoon:", error);
     return new Response(
-      JSON.stringify({ error: "Fout bij het wijzigen van contactpersoon" }),
+      JSON.stringify({ error: "Er is een fout opgetreden. De wijzigingen konden niet worden opgeslagen." }),
+      { status: 500 }
+    );
+  }
+}
+
+// Meldingen uit de acceptatiecriteria van PBI 307 (Contactpersoon verwijderen)
+const MELDING_VERWIJDEREN_SUCCES = "De contactpersoon is succesvol verwijderd.";
+const MELDING_VERWIJDEREN_FOUT = "Er is een fout opgetreden. De contactpersoon kon niet worden verwijderd.";
+
+export async function handleDelete(id) {
+  try {
+    await remove(id);
+    return new Response(
+      JSON.stringify({ message: MELDING_VERWIJDEREN_SUCCES }),
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Fout bij het verwijderen van contactpersoon:", error);
+
+    if (error.message === 'Contactpersoon niet gevonden') {
+      return new Response(
+        JSON.stringify({ error: MELDING_VERWIJDEREN_FOUT }),
+        { status: 404 }
+      );
+    }
+
+    return new Response(
+      JSON.stringify({ error: MELDING_VERWIJDEREN_FOUT }),
       { status: 500 }
     );
   }
