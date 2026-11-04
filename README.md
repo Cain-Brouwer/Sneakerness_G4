@@ -16,3 +16,6 @@ ports using:
 ```powershell
 docker compose -f .\Sneakerness_G4\docker-compose.yml up dev
 ```
+
+Dependencies and Next.js build files are isolated per container to prevent
+concurrent development containers from overwriting each other's files.
