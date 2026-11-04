@@ -63,7 +63,8 @@ export async function getTicketOverview() {
               t.Prijs,
               t.AantalBeschikbaar,
               t.Evenementdatum,
-              t.Tijdslot
+              t.Tijdslot,
+              t.Status
        FROM tickets t
        JOIN tickettypes tt ON tt.id = t.TickettypeId
        ORDER BY t.Evenementdatum, t.Tijdslot IS NULL, t.Tijdslot, t.id`,
@@ -91,7 +92,7 @@ export async function getTicketsVoorVerkoop() {
               t.Tijdslot
        FROM tickets t
        JOIN tickettypes tt ON tt.id = t.TickettypeId
-       WHERE t.AantalBeschikbaar > 0
+       WHERE t.AantalBeschikbaar > 0 AND t.Status = 'actief'
        ORDER BY t.Evenementdatum, t.Tijdslot IS NULL, t.Tijdslot, t.id`,
     );
   } finally {
@@ -127,13 +128,16 @@ export async function koopTicket({ ticketId, naam, email, aantal }) {
     try {
       const rijen = await haalRijenOp(
         database,
-        "SELECT id, Ticketnaam, Prijs, AantalBeschikbaar FROM tickets WHERE id = ?",
+        "SELECT id, Ticketnaam, Prijs, AantalBeschikbaar, Status FROM tickets WHERE id = ?",
         [ticketId],
       );
       const ticket = rijen[0];
 
       if (!ticket) {
         throw new BestellingFout("Dit ticket bestaat niet meer. Kies een ander ticket.");
+      }
+      if (ticket.Status !== "actief") {
+        throw new BestellingFout("Dit ticket is niet meer beschikbaar. Kies een ander ticket.");
       }
       if (ticket.AantalBeschikbaar <= 0) {
         throw new BestellingFout("Dit ticket is helaas uitverkocht.");
@@ -172,6 +176,65 @@ export async function koopTicket({ ticketId, naam, email, aantal }) {
     } catch (fout) {
       await voerQueryUit(database, "ROLLBACK");
       throw fout;
+    }
+  } finally {
+    await sluitDatabase(database);
+  }
+}
+
+// Past de gegevens van een bestaand ticket aan en zet Datumgewijzigd op vandaag (PBI 372).
+// Gooit een fout als er geen ticket met dit id is, zodat er nooit "stil" niets gebeurt.
+export async function updateTicket(id, ticket) {
+  const database = await initialiseerDatabase();
+
+  try {
+    const resultaat = await voerQueryUit(
+      database,
+      `UPDATE tickets
+       SET Ticketnaam = ?,
+           TickettypeId = ?,
+           Prijs = ?,
+           AantalBeschikbaar = ?,
+           Evenementdatum = ?,
+           Beschrijving = ?,
+           Datumgewijzigd = DATE('now')
+       WHERE id = ?`,
+      [
+        ticket.ticketnaam,
+        ticket.tickettypeId,
+        ticket.prijs,
+        ticket.aantalBeschikbaar,
+        ticket.evenementdatum,
+        ticket.beschrijving,
+        id,
+      ],
+    );
+
+    if (resultaat.wijzigingen !== 1) {
+      throw new Error(`Ticket ${id} bestaat niet`);
+    }
+  } finally {
+    await sluitDatabase(database);
+  }
+}
+
+// Annuleert een ticket (PBI 373): de Status wordt 'geannuleerd', het ticket wordt NIET verwijderd.
+// De voorwaarde "Status = 'actief'" zorgt dat een gebruikt of al geannuleerd ticket niet
+// (nog een keer) geannuleerd kan worden; dan is er geen enkele rij gewijzigd en gooien we een fout.
+export async function annuleerTicket(id) {
+  const database = await initialiseerDatabase();
+
+  try {
+    const resultaat = await voerQueryUit(
+      database,
+      `UPDATE tickets
+       SET Status = 'geannuleerd', Datumgewijzigd = DATE('now')
+       WHERE id = ? AND Status = 'actief'`,
+      [id],
+    );
+
+    if (resultaat.wijzigingen !== 1) {
+      throw new Error(`Ticket ${id} kan niet worden geannuleerd (bestaat niet, is gebruikt of is al geannuleerd)`);
     }
   } finally {
     await sluitDatabase(database);
