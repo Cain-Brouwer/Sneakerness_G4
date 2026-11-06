@@ -216,6 +216,9 @@ export default function VerkoperDetail({ verkoperId }) {
             <Link href={`/verkopers/${verkoperId}/wijzigen`} className="inline-flex min-h-12 items-center rounded-xl bg-orange-600 px-5 py-3 font-bold text-white transition hover:bg-orange-500">
                 Verkoper Wijzigen
             </Link>
+            <Link href={`/verkopers/${verkoperId}/verwijderen`} className="inline-flex min-h-12 items-center rounded-xl border border-orange-700 px-5 py-3 font-bold text-orange-400 transition hover:bg-orange-950/40">
+                Verkoper Verwijderen
+            </Link>
 
             {/* Verkoper gegevens */}
             <div className="rounded-xl border border-neutral-800 bg-neutral-900/60 p-6 shadow-lg">

@@ -77,6 +77,29 @@ function moetVoorbeelddataToevoegen() {
     && !process.env.STANDS_DATABASE_PATH;
 }
 
+export async function initialiseerVoorbeelddata(database) {
+  await voerDatabaseSqlUit(database, `CREATE TABLE IF NOT EXISTS OntwikkelSeed (
+    Naam TEXT PRIMARY KEY,
+    Datumaangemaakt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+  )`);
+  const [bestaandeSeed] = await haalRijenOp(database, "SELECT Naam FROM OntwikkelSeed WHERE Naam = 'basis'");
+  if (bestaandeSeed) return;
+  await voerQueryUit(database, "PRAGMA busy_timeout = 5000");
+  await voerQueryUit(database, "BEGIN IMMEDIATE");
+  try {
+    // Controleert nogmaals na de lock, zodat gelijktijdige aanvragen maar eenmaal seeden.
+    const [seed] = await haalRijenOp(database, "SELECT Naam FROM OntwikkelSeed WHERE Naam = 'basis'");
+    if (!seed) {
+      await voerDatabaseSqlUit(database, await readFile(databaseSeedPad, "utf8"));
+      await voerQueryUit(database, "INSERT INTO OntwikkelSeed (Naam) VALUES ('basis')");
+    }
+    await voerQueryUit(database, "COMMIT");
+  } catch (fout) {
+    await voerQueryUit(database, "ROLLBACK");
+    throw fout;
+  }
+}
+
 export async function initialiseerDatabase() {
   if (process.env.FORCE_DB_ERROR === "1") {
     throw new Error("Geen verbinding met de database");
@@ -93,8 +116,7 @@ export async function initialiseerDatabase() {
     await initialiseerAlleTabellen(database);
 
     if (moetVoorbeelddataToevoegen()) {
-      const databaseSeed = await readFile(databaseSeedPad, "utf8");
-      await voerDatabaseSqlUit(database, databaseSeed);
+      await initialiseerVoorbeelddata(database);
     }
 
     return database;
