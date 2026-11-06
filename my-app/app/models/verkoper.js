@@ -1,4 +1,9 @@
 import { initialiseerDatabase, sluitDatabase, haalRijenOp } from "../../lib/database/db.js";
+import { wijzigVerkoper as wijzigVerkoperDatabase } from "../../lib/database/verkopers.js";
+
+export async function wijzigVerkoper(id, gegevens) {
+  return wijzigVerkoperDatabase(id, gegevens);
+}
 import { voegVerkoperToe as voegVerkoperToeDatabase, koppelenContactpersoonAanVerkoper as koppelenContactpersoonAanVerkoperDatabase, ontkoppelContactpersoonVanVerkoper as ontkoppelContactpersoonVanVerkoperDatabase } from "../../lib/database/verkopers.js";
 
 /**
@@ -102,7 +107,11 @@ export async function findById(id) {
          c.Telefoonnummer AS contactTelefoon,
          c.Email AS contactEmail
        FROM Verkoper v
-       LEFT JOIN verkoper_contactpersoon vc ON v.Id = vc.VerkoperId
+       LEFT JOIN (
+         SELECT VerkoperId, ContactpersoonId FROM verkoper_contactpersoon
+         UNION
+         SELECT VerkoperId, ContactpersoonId FROM Contactpersoonverkoper
+       ) vc ON v.Id = vc.VerkoperId
        LEFT JOIN contactpersonen c ON c.id = vc.ContactpersoonId
        WHERE v.Id = ?
        ORDER BY c.Naam COLLATE NOCASE`,
