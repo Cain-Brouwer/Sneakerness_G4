@@ -196,6 +196,7 @@ function StandResultaten({ stands }) {
               <th className="px-5 py-4 font-semibold">ID</th>
               <th className="px-5 py-4 font-semibold">Standnummer</th>
               <th className="px-5 py-4 font-semibold">Standtype</th>
+              <th className="px-5 py-4 font-semibold">Acties</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-neutral-800">
@@ -208,6 +209,7 @@ function StandResultaten({ stands }) {
                 <td className="px-5 py-4">
                   <StandtypeLabel standtype={stand.standtype} />
                 </td>
+                <td className="px-5 py-4"><Link href={`/stands/${stand.id}/verwijderen`} className="inline-flex min-h-11 items-center font-semibold text-orange-400 hover:text-orange-300" aria-label={`Stand ${stand.standnummer} verwijderen`}>Verwijderen</Link></td>
               </tr>
             ))}
           </tbody>
@@ -234,6 +236,7 @@ function StandResultaten({ stands }) {
             <div className="mt-4">
               <StandtypeLabel standtype={stand.standtype} />
             </div>
+            <Link href={`/stands/${stand.id}/verwijderen`} className="mt-4 inline-flex min-h-11 items-center font-semibold text-orange-400 hover:text-orange-300" aria-label={`Stand ${stand.standnummer} verwijderen`}>Verwijderen</Link>
           </article>
         ))}
       </div>
