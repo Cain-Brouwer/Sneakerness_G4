@@ -1,5 +1,41 @@
 import { findAll, findById, create } from "../models/stand.js";
 import { valideerNieuweStand } from "../../lib/stand-validatie.js";
+import { wijzigStand, haalStandWijziggegevensOp } from "../models/stand.js";
+import { valideerStandWijziging, meldingStandWijzigenSucces, meldingStandWijzigenFout } from "../../lib/stand-wijzigen-validatie.js";
+
+function isGeldigStandId(id) {
+  return /^[1-9]\d*$/.test(String(id)) && Number.isSafeInteger(Number(id));
+}
+
+export async function handleStandWijziggegevens(id) {
+  if (!isGeldigStandId(id)) return Response.json({ error: "Ongeldig stand ID." }, { status: 400 });
+  try {
+    const gegevens = await haalStandWijziggegevensOp(Number(id));
+    if (!gegevens) return Response.json({ error: "Stand niet gevonden." }, { status: 404 });
+    return Response.json(gegevens);
+  } catch (fout) {
+    console.error("Standwijziggegevens ophalen mislukt:", fout);
+    return Response.json({ error: "De standgegevens konden niet worden geladen." }, { status: 500 });
+  }
+}
+
+export async function handleWijzigStand(id, request) {
+  if (!isGeldigStandId(id)) return Response.json({ error: "Ongeldig stand ID." }, { status: 400 });
+  let invoer;
+  try { invoer = await request.json(); } catch { return Response.json({ error: "Ongeldige aanvraag." }, { status: 400 }); }
+  const { gegevens, fouten } = valideerStandWijziging(invoer);
+  if (Object.keys(fouten).length) return Response.json({ error: "Controleer de ingevulde gegevens.", fouten }, { status: 400 });
+  try {
+    return Response.json({ ...await wijzigStand(Number(id), gegevens), message: meldingStandWijzigenSucces });
+  } catch (fout) {
+    if (fout.status === 400 || fout.status === 404 || fout.status === 409) return Response.json({ error: fout.message, ...(fout.fouten && { fouten: fout.fouten }) }, { status: fout.status });
+    if (fout.code === "SQLITE_CONSTRAINT" && fout.message.includes("Stand.Standnummer")) {
+      return Response.json({ error: "Dit standnummer bestaat al.", fouten: { standnummer: "Kies een ander standnummer." } }, { status: 409 });
+    }
+    console.error("Stand wijzigen mislukt:", fout);
+    return Response.json({ error: meldingStandWijzigenFout }, { status: 500 });
+  }
+}
 
 /**
  * Controller voor Stands API

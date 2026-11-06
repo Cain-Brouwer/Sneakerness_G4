@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const standtypeLabels = {
   "aa-plus": "AA+ Stand",
@@ -202,7 +203,7 @@ function StandResultaten({ stands }) {
               <tr key={stand.id} className="transition-colors hover:bg-neutral-800/40">
                 <td className="px-5 py-4 text-neutral-500">#{stand.id}</td>
                 <td className="px-5 py-4 text-base font-bold text-white">
-                  {stand.standnummer}
+                  <Link href={`/stands/${stand.id}/wijzigen`} className="text-orange-400 hover:text-orange-300" aria-label={`Stand ${stand.standnummer} wijzigen`}>{stand.standnummer}</Link>
                 </td>
                 <td className="px-5 py-4">
                   <StandtypeLabel standtype={stand.standtype} />
@@ -225,7 +226,7 @@ function StandResultaten({ stands }) {
                   Standnummer
                 </p>
                 <h2 className="mt-1 text-xl font-bold text-white">
-                  {stand.standnummer}
+                  <Link href={`/stands/${stand.id}/wijzigen`} className="text-orange-400 hover:text-orange-300" aria-label={`Stand ${stand.standnummer} wijzigen`}>{stand.standnummer}</Link>
                 </h2>
               </div>
               <span className="text-xs text-neutral-600">#{stand.id}</span>
