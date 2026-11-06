@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function VerkoperDetail({ verkoperId }) {
     const router = useRouter();
@@ -211,6 +212,10 @@ export default function VerkoperDetail({ verkoperId }) {
                 </svg>
                 Terug naar overzicht
             </button>
+
+            <Link href={`/verkopers/${verkoperId}/wijzigen`} className="inline-flex min-h-12 items-center rounded-xl bg-orange-600 px-5 py-3 font-bold text-white transition hover:bg-orange-500">
+                Verkoper Wijzigen
+            </Link>
 
             {/* Verkoper gegevens */}
             <div className="rounded-xl border border-neutral-800 bg-neutral-900/60 p-6 shadow-lg">
