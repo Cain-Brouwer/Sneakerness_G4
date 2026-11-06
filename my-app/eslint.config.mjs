@@ -1,3 +1,5 @@
+// ESLint configuration for the project.
+// It extends Next.js default checks and ignores generated folders like .next during linting.
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 

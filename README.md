@@ -18,6 +18,7 @@ Op de website vind je onder andere:
 
 ## Doel
 Het doel van deze website is om alle informatie rond het sneakerevent overzichtelijk en toegankelijk op één plek te tonen.
+Het doel van deze website is om alle informatie rond het sneakerevent overzichtelijk en toegankelijk op één plek te tonen.
 
 Handig:
 
