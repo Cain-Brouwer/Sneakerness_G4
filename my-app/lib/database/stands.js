@@ -1,5 +1,30 @@
 import { initialiseerDatabase, sluitDatabase, voerQueryUit, haalRijenOp } from "./db.js";
 
+export async function verwijderStand(standId) {
+  const database = await initialiseerDatabase();
+  try {
+    await voerQueryUit(database, "PRAGMA busy_timeout = 5000");
+    await voerQueryUit(database, "BEGIN IMMEDIATE");
+    try {
+      const [stand] = await haalRijenOp(database, "SELECT VerkoperId, Status FROM Stand WHERE Id = ?", [standId]);
+      if (!stand) throw Object.assign(new Error("Stand niet gevonden."), { status: 404 });
+      const [reservering] = await haalRijenOp(database, "SELECT Id FROM StandReservering WHERE StandId = ?", [standId]);
+      // Verwijderen annuleert nooit stilzwijgend een reservering of verkoperkoppeling.
+      if (stand.VerkoperId !== null || reservering || stand.Status === "Gereserveerd") {
+        throw Object.assign(new Error("Deze stand heeft een verkoperkoppeling of reservering. Handel die eerst af voordat je de stand verwijdert."), { status: 409 });
+      }
+      await voerQueryUit(database, "DELETE FROM Stand WHERE Id = ?", [standId]);
+      await voerQueryUit(database, "COMMIT");
+      return { id: standId };
+    } catch (fout) {
+      await voerQueryUit(database, "ROLLBACK");
+      throw fout;
+    }
+  } finally {
+    await sluitDatabase(database);
+  }
+}
+
 export async function wijzigStand(standId, gegevens) {
   const database = await initialiseerDatabase();
   try {

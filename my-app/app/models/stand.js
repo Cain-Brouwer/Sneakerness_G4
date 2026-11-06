@@ -1,6 +1,13 @@
 import { initialiseerDatabase, sluitDatabase, haalRijenOp } from "../../lib/database/db.js";
-import { voegStandToe as voegStandToeDatabase } from "../../lib/database/stands.js";
-import { wijzigStand as wijzigStandDatabase } from "../../lib/database/stands.js";
+import {
+  voegStandToe as voegStandToeDatabase,
+  wijzigStand as wijzigStandDatabase,
+  verwijderStand as verwijderStandDatabase,
+} from "../../lib/database/stands.js";
+
+export async function verwijderStand(id) {
+  return verwijderStandDatabase(id);
+}
 
 export async function wijzigStand(id, gegevens) {
   return wijzigStandDatabase(id, gegevens);

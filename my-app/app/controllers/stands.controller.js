@@ -1,10 +1,29 @@
 import { findAll, findById, create } from "../models/stand.js";
 import { valideerNieuweStand } from "../../lib/stand-validatie.js";
-import { wijzigStand, haalStandWijziggegevensOp } from "../models/stand.js";
+import { wijzigStand, haalStandWijziggegevensOp, verwijderStand } from "../models/stand.js";
 import { valideerStandWijziging, meldingStandWijzigenSucces, meldingStandWijzigenFout } from "../../lib/stand-wijzigen-validatie.js";
+import { meldingStandVerwijderenSucces, meldingStandVerwijderenFout } from "../../lib/stand-verwijderen-meldingen.js";
 
 function isGeldigStandId(id) {
   return /^[1-9]\d*$/.test(String(id)) && Number.isSafeInteger(Number(id));
+}
+
+export async function handleVerwijderStand(id, request) {
+  if (!isGeldigStandId(id)) return Response.json({ error: "Ongeldig stand ID." }, { status: 400 });
+  let invoer;
+  try {
+    invoer = await request.json();
+  } catch {
+    return Response.json({ error: "Bevestig eerst dat je deze stand wilt verwijderen." }, { status: 400 });
+  }
+  if (invoer?.bevestigd !== true) return Response.json({ error: "Bevestig eerst dat je deze stand wilt verwijderen." }, { status: 400 });
+  try {
+    return Response.json({ ...await verwijderStand(Number(id)), message: meldingStandVerwijderenSucces });
+  } catch (fout) {
+    if (fout.status === 404 || fout.status === 409) return Response.json({ error: fout.message }, { status: fout.status });
+    console.error("Stand verwijderen mislukt:", fout);
+    return Response.json({ error: meldingStandVerwijderenFout }, { status: 500 });
+  }
 }
 
 export async function handleStandWijziggegevens(id) {
