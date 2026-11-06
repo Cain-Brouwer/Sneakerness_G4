@@ -1,6 +1,31 @@
 import { initialiseerDatabase, sluitDatabase, voerQueryUit, haalRijenOp } from "./db.js";
 import { voegContactpersoonToe } from "./contactpersonen.js";
 
+export async function verwijderVerkoper(verkoperId) {
+  const database = await initialiseerDatabase();
+  try {
+    await voerQueryUit(database, "PRAGMA busy_timeout = 5000");
+    await voerQueryUit(database, "BEGIN IMMEDIATE");
+    try {
+      const [verkoper] = await haalRijenOp(database, "SELECT Id FROM Verkoper WHERE Id = ?", [verkoperId]);
+      if (!verkoper) throw Object.assign(new Error("Verkoper niet gevonden."), { status: 404 });
+      const [stand] = await haalRijenOp(database, "SELECT Id FROM Stand WHERE VerkoperId = ? LIMIT 1", [verkoperId]);
+      // Verwijderen mag geen standkoppeling of reservering stilzwijgend verbreken.
+      if (stand) throw Object.assign(new Error("Deze verkoper heeft nog gekoppelde stands. Handel deze koppelingen eerst af."), { status: 409 });
+      await voerQueryUit(database, "DELETE FROM verkoper_contactpersoon WHERE VerkoperId = ?", [verkoperId]);
+      await voerQueryUit(database, "DELETE FROM Contactpersoonverkoper WHERE VerkoperId = ?", [verkoperId]);
+      await voerQueryUit(database, "DELETE FROM Verkoper WHERE Id = ?", [verkoperId]);
+      await voerQueryUit(database, "COMMIT");
+      return { id: verkoperId };
+    } catch (fout) {
+      await voerQueryUit(database, "ROLLBACK");
+      throw fout;
+    }
+  } finally {
+    await sluitDatabase(database);
+  }
+}
+
 export async function wijzigVerkoper(verkoperId, gegevens) {
   const database = await initialiseerDatabase();
   try {

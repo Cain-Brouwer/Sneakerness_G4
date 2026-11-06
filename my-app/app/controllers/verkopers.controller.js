@@ -1,5 +1,27 @@
 import { findAll, findById, create, koppelContactpersoon, ontkoppelContactpersoon } from "../models/verkoper.js";
 import { valideerNieuweVerkoper } from "../../lib/verkoper-validatie.js";
+import { verwijderVerkoper } from "../models/verkoper.js";
+import { meldingVerwijderenSucces, meldingVerwijderenFout } from "../../lib/verkoper-verwijderen-validatie.js";
+
+export async function handleVerwijderVerkoper(id, request) {
+  if (!/^[1-9]\d*$/.test(String(id)) || !Number.isSafeInteger(Number(id))) {
+    return Response.json({ error: "Ongeldig verkoper ID." }, { status: 400 });
+  }
+  let invoer;
+  try {
+    invoer = await request.json();
+  } catch {
+    return Response.json({ error: "Bevestig eerst dat je deze verkoper wilt verwijderen." }, { status: 400 });
+  }
+  if (invoer?.bevestigd !== true) return Response.json({ error: "Bevestig eerst dat je deze verkoper wilt verwijderen." }, { status: 400 });
+  try {
+    return Response.json({ ...await verwijderVerkoper(Number(id)), message: meldingVerwijderenSucces });
+  } catch (fout) {
+    if (fout.status === 404 || fout.status === 409) return Response.json({ error: fout.message }, { status: fout.status });
+    console.error("Verkoper verwijderen mislukt:", fout);
+    return Response.json({ error: meldingVerwijderenFout }, { status: 500 });
+  }
+}
 import { wijzigVerkoper } from "../models/verkoper.js";
 import { valideerVerkoperWijziging, meldingWijzigenSucces, meldingWijzigenFout } from "../../lib/verkoper-wijzigen-validatie.js";
 

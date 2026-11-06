@@ -1,4 +1,9 @@
 import { initialiseerDatabase, sluitDatabase, haalRijenOp } from "../../lib/database/db.js";
+import { verwijderVerkoper as verwijderVerkoperDatabase } from "../../lib/database/verkopers.js";
+
+export async function verwijderVerkoper(id) {
+  return verwijderVerkoperDatabase(id);
+}
 import { wijzigVerkoper as wijzigVerkoperDatabase } from "../../lib/database/verkopers.js";
 
 export async function wijzigVerkoper(id, gegevens) {
