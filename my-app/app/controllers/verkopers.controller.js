@@ -1,5 +1,28 @@
 import { findAll, findById, create, koppelContactpersoon, ontkoppelContactpersoon } from "../models/verkoper.js";
 import { valideerNieuweVerkoper } from "../../lib/verkoper-validatie.js";
+import { wijzigVerkoper } from "../models/verkoper.js";
+import { valideerVerkoperWijziging, meldingWijzigenSucces, meldingWijzigenFout } from "../../lib/verkoper-wijzigen-validatie.js";
+
+export async function handleWijzigVerkoper(id, request) {
+  if (!/^[1-9]\d*$/.test(String(id)) || !Number.isSafeInteger(Number(id))) {
+    return Response.json({ error: "Ongeldig verkoper ID." }, { status: 400 });
+  }
+  let invoer;
+  try {
+    invoer = await request.json();
+  } catch {
+    return Response.json({ error: "Ongeldige aanvraag." }, { status: 400 });
+  }
+  const { gegevens, fouten } = valideerVerkoperWijziging(invoer);
+  if (Object.keys(fouten).length) return Response.json({ error: "Controleer de ingevulde gegevens.", fouten }, { status: 400 });
+  try {
+    return Response.json({ ...await wijzigVerkoper(Number(id), gegevens), message: meldingWijzigenSucces });
+  } catch (fout) {
+    if (fout.status === 404 || fout.status === 409) return Response.json({ error: fout.message }, { status: fout.status });
+    console.error("Verkoper wijzigen mislukt:", fout);
+    return Response.json({ error: meldingWijzigenFout }, { status: 500 });
+  }
+}
 
 /**
  * Controller voor Verkopers API

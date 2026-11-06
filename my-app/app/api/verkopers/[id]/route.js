@@ -1,4 +1,10 @@
 import { handleShow, handleKoppelContactpersoon, handleOntkoppelContactpersoon } from "../../../controllers/verkopers.controller.js";
+import { handleWijzigVerkoper } from "../../../controllers/verkopers.controller.js";
+
+export async function PUT(request, { params }) {
+  const { id } = await params;
+  return handleWijzigVerkoper(id, request);
+}
 
 export async function GET(request, { params }) {
   const { id } = await params;
